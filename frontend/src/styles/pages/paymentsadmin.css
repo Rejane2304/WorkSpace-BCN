@@ -1,0 +1,125 @@
+.payments-admin-grid-3col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem 1.5rem;
+  margin-top: 2rem;
+}
+
+.payments-admin-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.payments-admin-controls > div {
+  flex: 1;
+  min-width: 200px;
+}
+
+.payments-admin-controls input,
+.payments-admin-controls .select-custom,
+.payments-admin-controls .select-custom-control {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.payments-admin-counters {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+.payments-card-enhanced {
+  background: var(--color-background, #fff);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 1.3rem 1.5rem 1.1rem 1.5rem;
+  transition: box-shadow 0.2s;
+  border: 1px solid var(--color-border, #ececec);
+}
+.payments-card-enhanced:hover {
+  box-shadow: 0 4px 18px rgba(0,0,0,0.13);
+  border-color: var(--color-primary, #f7b32b);
+}
+
+.payments-admin-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.7rem;
+}
+
+.payments-card-products-list {
+  margin: 0.7rem 0 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.97rem;
+  color: #666;
+}
+.payments-card-products-list li {
+  margin-bottom: 2px;
+}
+
+.payments-admin-action-buttons {
+  display: flex;
+  gap: 0.7rem;
+  margin-top: 0.7rem;
+}
+
+.payments-loading-placeholder {
+  grid-column: 1/-1;
+  text-align: center;
+  color: #aaa;
+  font-size: 1.1rem;
+  padding: 2.5rem 0;
+}
+
+@media (max-width: 900px) {
+  .payments-admin-grid-3col {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .payments-admin-grid-3col {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .payments-admin-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.8rem;
+  }
+
+  .payments-admin-controls > div {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .payments-admin-counters {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  
+  .payments-card-enhanced {
+    padding: 1rem;
+  }
+  
+  .payments-admin-action-buttons {
+    width: 100%;
+  }
+  
+  .payments-admin-action-buttons button {
+    flex: 1;
+    justify-content: center;
+  }
+}

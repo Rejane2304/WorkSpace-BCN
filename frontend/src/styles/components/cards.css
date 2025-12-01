@@ -1,0 +1,138 @@
+/* === CARD BASE === */
+.card {
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  padding: var(--spacing-lg);
+  transition: all var(--transition-normal);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* === CARD HEADER === */
+.card-header {
+  padding-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.card-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-dark);
+  margin: 0;
+}
+
+.card-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  margin-top: var(--spacing-xs);
+}
+
+/* === CARD BODY === */
+.card-body {
+  padding: 0;
+}
+
+/* === CARD FOOTER === */
+.card-footer {
+  padding-top: var(--spacing-md);
+  margin-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+/* === VARIANTES DE CARDS === */
+.card-outlined {
+  box-shadow: none;
+  border: 2px solid var(--color-border);
+}
+
+.card-elevated {
+  box-shadow: var(--shadow-lg);
+}
+
+.card-flat {
+  box-shadow: none;
+}
+
+.card-primary {
+  border: 2px solid var(--color-primary);
+  background-color: var(--color-primary-light);
+}
+
+.card-secondary {
+  border: 2px solid var(--color-secondary);
+  background-color: rgba(64, 129, 151, 0.05);
+}
+
+/* === TAMAÑOS DE PADDING === */
+.card-sm {
+  padding: var(--spacing-sm);
+}
+
+.card-md {
+  padding: var(--spacing-md);
+}
+
+.card-lg {
+  padding: var(--spacing-xl);
+}
+
+/* === GRID DE CARDS === */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === CARD CLICKABLE === */
+.card-clickable {
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.card-clickable:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-clickable:active {
+  transform: translateY(-2px);
+}
+
+/* === CARD CON IMAGEN === */
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  margin: calc(var(--spacing-lg) * -1) calc(var(--spacing-lg) * -1) var(--spacing-md);
+}
+
+.card-image-sm {
+  height: 150px;
+}
+
+.card-image-lg {
+  height: 300px;
+}

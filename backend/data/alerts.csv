@@ -1,0 +1,7 @@
+type,referenceModel,referenceIndex,status,title,message,link,priority
+venta,Sale,5,procesando,Venta #5 Irene Molina,Venta en estado procesando · Cliente Irene Molina · Total 127.95,/admin/ventas,media
+venta,Sale,10,pendiente,Venta #10 Jaime Pons,Venta en estado pendiente · Cliente Jaime Pons · Total 1449.96,/admin/ventas,media
+venta,Sale,15,procesando,Venta #15 Ricardo Acevedo,Venta en estado procesando · Cliente Ricardo Acevedo · Total 749.97,/admin/ventas,media
+venta,Sale,20,entregado,Venta #20 Luis Fernández,Venta en estado entregado · Cliente Luis Fernández · Total 34.99,/admin/ventas,media
+venta,Sale,25,enviado,Venta #25 Óliver Duran,Venta en estado enviado · Cliente Óliver Duran · Total 209.97,/admin/ventas,media
+venta,Sale,30,pendiente,Venta #30 Lidia Cano,Venta en estado pendiente · Cliente Lidia Cano · Total 499.95,/admin/ventas,media

@@ -1,0 +1,87 @@
+.footer {
+  background-color: var(--color-turquoise);
+  color: white;
+  padding: var(--spacing-md) 0;
+  margin-top: var(--spacing-xl);
+}
+
+.footer .container {
+  background-color: transparent;
+  text-align: center;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--spacing-lg);
+  text-align: left;
+  align-items: start;
+}
+
+.footer-brand h3 {
+  font-size: 1.4rem;
+  margin-bottom: var(--spacing-xs);
+  color: #ffffff;
+}
+
+.footer-links h4,
+.footer-contact h4 {
+  font-size: 1rem;
+  margin-bottom: var(--spacing-xs);
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.footer-links a,
+.footer-contact a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover,
+.footer-contact a:hover {
+  color: #ffffff;
+}
+
+.footer-contact p,
+.footer-brand p {
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+}
+
+.footer-schedule {
+  margin-top: var(--spacing-sm);
+  text-align: center;
+  line-height: 1.4;
+}
+
+.footer-schedule span {
+  display: block;
+  font-weight: 600;
+}
+
+.footer-address {
+  margin-top: var(--spacing-xs);
+  font-style: italic;
+}
+
+.footer-bottom {
+  margin-top: var(--spacing-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  padding-top: var(--spacing-sm);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+}

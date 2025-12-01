@@ -1,0 +1,56 @@
+saleIndex,productName,quantity,type,previousStock,newStock,reason,userEmail
+1,Teclado Mecánico RGB,3,salida,5,2,Venta 1,fatima.palma@email.com
+2,Ratón Inalámbrico Gaming,1,salida,5,4,Venta 2,jaime.pons@email.com
+2,Teclado Mecánico RGB,1,salida,2,1,Venta 2,jaime.pons@email.com
+3,Cámara Web 4K,1,salida,5,4,Venta 3,sara.paredes@email.com
+4,Micrófono USB Podcast,2,salida,10,8,Venta 4,daniel.ibanez@email.com
+5,Cable HDMI 2.1,3,salida,5,2,Venta 5,irene.molina@email.com
+5,Brazo para Micrófono,2,salida,5,3,Venta 5,irene.molina@email.com
+6,Tarjeta Gráfica RTX,2,salida,5,3,Venta 6,antonio.torres@email.com
+7,Webcam HD 1080p,1,salida,10,9,Venta 7,leo.bravo@email.com
+7,Panel Acústico,3,salida,10,7,Venta 7,leo.bravo@email.com
+7,Brazo para Micrófono,3,salida,3,0,Venta 7,leo.bravo@email.com
+8,Soporte para Laptop,1,salida,10,9,Venta 8,carmen.lopez@email.com
+9,Tarjeta Gráfica RTX,3,salida,3,0,Venta 9,tomas.herrero@email.com
+9,Base Refrigeradora Laptop,2,salida,5,3,Venta 9,tomas.herrero@email.com
+10,Micrófono USB Podcast,1,salida,8,7,Venta 10,jaime.pons@email.com
+10,Escritorio Ajustable,3,salida,10,7,Venta 10,jaime.pons@email.com
+11,Mezcladora de Audio,2,salida,5,3,Venta 11,leo.bravo@email.com
+11,Webcam HD 1080p,2,salida,9,7,Venta 11,leo.bravo@email.com
+12,Cable HDMI 2.1,2,salida,2,0,Venta 12,ricardo.acevedo@email.com
+12,Auriculares Gaming 7.1,1,salida,5,4,Venta 12,ricardo.acevedo@email.com
+13,Monitor 27 pulgadas 4K,3,salida,5,2,Venta 13,elena.jimenez@email.com
+13,Auriculares Gaming 7.1,3,salida,4,1,Venta 13,elena.jimenez@email.com
+13,Alfombrilla Ratón XXL,3,salida,5,2,Venta 13,elena.jimenez@email.com
+14,Teclado Mecánico RGB,1,salida,1,0,Venta 14,adrian.vega@email.com
+14,Monitor 27 pulgadas 4K,2,salida,2,0,Venta 14,adrian.vega@email.com
+15,Silla Ergonómica,3,salida,10,7,Venta 15,ricardo.acevedo@email.com
+16,Lámpara LED Escritorio,2,salida,10,8,Venta 16,albina.rocha@email.com
+16,Soporte para Laptop,3,salida,9,6,Venta 16,albina.rocha@email.com
+16,Micrófono USB Podcast,3,salida,7,4,Venta 16,albina.rocha@email.com
+17,Auriculares Gaming 7.1,1,salida,1,0,Venta 17,clara.soler@email.com
+18,Alfombrilla Ratón XXL,2,salida,2,0,Venta 18,pedro.martinez@email.com
+18,Auriculares Bluetooth,1,salida,10,9,Venta 18,pedro.martinez@email.com
+18,Soporte para Laptop,3,salida,6,3,Venta 18,pedro.martinez@email.com
+19,Dock Station USB-C,2,salida,5,3,Venta 19,monica.jauregui@email.com
+19,Pizarra Magnética,2,salida,10,8,Venta 19,monica.jauregui@email.com
+20,Lámpara LED Escritorio,1,salida,8,7,Venta 20,luis.fernandez@email.com
+21,Hub USB-C Multipuerto,3,salida,5,2,Venta 21,pablo.serrano@email.com
+21,Webcam HD 1080p,1,salida,7,6,Venta 21,pablo.serrano@email.com
+21,Soporte para Laptop,1,salida,3,2,Venta 21,pablo.serrano@email.com
+22,Micrófono USB Podcast,2,salida,4,2,Venta 22,admin@workspacebcn.com
+22,Reposapiés Ergonómico,2,salida,10,8,Venta 22,admin@workspacebcn.com
+23,Memoria RAM 32GB,1,salida,5,4,Venta 23,ricardo.acevedo@email.com
+24,Teclado Bluetooth,1,salida,5,4,Venta 24,elena.jimenez@email.com
+25,Pizarra Magnética,3,salida,8,5,Venta 25,oliver.duran@email.com
+26,Silla Ergonómica,3,salida,7,4,Venta 26,diego.cabrera@email.com
+26,Organizador Escritorio,2,salida,10,8,Venta 26,diego.cabrera@email.com
+27,Panel LED Streaming,1,salida,5,4,Venta 27,luis.fernandez@email.com
+28,Panel LED Streaming,2,salida,4,2,Venta 28,carlos.moreno@email.com
+28,Base Refrigeradora Laptop,3,salida,3,0,Venta 28,carlos.moreno@email.com
+29,Panel LED Streaming,1,salida,2,1,Venta 29,isabel.gomez@email.com
+30,Webcam HD 1080p,3,salida,6,3,Venta 30,lidia.cano@email.com
+30,Disco Duro SSD 1TB,2,salida,5,3,Venta 30,lidia.cano@email.com
+31,Pizarra Magnética,1,salida,5,4,Venta 31,pablo.serrano@email.com
+31,Panel LED Streaming,1,salida,1,0,Venta 31,pablo.serrano@email.com
+31,Ratón Inalámbrico Gaming,3,salida,4,1,Venta 31,pablo.serrano@email.com

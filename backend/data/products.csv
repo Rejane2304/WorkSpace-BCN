@@ -1,0 +1,31 @@
+category,name,description,price,stock,minStock,maxStock,image
+Informática,Teclado Mecánico RGB,Teclado mecánico gaming con iluminación RGB personalizable,59.99,20,2,20,/mechanical-rgb-keyboard.jpg
+Informática,Ratón Inalámbrico Gaming,Ratón gaming de alta precisión con sensor óptico,44.99,20,2,20,/wireless-gaming-mouse.png
+Audiovisual,Webcam HD 1080p,Webcam con resolución Full HD y micrófono integrado,59.99,15,2,20,/hd-webcam.jpg
+Informática,Monitor 27 pulgadas 4K,Monitor profesional 4K UHD con panel IPS,349.99,15,2,20,/4k-monitor-27-inch.jpg
+Informática,Disco Duro SSD 1TB,Unidad de estado sólido de alta velocidad,79.99,15,2,20,/ssd-hard-drive.jpg
+Informática,Hub USB-C Multipuerto,Hub con múltiples puertos USB y HDMI,36.99,15,2,20,/usb-c-hub.jpg
+Oficina,Silla Ergonómica,Silla de oficina ergonómica con soporte lumbar,239.99,15,2,20,/ergonomic-office-chair.png
+Oficina,Escritorio Ajustable,Escritorio con altura ajustable eléctricamente,429.99,15,2,20,/adjustable-standing-desk.png
+Oficina,Lámpara LED Escritorio,Lámpara LED regulable para escritorio,32.99,15,2,20,/led-desk-lamp.jpg
+Informática,Alfombrilla Ratón XXL,Alfombrilla grande para ratón y teclado,18.99,20,2,20,/mouse-pad-xxl.jpg
+Audiovisual,Auriculares Bluetooth,Auriculares inalámbricos con cancelación de ruido,149.99,20,2,10,/bluetooth-headphones.jpg
+Audiovisual,Micrófono USB Podcast,Micrófono de condensador para grabaciones,94.99,15,2,20,/usb-microphone.jpg
+Informática,Tarjeta Gráfica RTX,Tarjeta gráfica de alta gama para gaming,549.99,20,2,20,/graphics-card-rtx.jpg
+Informática,Router WiFi 6,Router de alta velocidad con tecnología WiFi 6,119.99,15,2,20,/wifi-6-router.jpg
+Informática,Memoria RAM 32GB,Kit de memoria RAM DDR4 de alto rendimiento,109.99,15,2,20,/ram-memory-32gb.jpg
+Informática,Dock Station USB-C,Estación de acoplamiento con múltiples conexiones,179.99,15,2,10,/usb-c-dock-station.jpg
+Oficina,Archivador Vertical,Organizador vertical para documentos,27.99,15,2,20,/vertical-file-organizer.jpg
+Oficina,Pizarra Magnética,Pizarra blanca magnética de 90x60cm,64.99,15,2,20,/magnetic-whiteboard.jpg
+Oficina,Reposapiés Ergonómico,Reposapiés ajustable para mejor postura,39.99,15,2,20,/ergonomic-footrest.jpg
+Oficina,Panel Acústico,Panel de absorción sonora para oficinas,74.99,15,2,20,/acoustic-wall-panel.jpg
+Audiovisual,Brazo para Micrófono,Brazo articulado ajustable para micrófono,34.99,20,2,20,/boom-arm-microphone.jpg
+Audiovisual,Mezcladora de Audio,Mezcladora de 4 canales para streaming,189.99,16,2,20,/audio-mixer.jpg
+Audiovisual,Auriculares Gaming 7.1,Auriculares gaming con sonido surround,84.99,20,2,20,/gaming-headset.jpg
+Audiovisual,Panel LED Streaming,Panel de iluminación LED para streaming,119.99,18,2,20,/led-panel-streaming.jpg
+Audiovisual,Cámara Web 4K,Cámara web profesional con resolución 4K,169.99,15,2,20,/4k-webcam.jpg
+Informática,Teclado Bluetooth,Teclado inalámbrico compacto Bluetooth,39.99,16,2,20,/bluetooth-keyboard.jpg
+Audiovisual,Cable HDMI 2.1,Cable HDMI de alta velocidad 2m,13.99,16,2,20,/hdmi-cable.jpg
+Oficina,Soporte para Laptop,Soporte elevador ajustable para portátil,32.99,16,2,20,/laptop-stand.jpg
+Oficina,Organizador Escritorio,Set de organizadores para escritorio,22.99,16,2,20,/desk-organizer.jpg
+Informática,Base Refrigeradora Laptop,Base con ventiladores para enfriar laptop,27.99,18,2,20,/laptop-cooling-pad.jpg

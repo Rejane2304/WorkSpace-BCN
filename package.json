@@ -1,0 +1,12 @@
+{
+  "name": "workspacebcn",
+  "private": true,
+  "scripts": {
+    "test:all": "npm run test --prefix backend && npm run test --prefix frontend",
+    "test:local": "echo 'Sin tests locales'"
+  },
+  "dependencies": {
+    "eslint-config-react-app": "^7.0.1",
+    "socket.io": "^4.8.1"
+  }
+}

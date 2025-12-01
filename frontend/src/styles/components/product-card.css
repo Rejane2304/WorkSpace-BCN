@@ -1,0 +1,9 @@
+.cursor-pointer {
+  cursor: pointer;
+}
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
+.productcard-mt-05 {
+  margin-top: 0.5rem;
+}

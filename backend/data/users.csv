@@ -1,0 +1,48 @@
+name,email,password,role,phone,address,city,postalCode
+Admin Principal,admin@workspacebcn.com,admin123,admin,934 567 890,Calle Admin 1,Barcelona,08001
+María Rodríguez,maria.rodriguez@email.com,password123,cliente,612 345 678,Carrer del Mar 18,Barcelona,08003
+Juan García,juan.garcia@email.com,password123,cliente,623 456 789,Avenida Diagonal 370,Barcelona,08029
+Carmen López,carmen.lopez@email.com,password123,cliente,634 567 890,Calle Tetuán 14,Barcelona,08010
+Pedro Martínez,pedro.martinez@email.com,password123,cliente,645 678 901,Calle Iparraguirre 9,Badalona,08912
+Ana Sánchez,ana.sanchez@email.com,password123,cliente,656 789 012,Calle Alfonso I 42,Santa Coloma de Gramenet,08917
+Luis Fernández,luis.fernandez@email.com,password123,cliente,667 890 123,Calle Larios 6,L'Hospitalet de Llobregat,08902
+Isabel Gómez,isabel.gomez@email.com,password123,cliente,678 901 234,Avenida de Madrid 5,Barcelona,08028
+Miguel Díaz,miguel.diaz@email.com,password123,cliente,689 012 345,Calle Real 114,Badalona,08917
+Laura Ruiz,laura.ruiz@email.com,password123,cliente,690 123 456,Calle Sant Miquel 1,Barcelona,08002
+Carlos Moreno,carlos.moreno@email.com,password123,cliente,601 234 567,Calle Mayor 22,Sant Adrià del Besòs,08930
+Elena Jiménez,elena.jimenez@email.com,password123,cliente,612 345 679,Calle Medina Azahara 11,L'Hospitalet de Llobregat,08906
+Francisco Álvarez,francisco.alvarez@email.com,password123,cliente,623 456 780,Avenida de Salamanca 8,Barcelona,08024
+Marta Romero,marta.romero@email.com,password123,cliente,634 567 891,Calle Príncipe 33,Badalona,08911
+Antonio Torres,antonio.torres@email.com,password123,cliente,645 678 902,Calle de la Estación 5,Santa Coloma de Gramenet,08916
+Lucía Vidal,lucia.vidal@email.com,password123,cliente,656 789 013,Calle de Floridablanca 18,Barcelona,08015
+Diego Cabrera,diego.cabrera@email.com,password123,cliente,667 890 124,Calle Ancha 9,Sant Adrià del Besòs,08911
+Sara Paredes,sara.paredes@email.com,password123,cliente,678 901 235,Calle Platero 27,Barcelona,08025
+Hugo Medina,hugo.medina@email.com,password123,cliente,689 012 346,Calle San Pablo 18,Badalona,08921
+Noelia Rivas,noelia.rivas@email.com,password123,cliente,690 123 457,Calle del Sol 5,Barcelona,08032
+Adrián Vega,adrian.vega@email.com,password123,cliente,601 234 568,Calle de Ramón y Cajal 30,L'Hospitalet de Llobregat,08904
+Clara Soler,clara.soler@email.com,password123,cliente,612 345 680,Calle de San Vicente 2,Barcelona,08007
+Rubén Ferrer,ruben.ferrer@email.com,password123,cliente,623 456 781,Calle Mayor 67,Badalona,08913
+Nuria Costa,nuria.costa@email.com,password123,cliente,634 567 892,Calle Andia 44,Santa Coloma de Gramenet,08916
+Daniel Ibáñez,daniel.ibanez@email.com,password123,cliente,645 678 903,Calle de la Reina 10,Barcelona,08003
+Paula Gil,paula.gil@email.com,password123,cliente,656 789 014,Calle Gravina 58,L'Hospitalet de Llobregat,08902
+Óscar Bravo,oscar.bravo@email.com,password123,cliente,667 890 125,Calle Herrería 20,Badalona,08911
+Lola Marín,lola.marin@email.com,password123,cliente,678 901 236,Calle Victoria 13,Barcelona,08012
+Pablo Serrano,pablo.serrano@email.com,password123,cliente,689 012 347,Calle Méndez Núñez 8,Sant Adrià del Besòs,08930
+Claudia Mora,claudia.mora@email.com,password123,cliente,690 123 458,Calle López de Hoyos 53,Barcelona,08009
+Álvaro Fuentes,alvaro.fuentes@email.com,password123,cliente,601 234 569,Calle Fernando el Católico 35,Badalona,08917
+Lidia Cano,lidia.cano@email.com,password123,cliente,612 345 681,Calle Burriana 24,Barcelona,08014
+Mario Beltrán,mario.beltran@email.com,password123,cliente,623 456 782,Calle del Olmo 19,Santa Coloma de Gramenet,08916
+Estela Pastor,estela.pastor@email.com,password123,cliente,612 345 792,Carrer de Tarragona 2,Badalona,08940
+Ricardo Acevedo,ricardo.acevedo@email.com,password123,cliente,623 456 793,Calle Almagro 36,Barcelona,08006
+Irene Molina,irene.molina@email.com,password123,cliente,634 567 894,Calle Sancho el Fuerte 40,Badalona,08914
+Marcela Soto,marcela.soto@email.com,password123,cliente,645 678 905,Calle de la Constitución 28,Barcelona,08009
+Jaime Pons,jaime.pons@email.com,password123,cliente,656 789 016,Calle Montserrat 22,L'Hospitalet de Llobregat,08905 
+Victoria Luna,victoria.luna@email.com,password123,cliente,667 890 127,Calle Maestro Alonso 11,Barcelona,08022
+Óliver Duran,oliver.duran@email.com,password123,cliente,678 901 238,Calle de las Huertas 66,Santa Coloma de Gramenet,08915
+Fátima Palma,fatima.palma@email.com,password123,cliente,690 123 459,Calle de la Libertad 19,L'Hospitalet de Llobregat,08908
+Tomás Herrero,tomas.herrero@email.com,password123,cliente,601 234 560,Calle del Pino 8,Badalona,08911
+Mónica Jáuregui,monica.jauregui@email.com,password123,cliente,612 345 682,Calle San Marcelino 31,Barcelona,08004
+Leo Bravo,leo.bravo@email.com,password123,cliente,623 456 783,Calle del Peral 7,Badalona,08914
+Daniela Vázquez,daniela.vazquez@email.com,password123,cliente,645 678 904,Calle de las Huertas 44,Barcelona,08014
+Gabriel Campos,gabriel.campos@email.com,password123,cliente,656 789 805,Calle Fuenterrabía 12,Santa Coloma de Gramenet,08902
+Albina Rocha,albina.rocha@email.com,password123,cliente,667 890 826,Calle de Escoriaza 5,Barcelona,08013

@@ -1,0 +1,204 @@
+.sales-admin-mt-1 {
+  margin-top: 1rem;
+}
+.sales-admin-align-center {
+  align-items: center;
+}
+.sales-admin-minmax-260-360 {
+  min-width: 260px;
+  max-width: 360px;
+}
+.sales-admin-flex-row-wrap {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.sales-admin-grid {
+  display: grid;
+  gap: var(--spacing-md);
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  margin-bottom: var(--spacing-lg);
+}
+
+@media (min-width: 1100px) {
+  .sales-admin-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.sales-admin-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.sales-admin-summary-card {
+  border: 1px solid var(--color-background-alt);
+  padding: var(--spacing-md);
+  border-radius: 14px;
+  background: var(--color-background);
+  box-shadow: var(--shadow-md);
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: box-shadow 0.2s;
+}
+.sales-admin-summary-card:hover {
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10);
+  border-color: var(--color-primary);
+}
+.sales-admin-product-img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--color-background-alt);
+  background: #f8f8f8;
+}
+
+.sales-admin-summary-card strong {
+  font-size: var(--font-size-2xl);
+}
+
+.sales-admin-statuses {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-top: var(--spacing-xs);
+}
+
+.sales-admin-status-pill {
+  background: var(--color-background-alt);
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.sales-admin-payment-methods {
+  border: 1px solid var(--color-background-alt);
+  border-radius: 12px;
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.sales-admin-payment-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: var(--spacing-sm);
+}
+
+.sales-admin-payment-tag {
+  background: var(--color-primary);
+  color: var(--color-background);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: var(--font-size-xs);
+}
+
+.sales-admin-top-customers ul {
+  list-style: none;
+  padding: 0;
+  margin: var(--spacing-sm) 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.sales-admin-focus-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sales-admin-high-value {
+  display: inline-block;
+  background: var(--color-warning);
+  color: var(--color-text);
+  margin-left: 0.5rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-size: var(--font-size-xs);
+}
+
+.sales-admin-controls {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.sales-admin-controls label {
+  display: none;
+}
+
+.sales-admin-status-actions {
+  margin-top: var(--spacing-sm);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sales-admin-status-actions .btn-xs {
+  padding: 0.2rem 0.65rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.sales-admin-status-buttons {
+  display: flex;
+  gap: var(--spacing-xs);
+  flex-wrap: wrap;
+}
+
+.sales-admin-alerts {
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-sm) 0;
+}
+
+.sales-admin-alerts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--spacing-sm);
+}
+
+.sales-admin-alert-card {
+  border: 1px solid var(--color-background-alt);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  background-color: #ffffff;
+  box-shadow: var(--shadow-sm);
+  min-height: 110px;
+}
+
+.sales-admin-alert-card strong {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+}
+.sales-admin-flex-2 {
+  flex: 2;
+  min-width: 220px;
+}
+.sales-admin-flex-1-center {
+  flex: 1;
+  min-width: 120px;
+  text-align: center;
+}
+.sales-admin-justify-center {
+  justify-content: center;
+}
+.sales-admin-product-thumb {
+  max-width: 48px;
+  max-height: 48px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 2px;
+}

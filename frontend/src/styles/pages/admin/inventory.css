@@ -1,0 +1,95 @@
+@media (max-width: 768px) {
+  .inventoryadmin-table-th,
+  .inventoryadmin-table-td {
+    font-size: 0.92rem;
+    padding: 0.4rem 0.2rem;
+  }
+  .inventoryadmin-filtros-bar {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .inventoryadmin-table {
+    font-size: 0.85rem;
+  }
+  .inventoryadmin-table-th,
+  .inventoryadmin-table-td {
+    padding: 0.25rem 0.1rem;
+  }
+}
+.inventoryadmin-padding-y-2 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.inventoryadmin-py-4 {
+  padding: 4rem 0;
+}
+.inventoryadmin-inline-block {
+  display: inline-block;
+}
+.inventoryadmin-py-2-3 {
+  padding: 2rem 3rem;
+}
+.inventoryadmin-mb-0-5 {
+  margin-bottom: 0.5rem;
+}
+.inventoryadmin-text-light {
+  color: var(--color-text-light);
+}
+.inventoryadmin-gap-1-5 {
+  gap: 1.5rem;
+}
+.inventoryadmin-mt-1 {
+  margin-top: 1rem;
+}
+.inventoryadmin-fw-600 {
+  font-weight: 600;
+}
+.inventoryadmin-fs-09 {
+  font-size: 0.9rem;
+}
+.inventoryadmin-fs-1-4 {
+  font-size: 1.4rem;
+}
+.inventoryadmin-overflow-x-auto {
+  overflow-x: auto;
+}
+.inventoryadmin-mt-05 {
+  margin-top: 0.5rem;
+}
+.inventoryadmin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.inventoryadmin-table-head {
+  background-color: var(--color-accent);
+}
+.inventoryadmin-table-th,
+.inventoryadmin-table-td {
+  padding: var(--spacing-sm);
+  text-align: left;
+}
+.inventoryadmin-table-th-right,
+.inventoryadmin-table-td-right {
+  text-align: right;
+}
+.inventoryadmin-table-th-center {
+  text-align: center;
+}
+.inventoryadmin-table-row {
+  border-bottom: 1px solid var(--color-accent);
+}
+.inventoryadmin-flex {
+  display: flex;
+}
+.inventoryadmin-gap-05 {
+  gap: 0.5rem;
+}
+.inventoryadmin-justify-center {
+  justify-content: center;
+}
+.inventoryadmin-flex-wrap {
+  flex-wrap: wrap;
+}

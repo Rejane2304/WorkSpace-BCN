@@ -1,0 +1,10 @@
+.profile-form-actions {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+.profile-form-actions .btn {
+  min-width: 140px;
+}

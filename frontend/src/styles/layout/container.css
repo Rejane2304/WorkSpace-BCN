@@ -1,0 +1,51 @@
+/* === MAIN CONTAINER === */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-lg);
+  padding-right: var(--spacing-lg);
+}
+
+.container-full {
+  width: 100%;
+  padding: 0 var(--spacing-md);
+  background-color: var(--color-background-alt);
+}
+
+/* === RESPONSIVE CONTAINERS === */
+.container-sm {
+  max-width: var(--max-width-sm);
+}
+
+.container-md {
+  max-width: var(--max-width-md);
+}
+
+.container-lg {
+  max-width: var(--max-width-lg);
+}
+
+.container-xl {
+  max-width: var(--max-width-xl);
+}
+
+.container-2xl {
+  max-width: var(--max-width-2xl);
+}
+
+/* === MEDIA QUERIES FOR CONTAINERS === */
+@media (max-width: 768px) {
+  .container {
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
+  }
+}

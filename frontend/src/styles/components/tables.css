@@ -1,0 +1,178 @@
+/* === TABLA BASE === */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+/* === TABLE WRAPPER === */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--border-radius);
+}
+
+/* === TABLE HEAD === */
+.table thead {
+  background-color: var(--color-background);
+  border-bottom: 2px solid var(--color-border);
+}
+
+.table th {
+  padding: var(--spacing-md);
+  text-align: left;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* === TABLE BODY === */
+.table tbody tr {
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color var(--transition-fast);
+}
+
+.table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.table tbody tr:hover {
+  background-color: var(--color-background);
+}
+
+.table td {
+  padding: var(--spacing-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  vertical-align: middle;
+}
+
+/* === TABLE STRIPED === */
+.table-striped tbody tr:nth-child(odd) {
+  background-color: rgba(245, 245, 247, 0.5);
+}
+
+.table-striped tbody tr:nth-child(even) {
+  background-color: var(--color-surface);
+}
+
+/* === TABLE BORDERED === */
+.table-bordered {
+  border: 1px solid var(--color-border);
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid var(--color-border);
+}
+
+/* === TABLE COMPACT === */
+.table-compact th,
+.table-compact td {
+  padding: var(--spacing-xs) var(--spacing-sm);
+}
+
+/* === TABLE HOVER === */
+.table-hover tbody tr:hover {
+  background-color: var(--color-primary-light);
+  cursor: pointer;
+}
+
+/* === ALINEACIÓN === */
+.table .text-center {
+  text-align: center;
+}
+
+.table .text-right {
+  text-align: right;
+}
+
+/* === SPECIAL COLUMNS === */
+.table .col-actions {
+  width: 120px;
+  text-align: center;
+}
+
+.table .col-status {
+  width: 100px;
+  text-align: center;
+}
+
+.table .col-date {
+  width: 140px;
+}
+
+.table .col-number {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* === BADGES EN TABLAS === */
+.table .badge {
+  display: inline-block;
+  padding: var(--spacing-xxs) var(--spacing-xs);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.table .badge-success {
+  background-color: var(--color-success);
+  color: var(--color-surface);
+}
+
+.table .badge-error {
+  background-color: var(--color-error);
+  color: var(--color-surface);
+}
+
+.table .badge-warning {
+  background-color: var(--color-warning);
+  color: var(--color-text-dark);
+}
+
+.table .badge-info {
+  background-color: var(--color-secondary);
+  color: var(--color-surface);
+}
+
+/* === TABLA RESPONSIVE === */
+@media (max-width: 768px) {
+  .table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .table-responsive .table {
+    min-width: 600px;
+  }
+  
+  .table th,
+  .table td {
+    padding: var(--spacing-sm);
+    font-size: var(--font-size-xs);
+  }
+}
+
+/* === TABLA VACÍA === */
+.table-empty {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--color-text-light);
+}
+
+.table-empty-icon {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-md);
+  opacity: 0.3;
+}

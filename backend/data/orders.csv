@@ -1,0 +1,32 @@
+saleIndex,customerEmail,items,shippingStreet,shippingCity,shippingPostal,shippingCost,paymentMethod,status,total
+1,fatima.palma@email.com,Teclado Mecánico RGB,Calle Real 49,Hospitalet,08908,7.23,transferencia,PENDING,269.97
+2,jaime.pons@email.com,Ratón Inalámbrico Gaming|Teclado Mecánico RGB,Carrer de Provença 123,Barcelona,08013,10.61,paypal,CANCELLED,139.98
+3,sara.paredes@email.com,Cámara Web 4K,Av. Diagonal 200,Barcelona,08018,8.40,tarjeta,PROCESSING,179.99
+4,daniel.ibanez@email.com,Micrófono USB Podcast,Av. Diagonal 200,Barcelona,08018,13.07,transferencia,DELIVERED,199.98
+5,irene.molina@email.com,Cable HDMI 2.1|Brazo para Micrófono,Av. Diagonal 200,Barcelona,08018,12.05,transferencia,PENDING,127.95
+6,antonio.torres@email.com,Tarjeta Gráfica RTX,Calle Real 49,Hospitalet,08908,6.63,tarjeta,SHIPPED,1199.98
+7,leo.bravo@email.com,Webcam HD 1080p|Panel Acústico|Brazo para Micrófono,Carrer de Provença 123,Barcelona,08013,9.62,transferencia,SHIPPED,439.93
+8,carmen.lopez@email.com,Soporte para Laptop,Calle Real 49,Hospitalet,08908,7.68,transferencia,PROCESSING,34.99
+9,tomas.herrero@email.com,Tarjeta Gráfica RTX|Base Refrigeradora Laptop,Carrer de Provença 123,Barcelona,08013,6.40,transferencia,CANCELLED,1859.95
+10,jaime.pons@email.com,Micrófono USB Podcast|Escritorio Ajustable,Calle Real 49,Hospitalet,08908,12.56,tarjeta,PENDING,1449.96
+11,leo.bravo@email.com,Mezcladora de Audio|Webcam HD 1080p,Av. Diagonal 200,Barcelona,08018,10.29,tarjeta,CANCELLED,559.96
+12,ricardo.acevedo@email.com,Cable HDMI 2.1|Auriculares Gaming 7.1,Calle Real 49,Hospitalet,08908,6.58,transferencia,PENDING,121.97
+13,elena.jimenez@email.com,Monitor 27 pulgadas 4K|Auriculares Gaming 7.1|Alfombrilla Ratón XXL,Carrer de Provença 123,Barcelona,08013,8.74,transferencia,PROCESSING,1529.91
+14,adrian.vega@email.com,Teclado Mecánico RGB|Monitor 27 pulgadas 4K,Carrer de Provença 123,Barcelona,08013,7.41,tarjeta,CANCELLED,889.97
+15,ricardo.acevedo@email.com,Silla Ergonómica,Calle Real 49,Hospitalet,08908,7.65,paypal,CANCELLED,749.97
+16,albina.rocha@email.com,Lámpara LED Escritorio|Soporte para Laptop|Micrófono USB Podcast,Calle Real 49,Hospitalet,08908,14.00,tarjeta,DELIVERED,474.92
+17,clara.soler@email.com,Auriculares Gaming 7.1,Carrer de Provença 123,Barcelona,08013,5.07,tarjeta,PENDING,89.99
+18,pedro.martinez@email.com,Alfombrilla Ratón XXL|Auriculares Bluetooth|Soporte para Laptop,Carrer de Provença 123,Barcelona,08013,7.43,paypal,DELIVERED,304.94
+19,monica.jauregui@email.com,Dock Station USB-C|Pizarra Magnética,Av. Diagonal 200,Barcelona,08018,11.73,tarjeta,PENDING,519.96
+20,luis.fernandez@email.com,Lámpara LED Escritorio,Av. Diagonal 200,Barcelona,08018,6.40,paypal,PROCESSING,34.99
+21,pablo.serrano@email.com,Hub USB-C Multipuerto|Webcam HD 1080p|Soporte para Laptop,Carrer de Provença 123,Barcelona,08013,9.06,tarjeta,DELIVERED,234.95
+22,admin@workspacebcn.com,Micrófono USB Podcast|Reposapiés Ergonómico,Av. Diagonal 200,Barcelona,08018,6.55,tarjeta,SHIPPED,289.96
+23,ricardo.acevedo@email.com,Memoria RAM 32GB,Carrer de Provença 123,Barcelona,08013,10.03,tarjeta,CANCELLED,149.99
+24,elena.jimenez@email.com,Teclado Bluetooth,Av. Diagonal 200,Barcelona,08018,9.04,tarjeta,CANCELLED,45.99
+25,oliver.duran@email.com,Pizarra Magnética,Av. Diagonal 200,Barcelona,08018,14.35,transferencia,PROCESSING,209.97
+26,diego.cabrera@email.com,Silla Ergonómica|Organizador Escritorio,Calle Real 49,Hospitalet,08908,14.29,tarjeta,PENDING,799.95
+27,luis.fernandez@email.com,Panel LED Streaming,Av. Diagonal 200,Barcelona,08018,6.32,tarjeta,SHIPPED,119.99
+28,carlos.moreno@email.com,Panel LED Streaming|Base Refrigeradora Laptop,Av. Diagonal 200,Barcelona,08018,11.68,paypal,CANCELLED,329.95
+29,isabel.gomez@email.com,Panel LED Streaming,Calle Real 49,Hospitalet,08908,11.05,tarjeta,SHIPPED,119.99
+30,lidia.cano@email.com,Webcam HD 1080p|Disco Duro SSD 1TB,Calle Real 49,Hospitalet,08908,5.04,transferencia,PROCESSING,499.95
+31,pablo.serrano@email.com,Pizarra Magnética|Panel LED Streaming|Ratón Inalámbrico Gaming,Carrer de Provença 123,Barcelona,08013,13.35,transferencia,CANCELLED,339.95
