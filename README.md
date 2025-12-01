@@ -4,6 +4,19 @@
 
 ---
 
+## 🚀 Enlaces de Despliegue (Demo)
+
+El proyecto se encuentra desplegado y operativo en los siguientes enlaces:
+
+- **🌐 Aplicación Web (Frontend):** [https://workspacebcn-frontend.vercel.app](https://workspacebcn-frontend.vercel.app)
+- **⚙️ API del Servidor (Backend):** [https://workspace-bcn-api.onrender.com](https://workspace-bcn-api.onrender.com)
+
+**Credenciales de Acceso (Demo):**
+- **Admin:** `admin@workspacebcn.com` / `admin123`
+- **Cliente:** `maria.rodriguez@email.com` / `password123`
+
+---
+
 ## Tabla de Contenidos
 
 - [WorkSpaceBCN]
