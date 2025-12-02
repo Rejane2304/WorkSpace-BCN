@@ -6,7 +6,7 @@ describe("PaymentMethodSelect", () => {
   it("muestra el método por defecto y no expande el menú inicialmente", () => {
     render(<PaymentMethodSelect value="tarjeta" onChange={() => {}} />)
 
-    const control = screen.getByRole("button", { name: /Card/i })
+    const control = screen.getByRole("button", { name: /Tarjeta/i })
     expect(control).toBeInTheDocument()
     expect(screen.queryByText(/PayPal/i)).not.toBeInTheDocument()
   })
@@ -17,7 +17,7 @@ describe("PaymentMethodSelect", () => {
 
     render(<PaymentMethodSelect value="tarjeta" onChange={onChange} />)
 
-    const control = screen.getByRole("button", { name: /Card/i })
+    const control = screen.getByRole("button", { name: /Tarjeta/i })
     await act(async () => {
       await user.click(control)
     })
