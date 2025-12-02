@@ -213,9 +213,8 @@ function Products() {
                       </div>
                       <div className="product-list-card-info">
                         <div className="product-list-card-row product-list-card-name">{product.nombre || product.name}</div>
-                        <div className="product-list-card-row">{product.categoria || product.category}</div>
+                        <div className="product-list-card-row text-success">{product.categoria || product.category}</div>
                         <div className="product-list-card-row product-list-card-price">{(product.precio || product.price) + ' €'}</div>
-                        <div className="product-list-card-row">Stock: {product.stock ?? product.existencias}</div>
                       </div>
                       <div className="product-list-card-actions">
                         <button
