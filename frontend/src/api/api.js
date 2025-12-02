@@ -62,11 +62,11 @@ export const auth = {
   register: async (data) => {
     const payload = {
       ...data,
-      name: data.name, 
-      phone: data.telefono,
-      address: data.direccion,
-      city: data.ciudad,
-      postalCode: data.codigoPostal,
+      name: data.name || data.nombre,
+      phone: data.phone || data.telefono,
+      address: data.address || data.direccion,
+      city: data.city || data.ciudad,
+      postalCode: data.postalCode || data.codigoPostal,
     }
     const response = await api.post("/auth/registro", payload)
     const userPayload = response.data.user || response.data.usuario

@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react"
 
 const PAYMENT_OPTIONS = [
-  { value: "tarjeta", label: "Card" },
+  { value: "tarjeta", label: "Tarjeta" },
   { value: "paypal", label: "PayPal" },
 ]
 

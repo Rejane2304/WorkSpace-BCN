@@ -146,23 +146,26 @@ WorkSpace-BCN/
 │   ├── data/               # Archivos CSV para el seed
 │   ├── seeds/              # Script de poblado de DB
 │   ├── src/
-│   │   ├── controllers/    # (Lógica en rutas en este proyecto)
 │   │   ├── middleware/     # Auth, validaciones
 │   │   ├── models/         # Esquemas Mongoose
-│   │   ├── routes/         # Definición de endpoints
+│   │   ├── routes/         # Definición de endpoints (Lógica de controladores aquí)
 │   │   └── utils/          # Utilidades
-│   └── tests/              # Tests de integración y unitarios
+│   ├── tests/              # Tests de integración y unitarios
+│   ├── server.js           # Punto de entrada del servidor
+│   └── socket.js           # Configuración de WebSockets
 │
 ├── frontend/               # Cliente React
 │   ├── public/             # Assets estáticos
 │   └── src/
 │       ├── api/            # Configuración Axios
+│       ├── assets/         # Recursos estáticos (imágenes, iconos)
 │       ├── components/     # Componentes reutilizables
 │       ├── context/        # Contextos (Auth)
 │       ├── hooks/          # Custom Hooks
 │       ├── pages/          # Vistas principales
 │       ├── styles/         # Archivos CSS modulares
-│       └── tests/          # Tests de componentes
+│       ├── tests/          # Tests de componentes
+│       └── utils/          # Funciones de utilidad
 │
 └── AGENTS.md               # Documentación para Agentes IA
 ```
