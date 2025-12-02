@@ -124,20 +124,14 @@ function Profile() {
     }
 
     try {
-      const fieldsToSend = {}
-      if (profile.nombre && profile.nombre !== originalProfile?.nombre) fieldsToSend.nombre = profile.nombre
-      if (profile.email && profile.email !== originalProfile?.email) fieldsToSend.email = profile.email
-      if (normalizedPhone && normalizedPhone !== originalProfile?.telefono) fieldsToSend.telefono = normalizedPhone
-      if (profile.direccion && profile.direccion !== originalProfile?.direccion) fieldsToSend.direccion = profile.direccion
-      if (profile.ciudad && profile.ciudad !== originalProfile?.ciudad) fieldsToSend.ciudad = profile.ciudad
-      if (profile.codigoPostal && profile.codigoPostal !== originalProfile?.codigoPostal) fieldsToSend.codigoPostal = profile.codigoPostal
-      if (profile.image && profile.image !== originalProfile?.image) fieldsToSend.image = profile.image
-      if (newPassword) fieldsToSend.password = newPassword
-
-      if (Object.keys(fieldsToSend).length === 0) {
-        setToast({ type: "info", message: "No hay cambios para guardar." })
-        setIsSaving(false)
-        return
+      // Enviamos todo el perfil para evitar que el mapper sobrescriba con vacíos los campos no enviados
+      const fieldsToSend = {
+        ...profile,
+        telefono: normalizedPhone // Usamos el teléfono normalizado
+      }
+      
+      if (newPassword) {
+        fieldsToSend.password = newPassword
       }
 
       const response = await customers.updateProfile(fieldsToSend)

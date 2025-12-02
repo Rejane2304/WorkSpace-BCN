@@ -42,7 +42,9 @@ async function handleRegister(req, res) {
 
     let imageUrl = null
     if (imageData) {
-      if (process.env.NODE_ENV === "test") {
+      if (imageData.startsWith("http")) {
+        imageUrl = imageData
+      } else if (process.env.NODE_ENV === "test") {
         imageUrl = imageData
       } else {
         try {

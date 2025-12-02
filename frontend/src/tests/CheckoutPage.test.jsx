@@ -84,7 +84,7 @@ describe("Checkout page (flujo real)", () => {
     await act(async () => {
       await user.click(confirmButton)
     })
-    expect(await screen.findByText(/Completa la dirección antes de continuar/i)).toBeInTheDocument()
+    expect(await screen.findByText(/Completa todos los campos de envío antes de continuar/i)).toBeInTheDocument()
   })
 
   it("procesa pago real y navega al resumen", async () => {

@@ -67,6 +67,7 @@ export const auth = {
       address: data.address || data.direccion,
       city: data.city || data.ciudad,
       postalCode: data.postalCode || data.codigoPostal,
+      image: data.image || data.imagen,
     }
     const response = await api.post("/auth/registro", payload)
     const userPayload = response.data.user || response.data.usuario

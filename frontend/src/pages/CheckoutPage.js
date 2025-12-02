@@ -15,6 +15,8 @@ import { useToastManager } from "../hooks/useToastManager"
 function CheckoutPage() {
   const [cart, setCart] = useState([])
   const [shippingAddress, setShippingAddress] = useState({
+    nombre: "",
+    email: "",
     calle: "",
     ciudad: "Barcelona",
     codigoPostal: "",
@@ -26,7 +28,7 @@ function CheckoutPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { toast, updateToast, clearToast } = useToastManager()
 
-  const { isAuthenticated, isAdmin } = useAuth()
+  const { isAuthenticated, isAdmin, user } = useAuth()
   const navigate = useNavigate()
   const handleBackToCart = () => navigate("/carrito")
 
@@ -68,6 +70,8 @@ function CheckoutPage() {
         const profile = profileRes.data || {}
         safeSetShippingAddress((prev) => ({
           ...prev,
+          nombre: profile.nombre || profile.name || user?.nombre || user?.name || prev.nombre,
+          email: profile.email || user?.email || prev.email,
           calle: profile.direccion || profile.address || profile.direccion_envio || prev.calle,
           ciudad: profile.ciudad || profile.city || profile.ciudad_residencia || prev.ciudad,
           codigoPostal: profile.codigoPostal || profile.postalCode || profile.codigo_postal || prev.codigoPostal,
@@ -81,7 +85,7 @@ function CheckoutPage() {
       }
     }
     loadProfile()
-  }, [isAuthenticated, isAdmin, navigate, safeSetShippingAddress, updateToast])
+  }, [isAuthenticated, isAdmin, navigate, safeSetShippingAddress, updateToast, user])
 
   const handleChange = useCallback(
     (event) => {
@@ -97,11 +101,13 @@ function CheckoutPage() {
 
   async function handleConfirm() {
     if (
+      !hasValue(shippingAddress.nombre) ||
+      !hasValue(shippingAddress.email) ||
       !hasValue(shippingAddress.calle) ||
       !hasValue(shippingAddress.codigoPostal) ||
       !hasValue(shippingAddress.telefono)
     ) {
-      updateToast({ type: "error", message: "Completa la dirección antes de continuar" })
+      updateToast({ type: "error", message: "Completa todos los campos de envío antes de continuar" })
       return
     }
     if (!cart.length) {
@@ -121,6 +127,8 @@ function CheckoutPage() {
       }))
 
       const shippingPayload = {
+        name: shippingAddress.nombre,
+        email: shippingAddress.email,
         street: shippingAddress.calle,
         city: shippingAddress.ciudad,
         postalCode: shippingAddress.codigoPostal,
@@ -214,6 +222,32 @@ function CheckoutPage() {
             </div>
           )}
           <form autoComplete="on" onSubmit={e => { e.preventDefault(); handleConfirm(); }}>
+            <div className="form-group">
+              <label className="label">Nombre completo</label>
+              <input
+                type="text"
+                name="nombre"
+                aria-label="Nombre completo"
+                value={shippingAddress.nombre}
+                onChange={handleChange}
+                className="input"
+                placeholder="Ej: María Rodríguez"
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label className="label">Email de contacto</label>
+              <input
+                type="email"
+                name="email"
+                aria-label="Email"
+                value={shippingAddress.email}
+                onChange={handleChange}
+                className="input"
+                placeholder="Ej: maria@ejemplo.com"
+                required
+              />
+            </div>
             <div className="form-group">
               <label className="label">Calle</label>
               <input
