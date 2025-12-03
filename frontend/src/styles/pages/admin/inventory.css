@@ -93,3 +93,15 @@
 .inventoryadmin-flex-wrap {
   flex-wrap: wrap;
 }
+
+.inventoryadmin-stat-item {
+  flex: 1 1 200px;
+  min-width: 200px;
+}
+
+@media (max-width: 480px) {
+  .inventoryadmin-stat-item {
+    flex: 1 1 100%;
+    margin-bottom: 1rem;
+  }
+}

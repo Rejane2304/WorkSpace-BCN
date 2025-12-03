@@ -32,9 +32,17 @@
 }
 .contact-btn-block {
   width: 35%;
+  min-width: 200px;
   margin: 0 auto;
   display: block;
 }
+
+@media (max-width: 768px) {
+  .contact-btn-block {
+    width: 100%;
+  }
+}
+
 .contact-page {
   position: relative;
   background: url("../../assets/hero-home.jpg") center/cover no-repeat;

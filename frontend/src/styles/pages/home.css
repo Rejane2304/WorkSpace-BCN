@@ -62,6 +62,19 @@
   margin: 0 auto var(--spacing-md);
 }
 
+.hero-content h1 {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+  line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+  }
+}
+
 .hero-image-wrapper {
   max-width: 900px;
   margin: 0 auto;

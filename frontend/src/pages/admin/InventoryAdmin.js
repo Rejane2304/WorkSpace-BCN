@@ -148,35 +148,35 @@ function InventoryAdmin() {
         </div>
       </div>
 
-      <div className="card mb-3">
+      <div className="card mb-3" style={{ marginBottom: "2rem" }}>
         <h3 className="page-section-title">Resumen de inventario</h3>
         <div className="flex inventoryadmin-gap-1-5 inventoryadmin-mt-1 inventoryadmin-flex-wrap">
-          <div>
+          <div className="inventoryadmin-stat-item">
             <p className="inventoryadmin-fs-09 inventoryadmin-text-light">Total de productos</p>
             <p className="inventoryadmin-fs-1-4 inventoryadmin-fw-600">{stats.totalProductos}</p>
           </div>
-          <div>
+          <div className="inventoryadmin-stat-item">
             <p className="inventoryadmin-fs-09 inventoryadmin-text-light">Productos con stock bajo</p>
             <p className="inventoryadmin-fs-1-4 inventoryadmin-fw-600">{stats.productosStockBajo}</p>
           </div>
-          <div>
+          <div className="inventoryadmin-stat-item">
             <p className="inventoryadmin-fs-09 inventoryadmin-text-light">Productos agotados</p>
             <p className="inventoryadmin-fs-1-4 inventoryadmin-fw-600">{stats.productosAgotados}</p>
           </div>
-          <div>
+          <div className="inventoryadmin-stat-item">
             <p className="inventoryadmin-fs-09 inventoryadmin-text-light">Valor total de inventario</p>
             <p className="inventoryadmin-fs-1-4 inventoryadmin-fw-600">
               {formatCurrency(stats.valorTotalInventario)}
             </p>
           </div>
-          <div>
+          <div className="inventoryadmin-stat-item">
             <p className="inventoryadmin-fs-09 inventoryadmin-text-light">Movimientos última semana</p>
             <p className="inventoryadmin-fs-1-4 inventoryadmin-fw-600">{stats.movimientosUltimaSemana}</p>
           </div>
         </div>
       </div>
 
-      <div className="card mb-3">
+      <div className="card mb-3" style={{ marginBottom: "2rem" }}>
         <h3 className="page-section-title">Productos y stock actual</h3>
         <p className="inventoryadmin-text-light inventoryadmin-fs-09 inventoryadmin-mt-05">
           Gestiona el stock de todos los productos desde una única vista.<br />

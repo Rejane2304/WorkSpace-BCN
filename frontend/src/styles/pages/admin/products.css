@@ -128,6 +128,14 @@
   display: flex;
   gap: 8px;
 }
+
+@media (max-width: 768px) {
+  .productsadmin-view-toggle {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 .productsadmin-card-minh {
   min-height: 520px;
   display: flex;

@@ -357,12 +357,12 @@ function SalesAdmin() {
           <div key={sale._id} className="sales-admin-summary-card">
             <div className="sales-admin-flex-row-wrap sales-admin-align-center">
               <div className="sales-admin-flex-2">
-                <p><strong>ID venta:</strong> {sale._id}</p>
+                <p style={{ wordBreak: "break-all" }}><strong>ID venta:</strong> {sale._id}</p>
                 <p><strong>Cliente:</strong> {sale.customer?.name || "Cliente anónimo"} ({sale.customer?.email || "sin email"})</p>
                 <p><strong>Monto total:</strong> {formatCurrency(sale.total)}</p>
                 <p><strong>Fecha:</strong> {sale.saleDate ? new Date(sale.saleDate).toLocaleString() : "-"}</p>
                 <p><strong>Estado:</strong> {getStatusLabel(sale.status)}</p>
-                <p><strong>Dirección:</strong> {sale.shippingAddress?.street || "No disponible"}, {sale.shippingAddress?.city || "Sin ciudad"}</p>
+                <p style={{ wordBreak: "break-word" }}><strong>Dirección:</strong> {sale.shippingAddress?.street || "No disponible"}, {sale.shippingAddress?.city || "Sin ciudad"}</p>
                 <p><strong>Artículos:</strong> {sale.items?.length || 0}</p>
               </div>
               <div className="sales-admin-flex-1-center">

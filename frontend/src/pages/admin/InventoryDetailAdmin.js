@@ -184,7 +184,7 @@ function InventoryDetailAdmin() {
         </Link>
       </div>
 
-      <div className="card mb-3">
+      <div className="card mb-3" style={{ marginBottom: "2rem" }}>
         <h2 className="page-section-title">{product.nombre}</h2>
         <p className="inventorydetailadmin-text-light inventorydetailadmin-fs-09 inventorydetailadmin-mt-025">
           Categoría: {product.category}
@@ -211,7 +211,7 @@ function InventoryDetailAdmin() {
         </div>
       </div>
 
-      <div className="card mb-3">
+      <div className="card mb-3" style={{ marginBottom: "2rem" }}>
         <h3 className="page-section-title">Registrar movimiento</h3>
         <p className="inventorydetailadmin-text-light inventorydetailadmin-fs-09 inventorydetailadmin-mb-1">
           Introduce la cantidad y, si lo necesitas, un motivo para dejar trazabilidad clara.
