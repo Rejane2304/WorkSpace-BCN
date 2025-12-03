@@ -166,3 +166,16 @@
   background: #f3f3f3;
   margin-right: 10px;
 }
+
+@media (max-width: 600px) {
+  .order-actions {
+    flex-direction: column-reverse;
+    gap: 12px;
+  }
+  
+  .order-actions .btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}

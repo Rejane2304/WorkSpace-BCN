@@ -136,7 +136,7 @@ function OrderDetail() {
 
         <div className="order-actions">
           <Link to="/orders" className="btn btn-secondary">
-            Volver a mis pedidos
+            Volver a pedidos
           </Link>
           <button type="button" className="btn btn-primary" onClick={handlePrint}>
             Imprimir resumen
