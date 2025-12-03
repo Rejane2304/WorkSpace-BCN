@@ -158,3 +158,40 @@
 .order-meta-value {
   font-weight: 500;
 }
+
+@media (max-width: 600px) {
+  .order-card {
+    padding: 12px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .order-card-content {
+    flex: 1 1 60%;
+    min-width: 0; /* Allow shrinking for ellipsis */
+  }
+
+  .order-card-total-section {
+    margin-right: 0;
+    text-align: right;
+    flex: 0 0 auto;
+    min-width: auto;
+  }
+
+  .order-card-btn {
+    width: 100%;
+    order: 3;
+    margin-top: 4px;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .order-card-item-name {
+    font-size: 14px;
+  }
+  
+  .order-card-item-img {
+    width: 40px;
+    height: 40px;
+  }
+}
