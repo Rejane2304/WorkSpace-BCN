@@ -122,7 +122,7 @@ function Contact() {
                 onChange={manejarCambio}
                 className="input"
                 placeholder="+34 600 000 000"
-                pattern="^\\+?[0-9\\s]{7,20}$"
+                pattern="^[+]?[0-9 ]{7,20}$"
                 title="Introduce un teléfono válido (solo números, espacios y opcionalmente + al inicio)"
               />
             </div>

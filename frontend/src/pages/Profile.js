@@ -150,6 +150,7 @@ function Profile() {
         email: updatedProfile.email || user?.email,
       })
       setToast({ type: "success", message: "Perfil actualizado correctamente." })
+      setTimeout(() => navigate("/productos"), 1500)
 
       setPasswordForm({
         password: "",
@@ -212,6 +213,12 @@ function Profile() {
     <div className="base-form-shell">
       <div className="base-form-card">
         <h1 className="base-form-title">Mi Perfil</h1>
+        <Toast
+          type={toast.type}
+          message={toast.message}
+          duration={6000}
+          onClose={() => setToast((prev) => ({ ...prev, message: "" }))}
+        />
         <div className="profile-avatar-row">
           <div className="header-avatar header-avatar-lg">
             {profile.image ? (
@@ -447,11 +454,6 @@ function Profile() {
           </div>
 
           <div className="profile-form-actions">
-            <Toast
-              type={toast.type}
-              message={toast.message}
-              onClose={() => setToast((prev) => ({ ...prev, message: "" }))}
-            />
             <button type="submit" className="btn btn-primary" disabled={isSaving}>
               {isSaving ? "Guardando..." : "Guardar cambios"}
             </button>

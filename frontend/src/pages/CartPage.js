@@ -115,7 +115,7 @@ function CartPage() {
         <div>
           <h1 className="cart-title">Carrito</h1>
           <p className="text-center">
-            Tus productos favoritos están esperando.<br/>
+            Tus productos seleccionados están esperando.<br/>
             Añade ítems y pasa al pago seguro.
           </p>
         </div>

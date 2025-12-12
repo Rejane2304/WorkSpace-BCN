@@ -236,6 +236,7 @@ function Register() {
           <Toast
             type={toast.type}
             message={toast.message}
+            duration={6000}
             onClose={() => setToast((prev) => ({ ...prev, message: "" }))}
           />
 
