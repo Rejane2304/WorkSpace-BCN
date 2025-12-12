@@ -1,7 +1,7 @@
 :root {
   /* === COLORES PRINCIPALES === */
-  --color-primary: #e1924d;
-  --color-primary-strong: #c86a16;
+  --color-primary: #c86a16; /* Oscurecido para mejor contraste */
+  --color-primary-strong: #a0500b;
   --color-primary-light: #f7e6c7;
   
   --color-secondary: #408197;

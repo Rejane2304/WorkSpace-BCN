@@ -4,3 +4,101 @@
 .orderdetail-mb-025 {
   margin-bottom: 0.25rem;
 }
+
+@media print {
+  /* Ocultar elementos de navegación y UI */
+  .header,
+  .footer,
+  .order-actions,
+  .toast-container,
+  .btn,
+  nav,
+  .nav-dropdown-menu {
+    display: none !important;
+  }
+
+  /* Resetear layout para impresión */
+  body,
+  .container,
+  .card,
+  .order-summary-card {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+  }
+
+  /* Ajustar tipografía */
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  h1, h2, h3 {
+    color: black !important;
+  }
+
+  /* Layout de la orden */
+  .order-summary-grid {
+    display: block !important;
+  }
+
+  .order-summary-panel,
+  .order-meta-panel {
+    page-break-inside: avoid;
+    margin-bottom: 2rem;
+  }
+
+  .order-product-grid {
+    display: block !important;
+  }
+
+  /* Estilo de tarjeta de producto simplificado para impresión */
+  .order-product-card {
+    border-bottom: 1px solid #ddd;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .order-product-image {
+    display: none; /* Opcional: ocultar imágenes para ahorrar tinta */
+  }
+
+  /* Métricas alineadas a la derecha */
+  .order-metrics {
+    margin-top: 2rem;
+    text-align: right;
+    border-top: 2px solid black;
+    padding-top: 1rem;
+  }
+
+  .order-metrics > div {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Header del pedido */
+  .order-summary-header {
+    border-bottom: 2px solid black;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .order-status-pill {
+    border: 1px solid black;
+    background: white !important;
+    color: black !important;
+  }
+}

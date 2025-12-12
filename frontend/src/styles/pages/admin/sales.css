@@ -1,6 +1,9 @@
 .sales-admin-mt-1 {
   margin-top: 1rem;
 }
+.sales-admin-overflow-x-auto {
+  overflow-x: auto;
+}
 .sales-admin-align-center {
   align-items: center;
 }
@@ -17,7 +20,7 @@
 .sales-admin-grid {
   display: grid;
   gap: var(--spacing-md);
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   margin-bottom: var(--spacing-lg);
   justify-content: center;
 }

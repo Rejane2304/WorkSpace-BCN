@@ -75,12 +75,23 @@ function Header() {
               <Link to="/" className="nav-link" onClick={closeMenu}>
                 Inicio
               </Link>
-              <Link to="/productos" className="nav-link" onClick={closeMenu}>
-                Productos
-              </Link>
-              <Link to="/contacto" className="nav-link" onClick={closeMenu}>
-                Contacto
-              </Link>
+              
+              {!isAdmin && (
+                <>
+                  <Link to="/productos" className="nav-link" onClick={closeMenu}>
+                    Productos
+                  </Link>
+                  <Link to="/contacto" className="nav-link" onClick={closeMenu}>
+                    Contacto
+                  </Link>
+                </>
+              )}
+
+              {isAdmin && (
+                <Link to="/admin" className="nav-link" onClick={closeMenu}>
+                  Panel Admin
+                </Link>
+              )}
 
               {!isAuthenticated && (
                 <>

@@ -52,38 +52,7 @@ function OrderDetail() {
   const orderStatusLabel = translateOrderStatus(order.status ?? order.payment?.status)
 
   const handlePrint = () => {
-    if (!order) return
-    const popup = window.open("", "_blank")
-    if (!popup) return
-    popup.document.write(`
-      <html>
-        <head><title>Detalle del pedido</title></head>
-        <body>
-          <h1>Pedido ${order._id}</h1>
-          <p>Total: ${formatCurrency(orderTotals.total)}</p>
-          <p>Fecha: ${new Date(order.createdAt).toLocaleString('es-ES')}</p>
-          <h3>Productos</h3>
-          <ul>
-            ${orderItems
-              .map(
-                (item) =>
-                  `<li>${getItemName(item)} x ${getItemQuantity(item)} · ${formatCurrency(
-                    getItemPrice(item),
-                  )}</li>`,
-              )
-              .join("")}
-          </ul>
-          <h3>Dirección</h3>
-          <p>
-            ${buildOrderPrintAddress(orderShippingAddress)}<br />
-            ${orderShippingAddress.phone || ""}
-          </p>
-          ${buildOrderPrintTotals(orderTotals)}
-        </body>
-      </html>
-    `)
-    popup.document.close()
-    popup.print()
+    window.print()
   }
 
   return (

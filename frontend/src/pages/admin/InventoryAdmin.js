@@ -153,25 +153,25 @@ function InventoryAdmin() {
         <div className="flex inventoryadmin-gap-1-5 inventoryadmin-mt-1 inventoryadmin-flex-wrap">
           <div className="inventoryadmin-stat-item">
             <p className="inventoryadmin-fs-09 inventoryadmin-text-light">Total de productos</p>
-            <p className="inventoryadmin-fs-1-4 inventoryadmin-fw-600">{stats.totalProductos}</p>
+            <p className="inventoryadmin-fs-1-4 inventoryadmin-fw-600" style={{ fontSize: '2rem' }}>{stats.totalProductos}</p>
           </div>
           <div className="inventoryadmin-stat-item">
             <p className="inventoryadmin-fs-09 inventoryadmin-text-light">Productos con stock bajo</p>
-            <p className="inventoryadmin-fs-1-4 inventoryadmin-fw-600">{stats.productosStockBajo}</p>
+            <p className="inventoryadmin-fs-1-4 inventoryadmin-fw-600" style={{ fontSize: '2rem' }}>{stats.productosStockBajo}</p>
           </div>
           <div className="inventoryadmin-stat-item">
             <p className="inventoryadmin-fs-09 inventoryadmin-text-light">Productos agotados</p>
-            <p className="inventoryadmin-fs-1-4 inventoryadmin-fw-600">{stats.productosAgotados}</p>
+            <p className="inventoryadmin-fs-1-4 inventoryadmin-fw-600" style={{ fontSize: '2rem' }}>{stats.productosAgotados}</p>
           </div>
           <div className="inventoryadmin-stat-item">
             <p className="inventoryadmin-fs-09 inventoryadmin-text-light">Valor total de inventario</p>
-            <p className="inventoryadmin-fs-1-4 inventoryadmin-fw-600">
+            <p className="inventoryadmin-fs-1-4 inventoryadmin-fw-600" style={{ fontSize: '2rem' }}>
               {formatCurrency(stats.valorTotalInventario)}
             </p>
           </div>
           <div className="inventoryadmin-stat-item">
             <p className="inventoryadmin-fs-09 inventoryadmin-text-light">Movimientos última semana</p>
-            <p className="inventoryadmin-fs-1-4 inventoryadmin-fw-600">{stats.movimientosUltimaSemana}</p>
+            <p className="inventoryadmin-fs-1-4 inventoryadmin-fw-600" style={{ fontSize: '2rem' }}>{stats.movimientosUltimaSemana}</p>
           </div>
         </div>
       </div>
@@ -207,7 +207,7 @@ function InventoryAdmin() {
                   <td className="inventoryadmin-table-td inventoryadmin-table-td-right">
                     {formatCurrency(product.price)}
                   </td>
-                  <td className="inventoryadmin-table-td inventoryadmin-table-td-right inventoryadmin-fw-600">
+                  <td className={`inventoryadmin-table-td inventoryadmin-table-td-right inventoryadmin-fw-600 ${product.stock < 5 ? 'text-error' : ''}`}>
                     {product.stock}
                   </td>
                   <td className="inventoryadmin-table-td inventoryadmin-table-td-right">

@@ -462,7 +462,7 @@ html, body {
   margin-left: auto;
 }
 
-.product-view-toggle .button {
+.product-view-toggle .btn {
   font-size: var(--font-size-sm);
   padding: 0.45rem 0.8rem;
   min-width: 120px;
@@ -475,14 +475,15 @@ html, body {
   transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.product-view-toggle .button:not(.active):hover {
+.product-view-toggle .btn:not(.active):hover {
   background: var(--color-background-alt);
 }
 
-.product-view-toggle .button.active {
-  background: var(--color-primary);
-  color: #fff;
+.product-view-toggle .btn.active {
+  background: var(--color-primary) !important;
+  color: #fff !important;
   box-shadow: var(--shadow-sm);
+  border-color: var(--color-primary) !important;
 }
 
 .product-list {
