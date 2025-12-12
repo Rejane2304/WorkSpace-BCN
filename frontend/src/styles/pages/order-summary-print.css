@@ -1,0 +1,143 @@
+@media print {
+  .header,
+  .footer,
+  .scroll-to-top-btn,
+  .toast-container,
+  .order-actions,
+  .no-print,
+  .container.ordersummary-padding-y-2 {
+    display: none !important;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: white;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+  }
+
+  .print-only-receipt {
+    display: block !important;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .print-header {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .print-header h1 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 24px;
+  }
+  .print-company-name {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-top: 5px;
+  }
+  .print-order-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 40px;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .print-info-group {
+    flex: 1;
+  }
+  .print-info-group:last-child {
+    flex: 1.5;
+  }
+  .print-info-group h3 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #7f8c8d;
+    letter-spacing: 1px;
+  }
+  .print-info-group p {
+    margin: 0;
+    font-weight: 600;
+  }
+  .print-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+  }
+  .print-table th {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 2px solid #eee;
+    color: #7f8c8d;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .print-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+  }
+  .print-text-right {
+    text-align: right;
+  }
+  .print-text-center {
+    text-align: center;
+  }
+  .print-totals {
+    width: 300px;
+    margin-left: auto;
+  }
+  .print-total-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+  }
+  .print-total-row.final {
+    border-top: 2px solid #333;
+    margin-top: 10px;
+    padding-top: 10px;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  .print-footer {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+  }
+
+  .print-order-id {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .print-order-id-full {
+    font-size: 12px;
+    color: #999;
+  }
+
+  .print-item-name {
+    font-weight: 600;
+  }
+}
+
+@media screen {
+  .print-only-receipt {
+    display: none;
+  }
+}

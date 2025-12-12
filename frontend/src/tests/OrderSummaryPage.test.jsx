@@ -53,13 +53,7 @@ describe("OrderSummary page (mocked)", () => {
     localStorage.setItem("user", JSON.stringify(clienteSeed))
     orders.getById.mockResolvedValue({ data: { order: mockOrder } })
     
-    window.open = jest.fn().mockReturnValue({
-      document: {
-        write: mockWrite,
-        close: mockClose
-      },
-      print: mockPrint
-    })
+    window.print = jest.fn()
   })
 
   afterEach(() => {
@@ -84,19 +78,17 @@ describe("OrderSummary page (mocked)", () => {
     
     expect(screen.getByText(/Cargando orden/i)).toBeInTheDocument()
     
-    await waitFor(() => expect(screen.getByText(/Gracias por tu compra/i)).toBeInTheDocument())
+    await waitFor(() => expect(screen.getAllByText(/Gracias por tu compra/i)[0]).toBeInTheDocument())
     expect(screen.getByText(/Nº pedido:/i)).toBeInTheDocument()
     expect(screen.getByText("order-1")).toBeInTheDocument()
     
-    expect(screen.getByText("Producto Test")).toBeInTheDocument()
+    expect(screen.getAllByText("Producto Test")[0]).toBeInTheDocument()
     expect(screen.getByText(/1 x/)).toBeInTheDocument()
     
-    expect(screen.getByText("120,00 €")).toBeInTheDocument() 
+    expect(screen.getAllByText("120,00 €")[0]).toBeInTheDocument() 
     
     const printButton = screen.getByRole("button", { name: /Imprimir resumen/i })
     await userEvent.click(printButton)
-    expect(window.open).toHaveBeenCalled()
-    expect(mockWrite).toHaveBeenCalled()
-    expect(mockPrint).toHaveBeenCalled()
+    expect(window.print).toHaveBeenCalled()
   })
 })
