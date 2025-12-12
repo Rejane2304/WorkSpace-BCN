@@ -32,6 +32,7 @@ function PaymentsAdmin() {
   const [selectedPayment, setSelectedPayment] = useState(null)
   const [paymentEditTarget, setPaymentEditTarget] = useState(null)
   const [editPaymentStatus, setEditPaymentStatus] = useState("")
+  const [loading, setLoading] = useState(true)
   const paymentAsync = useAsyncAction()
 
   const { isAdmin, isAuthenticated } = useAuth()
@@ -51,6 +52,7 @@ function PaymentsAdmin() {
   const loadPayments = useCallback(async () => {
     if (!isAuthenticated || !isAdmin) return
 
+    setLoading(true)
     try {
       const response = await paymentsAPI.getAllAdmin()
       setPayments(response.data)
@@ -60,6 +62,8 @@ function PaymentsAdmin() {
         type: "error",
         message: "No se pudieron cargar los payments. Inténtalo de nuevo más tarde.",
       })
+    } finally {
+      setLoading(false)
     }
   }, [isAuthenticated, isAdmin, setToast])
 
@@ -89,24 +93,25 @@ function PaymentsAdmin() {
   }, [isAdmin, isAuthenticated, navigate, loadPayments])
 
   const filteredPayments = payments
-    .filter((payment) => (statusFilter === "todos" ? true : payment.estado === statusFilter))
-    .filter((payment) => (methodFilter === "todos" ? true : payment.metodoPago === methodFilter))
+    .filter((payment) => (statusFilter === "todos" ? true : payment.status === statusFilter))
+    .filter((payment) => (methodFilter === "todos" ? true : payment.paymentMethod === methodFilter))
     .filter((payment) => {
       const term = search.trim().toLowerCase()
       if (!term) return true
 
       const idMatch = payment._id?.toLowerCase().includes(term)
-      const saleMatch = payment.venta?._id?.toLowerCase().includes(term)
-      const nameMatch = payment.venta?.cliente?.nombre?.toLowerCase().includes(term)
-      const emailMatch = payment.venta?.cliente?.email?.toLowerCase().includes(term)
+      const saleMatch = payment.sale?._id?.toLowerCase().includes(term)
+      const nameMatch = payment.sale?.customer?.name?.toLowerCase().includes(term)
+      const emailMatch = payment.sale?.customer?.email?.toLowerCase().includes(term)
+      const methodMatch = payment.paymentMethod?.toLowerCase().includes(term)
 
-      return idMatch || saleMatch || nameMatch || emailMatch
+      return idMatch || saleMatch || nameMatch || emailMatch || methodMatch
     })
 
   const paymentStatusOptionsForModal = STATUS_FILTER_OPTIONS.filter((option) => option.value !== "todos")
-  const pendingPaymentsCount = payments.filter((payment) => payment.estado === "pending").length
-  const failedPaymentsCount = payments.filter((payment) => payment.estado === "failed").length
-  const withoutSaleCount = payments.filter((payment) => !payment.venta?._id).length
+  const pendingPaymentsCount = payments.filter((payment) => payment.status === "pending").length
+  const failedPaymentsCount = payments.filter((payment) => payment.status === "failed").length
+  const withoutSaleCount = payments.filter((payment) => !payment.sale?._id).length
 
   const paymentAlerts = [
     pendingPaymentsCount > 0 && {
@@ -128,7 +133,7 @@ function PaymentsAdmin() {
 
   const openPaymentEditModal = (payment) => {
     setPaymentEditTarget(payment)
-    setEditPaymentStatus(payment.estado || "")
+    setEditPaymentStatus(payment.status || "")
   }
 
   const closePaymentEditModal = () => {
@@ -155,7 +160,7 @@ function PaymentsAdmin() {
     }
   }
 
-  const totalAmount = filteredPayments.reduce((sum, payment) => sum + (payment.monto || 0), 0)
+  const totalAmount = filteredPayments.reduce((sum, payment) => sum + (payment.amount || 0), 0)
 
   const STATUS_STYLES = {
     pending: { label: "Pendiente", className: "badge badge-warning" },
@@ -200,25 +205,25 @@ function PaymentsAdmin() {
         {selectedPayment && (
             <div className="payments-detail-modal">
             <div className="payments-detail-header">
-              <p><strong>Cliente:</strong> {selectedPayment.venta?.cliente ? `${selectedPayment.venta.cliente.nombre} (${selectedPayment.venta.cliente.email})` : "-"}</p>
+              <p><strong>Cliente:</strong> {selectedPayment.sale?.customer ? `${selectedPayment.sale.customer.name} (${selectedPayment.sale.customer.email})` : "-"}</p>
               <p><strong>ID pago:</strong> {selectedPayment._id}</p>
-              <p><strong>ID venta:</strong> {selectedPayment.venta?._id || "-"}</p>
-              <p><strong>Fecha:</strong> {selectedPayment.fechaPago ? new Date(selectedPayment.fechaPago).toLocaleString() : "-"}</p>
-              {typeof selectedPayment.venta?.total === 'number' && selectedPayment.venta.total < 50 && (
+              <p><strong>ID venta:</strong> {selectedPayment.sale?._id || "-"}</p>
+              <p><strong>Fecha:</strong> {selectedPayment.paymentDate ? new Date(selectedPayment.paymentDate).toLocaleString() : "-"}</p>
+              {typeof selectedPayment.sale?.total === 'number' && selectedPayment.sale.total < 50 && (
                 <div className="payments-admin-margin-y-05">
                   <strong>Envío:</strong> 4,99 € (aplicado por compra menor a 50 €)
                 </div>
               )}
-              <p className="payments-admin-mt-1"><strong>Método:</strong> {selectedPayment.metodoPago === "tarjeta" ? "Tarjeta" : selectedPayment.metodoPago === "paypal" ? "PayPal" : selectedPayment.metodoPago}</p>
-              {selectedPayment.mensajeError && (
-                <p className="paymentsadmin-mt-075 paymentsadmin-color-error paymentsadmin-fs-09"><strong>Error:</strong> {selectedPayment.mensajeError}</p>
+              <p className="payments-admin-mt-1"><strong>Método:</strong> {selectedPayment.paymentMethod === "tarjeta" ? "Tarjeta" : selectedPayment.paymentMethod === "paypal" ? "PayPal" : selectedPayment.paymentMethod}</p>
+              {selectedPayment.errorMessage && (
+                <p className="paymentsadmin-mt-075 paymentsadmin-color-error paymentsadmin-fs-09"><strong>Error:</strong> {selectedPayment.errorMessage}</p>
               )}
             </div>
-            {selectedPayment.venta?.items?.length > 0 && (
+            {selectedPayment.sale?.items?.length > 0 && (
               <div className="payments-detail-products">
                 <h4 className="payments-admin-mt-1 payments-admin-mb-05">Productos de la venta</h4>
                 <ul className="payments-admin-pl-18">
-                  {selectedPayment.venta.items.map((item, idx) => (
+                  {selectedPayment.sale.items.map((item, idx) => (
                     <li key={item.product?._id || idx} className="payments-admin-mb-6">
                       <span className="payments-admin-fw-500">{item.product?.name || item.nombre || "Producto"}</span> x{item.quantity || item.cantidad || 1} <span className="payments-admin-text-muted">({formatCurrency(item.unitPrice || item.precioUnitario || 0)})</span>
                     </li>
@@ -227,14 +232,14 @@ function PaymentsAdmin() {
               </div>
             )}
             <div className="payments-detail-envio payments-admin-mt-1">
-              <p><strong>Envío:</strong> {formatCurrency(selectedPayment.venta?.shippingCost ?? 0)}</p>
+              <p><strong>Envío:</strong> {formatCurrency(selectedPayment.sale?.shippingCost ?? 0)}</p>
             </div>
             <div className="payments-detail-monto payments-admin-mt-05">
-              <p><strong>Total pagado:</strong> {formatCurrency(selectedPayment.monto)}</p>
+              <p><strong>Total pagado:</strong> {formatCurrency(selectedPayment.amount)}</p>
             </div>
             <div className="payments-detail-estado payments-admin-mt-12">
-              <span className={`${formatStatus(selectedPayment.estado).className} payments-admin-inline-block`}>
-                {formatStatus(selectedPayment.estado).label.charAt(0).toUpperCase() + formatStatus(selectedPayment.estado).label.slice(1)}
+              <span className={`${formatStatus(selectedPayment.status).className} payments-admin-inline-block`}>
+                {formatStatus(selectedPayment.status).label.charAt(0).toUpperCase() + formatStatus(selectedPayment.status).label.slice(1)}
               </span>
             </div>
           </div>
@@ -257,8 +262,8 @@ function PaymentsAdmin() {
         />
         <p>
           Estado actual:{" "}
-          <span className={formatStatus(paymentEditTarget?.estado).className}>
-            {formatStatus(paymentEditTarget?.estado).label}
+          <span className={formatStatus(paymentEditTarget?.status).className}>
+            {formatStatus(paymentEditTarget?.status).label}
           </span>
         </p>
         <div className="paymentsadmin-mt-1">
@@ -328,25 +333,27 @@ function PaymentsAdmin() {
       </div>
 
       <div className="payments-admin-grid payments-admin-grid-3col">
-        {filteredPayments.length === 0 ? (
+        {loading ? (
           <div className="payments-loading-placeholder">Cargando pagos...</div>
+        ) : filteredPayments.length === 0 ? (
+          <p className="text-center">No hay pagos que coincidan con los filtros seleccionados</p>
         ) : (
           filteredPayments.map((payment) => (
             <div key={payment._id} className="card mb-2 payments-card-enhanced">
               <div className="payments-admin-card-header payments-card-header-enhanced">
                 <p className="payments-admin-fw-700 payments-admin-fs-11 payments-admin-mb-2">
-                  {payment.venta?.cliente?.nombre
-                    ? payment.venta.cliente.nombre
+                  {payment.sale?.customer?.name
+                    ? payment.sale.customer.name
                     : <span className="payments-admin-text-light">Cliente no disponible</span>}
                 </p>
                 <p className="payments-admin-fs-095 payments-admin-text-muted payments-admin-mb-6">
-                  {payment.venta?.cliente?.email || ''}
+                  {payment.sale?.customer?.email || ''}
                 </p>
                 <p className="payments-admin-fs-092"><strong>ID pago:</strong> {payment._id}</p>
-                <p className="payments-admin-fs-092"><strong>ID venta:</strong> {payment.venta?._id || "-"}</p>
-                {payment.venta?.items?.length > 0 && (
+                <p className="payments-admin-fs-092"><strong>ID venta:</strong> {payment.sale?._id || "-"}</p>
+                {payment.sale?.items?.length > 0 && (
                   <ul className="payments-card-products-list">
-                    {payment.venta.items.map((item, idx) => (
+                    {payment.sale.items.map((item, idx) => (
                       <li key={item.product?._id || idx}>
                         <span className="payments-admin-fw-500">{item.product?.name || item.nombre || "Producto"}</span> x{item.quantity || item.cantidad || 1}
                       </li>
@@ -354,10 +361,10 @@ function PaymentsAdmin() {
                   </ul>
                 )}
                 <div className="payments-metrics payments-admin-mt-07 payments-admin-w-100">
-                  <p><strong>Monto:</strong> {formatCurrency(payment.monto)}</p>
-                  <p><strong>Fecha:</strong> {payment.fechaPago ? new Date(payment.fechaPago).toLocaleDateString() : "-"}</p>
-                  <span className={`${formatStatus(payment.estado).className} payments-admin-mt-8 payments-admin-inline-block`}>
-                    {formatStatus(payment.estado).label}
+                  <p><strong>Monto:</strong> {formatCurrency(payment.amount)}</p>
+                  <p><strong>Fecha:</strong> {payment.paymentDate ? new Date(payment.paymentDate).toLocaleDateString() : "-"}</p>
+                  <span className={`${formatStatus(payment.status).className} payments-admin-mt-8 payments-admin-inline-block`}>
+                    {formatStatus(payment.status).label}
                   </span>
                 </div>
               </div>
@@ -384,8 +391,8 @@ function PaymentsAdmin() {
         )}
       </div>
 
-      {filteredPayments.length === 0 && (
-        <p className="text-center">No hay pagos que coincidan con los filtros seleccionados</p>
+      {!loading && filteredPayments.length === 0 && (
+        <p className="text-center" style={{ display: 'none' }}>No hay pagos que coincidan con los filtros seleccionados</p>
       )}
     </div>
   )

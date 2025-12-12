@@ -242,7 +242,7 @@ function CustomersAdmin() {
     } catch (error) {
       setToast({
         type: "error",
-        message: "No se pudo actualizar el cliente. Intenta de nuevo.",
+        message: error.response?.data?.mensaje || "No se pudo actualizar el cliente. Intenta de nuevo.",
       })
     }
   }
@@ -504,84 +504,6 @@ function CustomersAdmin() {
             )}
           </div>
         </form>
-        <div className="form-group">
-          <label className="label">Nueva contraseña</label>
-          <div className="password-field">
-            <input
-              type={mostrarPasswordEdit ? "text" : "password"}
-              className="input"
-              value={editForm.password}
-              onChange={(e) => setEditForm((prev) => ({ ...prev, password: e.target.value }))}
-              placeholder="Dejar en blanco para no cambiarla"
-            />
-            <button
-              type="button"
-              className="btn-toggle-password"
-              onClick={() => setMostrarPasswordEdit((prev) => !prev)}
-              aria-label={mostrarPasswordEdit ? "Ocultar contraseña" : "Mostrar contraseña"}
-            >
-              {mostrarPasswordEdit ? (
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    fill="currentColor"
-                    d="M12 5C7 5 2.73 8.11 1 12c1.73 3.89 6 7 11 7s9.27-3.11 11-7c-1.73-3.89-6-7-11-7Zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z"
-                  />
-                  <path fill="currentColor" d="M12 9a3 3 0 0 0-3 3 1 1 0 1 0 2 0 1 1 0 0 1 1-1 1 1 0 1 0 0-2Z" />
-                </svg>
-              ) : (
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    fill="currentColor"
-                    d="M2.81 2.81 1.39 4.22 4.7 7.53C3.06 8.57 1.78 10.11 1 12c1.73 3.89 6 7 11 7 2.01 0 3.89-.5 5.54-1.39l2.24 2.24 1.41-1.41L2.81 2.81ZM12 17c-2.76 0-5-2.24-5-5 0-.73.16-1.43.44-2.06l1.53 1.53A2.99 2.99 0 0 0 9 12a3 3 0 0 0 3 3c.39 0 .76-.08 1.1-.21l1.53 1.53A4.96 4.96 0 0 1 12 17Z"
-                  />
-                  <path
-                    fill="currentColor"
-                    d="M12 7c1.43 0 2.73.5 3.76 1.32l1.49-1.49C15.89 5.7 14.02 5 12 5 7 5 2.73 8.11 1 12c.64 1.43 1.62 2.7 2.81 3.76l1.46-1.46C4.46 13.24 4 12.17 4 12c1.73-3.89 6-7 8-7Z"
-                  />
-                </svg>
-              )}
-            </button>
-          </div>
-        </div>
-        <div className="form-group">
-          <label className="label">Confirmar nueva contraseña</label>
-          <div className="password-field">
-            <input
-              type={mostrarPasswordEditConfirm ? "text" : "password"}
-              className="input"
-              value={editForm.passwordConfirm}
-              onChange={(e) => setEditForm((prev) => ({ ...prev, passwordConfirm: e.target.value }))}
-              placeholder="Repite la nueva contraseña"
-            />
-            <button
-              type="button"
-              className="btn-toggle-password"
-              onClick={() => setMostrarPasswordEditConfirm((prev) => !prev)}
-              aria-label={mostrarPasswordEditConfirm ? "Ocultar contraseña" : "Mostrar contraseña"}
-            >
-              {mostrarPasswordEditConfirm ? (
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    fill="currentColor"
-                    d="M12 5C7 5 2.73 8.11 1 12c1.73 3.89 6 7 11 7s9.27-3.11 11-7c-1.73-3.89-6-7-11-7Zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z"
-                  />
-                  <path fill="currentColor" d="M12 9a3 3 0 0 0-3 3 1 1 0 1 0 2 0 1 1 0 0 1 1-1 1 1 0 1 0 0-2Z" />
-                </svg>
-              ) : (
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    fill="currentColor"
-                    d="M2.81 2.81 1.39 4.22 4.7 7.53C3.06 8.57 1.78 10.11 1 12c1.73 3.89 6 7 11 7 2.01 0 3.89-.5 5.54-1.39l2.24 2.24 1.41-1.41L2.81 2.81ZM12 17c-2.76 0-5-2.24-5-5 0-.73.16-1.43.44-2.06l1.53 1.53A2.99 2.99 0 0 0 9 12a3 3 0 0 0 3 3c.39 0 .76-.08 1.1-.21l1.53 1.53A4.96 4.96 0 0 1 12 17Z"
-                  />
-                  <path
-                    fill="currentColor"
-                    d="M12 7c1.43 0 2.73.5 3.76 1.32l1.49-1.49C15.89 5.7 14.02 5 12 5 7 5 2.73 8.11 1 12c.64 1.43 1.62 2.7 2.81 3.76l1.46-1.46C4.46 13.24 4 12.17 4 12c1.73-3.89 6-7 8-7Z"
-                  />
-                </svg>
-              )}
-            </button>
-          </div>
-        </div>
       </Modal>
       <Modal
         isOpen={showCreateModal}

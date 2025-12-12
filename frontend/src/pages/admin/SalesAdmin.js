@@ -163,7 +163,7 @@ function SalesAdmin() {
   } 
 
   const filteredSales = sales
-    .filter((sale) => (statusFilter === "todas" ? true : sale.estado === statusFilter))
+    .filter((sale) => (statusFilter === "todas" ? true : sale.status === statusFilter))
     .filter((sale) => {
       const term = search.trim().toLowerCase()
       if (!term) return true
@@ -171,8 +171,9 @@ function SalesAdmin() {
       const idMatch = sale._id?.toLowerCase().includes(term)
       const nameMatch = sale.customer?.name?.toLowerCase().includes(term)
       const emailMatch = sale.customer?.email?.toLowerCase().includes(term)
+      const statusMatch = sale.status?.toLowerCase().includes(term)
 
-      return idMatch || nameMatch || emailMatch
+      return idMatch || nameMatch || emailMatch || statusMatch
     })
 
   const sortedSales = [...filteredSales].sort(
@@ -354,7 +355,7 @@ function SalesAdmin() {
 
       <div className="sales-admin-grid">
         {sortedSales.map((sale) => (
-          <div key={sale._id} className="sales-admin-summary-card">
+          <div key={sale._id} className="sales-admin-summary-card" style={{ padding: '1rem', fontSize: '0.9rem' }}>
             <div className="sales-admin-flex-row-wrap sales-admin-align-center">
               <div className="sales-admin-flex-2">
                 <p style={{ wordBreak: "break-all" }}><strong>ID venta:</strong> {sale._id}</p>
