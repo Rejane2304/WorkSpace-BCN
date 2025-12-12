@@ -64,7 +64,7 @@ function Register() {
 
       const response = await auth.register(payload)
       login(response.data.user, response.data.token)
-      navigate("/perfil")
+      navigate("/productos")
     } catch (error) {
       const mensaje = error.response?.data?.mensaje || "Error al registrarse"
       setToast({

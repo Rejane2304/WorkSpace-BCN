@@ -73,19 +73,22 @@ function Header() {
 
           <div className="header-right">
             <nav className={`nav ${isMenuOpen ? "open" : ""}`}>
-              <Link to="/" className="nav-link" onClick={closeMenu}>
-                Inicio
-              </Link>
+              {!isAdmin && (
+                <Link to="/" className="nav-link" onClick={closeMenu}>
+                  Inicio
+                </Link>
+              )}
               
               {!isAdmin && (
-                <>
-                  <Link to="/productos" className="nav-link" onClick={closeMenu}>
-                    Productos
-                  </Link>
-                  <Link to="/contacto" className="nav-link" onClick={closeMenu}>
-                    Contacto
-                  </Link>
-                </>
+                <Link to="/productos" className="nav-link" onClick={closeMenu}>
+                  Productos
+                </Link>
+              )}
+
+              {!isAdmin && (
+                <Link to="/contacto" className="nav-link" onClick={closeMenu}>
+                  Contacto
+                </Link>
               )}
 
               {isAdmin && (

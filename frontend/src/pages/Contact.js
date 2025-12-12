@@ -122,6 +122,7 @@ function Contact() {
                 onChange={manejarCambio}
                 className="input"
                 placeholder="+34 600 000 000"
+                pattern="[0-9\s\+]*"
               />
             </div>
 

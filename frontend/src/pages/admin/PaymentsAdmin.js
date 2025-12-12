@@ -94,7 +94,13 @@ function PaymentsAdmin() {
 
   const filteredPayments = payments
     .filter((payment) => (statusFilter === "todos" ? true : payment.status === statusFilter))
-    .filter((payment) => (methodFilter === "todos" ? true : payment.paymentMethod === methodFilter))
+    .filter((payment) => {
+      if (methodFilter === "todos") return true;
+      const method = (payment.paymentMethod || "").toLowerCase();
+      const filter = methodFilter.toLowerCase();
+      if (filter === "tarjeta" && (method === "card" || method === "stripe")) return true;
+      return method === filter;
+    })
     .filter((payment) => {
       const term = search.trim().toLowerCase()
       if (!term) return true

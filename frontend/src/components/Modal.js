@@ -1,3 +1,5 @@
+import { useEffect } from "react"
+
 function Modal({
   isOpen,
   title,
@@ -10,6 +12,17 @@ function Modal({
   children,
   confirmDisabled = false,
 }) {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "unset"
+    }
+    return () => {
+      document.body.style.overflow = "unset"
+    }
+  }, [isOpen])
+
   if (!isOpen) return null
 
   return (

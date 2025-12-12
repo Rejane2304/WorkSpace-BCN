@@ -21,8 +21,7 @@ function Profile() {
   const [originalProfile, setOriginalProfile] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const [isSaving, setIsSaving] = useState(false)
-  const [isUploadingImage, setIsUploadingImage] = useState(false)
-  const [fileInputKey, setFileInputKey] = useState(Date.now())
+  const [selectedImageFile, setSelectedImageFile] = useState(null)
   const [toast, setToast] = useState({ type: "info", message: "" })
   const [passwordForm, setPasswordForm] = useState({
     password: "",
@@ -124,10 +123,27 @@ function Profile() {
     }
 
     try {
-      // Enviamos todo el perfil para evitar que el mapper sobrescriba con vacíos los campos no enviados
+      let finalImageUrl = profile.image
+
+      if (selectedImageFile) {
+        try {
+          const uploadRes = await customers.uploadProfileImage(selectedImageFile)
+          finalImageUrl = uploadRes.data.url
+        } catch (uploadError) {
+          console.error("Error al subir imagen:", uploadError)
+          setIsSaving(false)
+          setToast({
+            type: "error",
+            message: "Error al subir la imagen. Inténtalo de nuevo.",
+          })
+          return
+        }
+      }
+
       const fieldsToSend = {
         ...profile,
-        telefono: normalizedPhone // Usamos el teléfono normalizado
+        image: finalImageUrl,
+        telefono: normalizedPhone 
       }
       
       if (newPassword) {
@@ -138,6 +154,7 @@ function Profile() {
       const updatedProfile = response.data
       setProfile(updatedProfile)
       setOriginalProfile(updatedProfile)
+      setSelectedImageFile(null)
 
       updateUser({
         nombre: updatedProfile.nombre,
@@ -172,33 +189,20 @@ function Profile() {
     setPasswordForm({ password: "", passwordConfirm: "" })
   }
 
-  async function handleProfileImageChange(e) {
+  function handleProfileImageChange(e) {
     const file = e.target.files?.[0]
     if (!file) return
 
-    setIsUploadingImage(true)
+    setSelectedImageFile(file)
 
-    try {
-      const response = await customers.uploadProfileImage(file)
-      const imageUrl = response.data.url
-
+    const reader = new FileReader()
+    reader.onloadend = () => {
       setProfile((prev) => ({
         ...prev,
-        image: imageUrl,
+        image: reader.result,
       }))
-      
-      updateUser({ image: imageUrl, imagen: imageUrl })
-      setToast({ type: "success", message: "Imagen de perfil subida correctamente. No olvides guardar los cambios." })
-      setFileInputKey(Date.now()) 
-    } catch (error) {
-      console.error("Error al subir imagen de perfil:", error)
-      setToast({
-        type: "error",
-        message: error.response?.data?.mensaje || "No se pudo subir la imagen de perfil. Inténtalo de nuevo.",
-      })
-    } finally {
-      setIsUploadingImage(false)
     }
+    reader.readAsDataURL(file)
   }
 
   if (isLoading) {
@@ -329,20 +333,13 @@ function Profile() {
               Imagen de perfil
             </label>
             <input
-              key={fileInputKey}
               id="imagen"
               name="imagen"
               type="file"
               className="base-form-input profile-mt-05"
               accept="image/*"
               onChange={handleProfileImageChange}
-              disabled={isUploadingImage}
             />
-            {isUploadingImage && (
-              <p className="text-secondary profile-mt-05">
-                Subiendo imagen...
-              </p>
-            )}
           </div>
 
           <div className="base-form-group">

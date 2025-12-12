@@ -163,7 +163,24 @@ function SalesAdmin() {
   } 
 
   const filteredSales = sales
-    .filter((sale) => (statusFilter === "todas" ? true : sale.status === statusFilter))
+    .filter((sale) => {
+      if (statusFilter === "todas") return true;
+      
+      const saleStatus = (sale.status || "").toLowerCase();
+      const filterStatus = statusFilter.toLowerCase();
+      
+      const statusMap = {
+        "pendiente": "pending",
+        "procesando": "processing",
+        "enviado": "shipped",
+        "entregado": "delivered",
+        "cancelado": "cancelled",
+        "pagado": "paid"
+      };
+      
+      const normalizedSaleStatus = statusMap[saleStatus] || saleStatus;
+      return normalizedSaleStatus === filterStatus;
+    })
     .filter((sale) => {
       const term = search.trim().toLowerCase()
       if (!term) return true

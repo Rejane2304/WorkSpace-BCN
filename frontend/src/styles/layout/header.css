@@ -41,8 +41,8 @@
 
 .admin-badge {
   font-size: 0.7rem;
-  background-color: #e74c3c;
-  color: white;
+  background-color: #c0392b;
+  color: #ffffff;
   padding: 2px 6px;
   border-radius: 4px;
   margin-left: 8px;
@@ -245,6 +245,11 @@
     right: 0;
     top: calc(100% + var(--spacing-xs));
     z-index: 200;
+  }
+
+  .admin-header .nav.open {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
   }
 
   .nav.open .nav-link {

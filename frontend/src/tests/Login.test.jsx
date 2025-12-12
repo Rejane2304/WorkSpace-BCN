@@ -28,6 +28,7 @@ const renderLogin = () => {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/perfil" element={<h1>Mi Perfil Mock</h1>} />
+          <Route path="/productos" element={<h1>Productos Mock</h1>} />
         </Routes>
       </AuthProvider>
     </MemoryRouter>
@@ -62,7 +63,7 @@ describe("Login page (Mocked)", () => {
 
     await waitFor(() => {
       expect(authAPI.login).toHaveBeenCalledWith("maria@test.com", "password123")
-      expect(screen.getByText("Mi Perfil Mock")).toBeInTheDocument()
+      expect(screen.getByText("Productos Mock")).toBeInTheDocument()
     })
   })
 

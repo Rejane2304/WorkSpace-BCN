@@ -180,6 +180,7 @@ function Products() {
                   type="button"
                   className={"btn btn-secondary " + (viewMode === "grid" ? "active" : "")}
                   onClick={() => setViewMode("grid")}
+                  disabled={viewMode === "grid"}
                 >
                   Vista en tarjetas
                 </button>
@@ -187,6 +188,7 @@ function Products() {
                   type="button"
                   className={"btn btn-secondary " + (viewMode === "list" ? "active" : "")}
                   onClick={() => setViewMode("list")}
+                  disabled={viewMode === "list"}
                 >
                   Vista en lista
                 </button>

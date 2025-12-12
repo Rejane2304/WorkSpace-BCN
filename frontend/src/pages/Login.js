@@ -27,7 +27,7 @@ function Login() {
       if (response.data.user.role === "admin") {
         navigate("/admin")
       } else {
-        navigate("/perfil")
+        navigate("/productos")
       }
     } catch (error) {
       setToast({
