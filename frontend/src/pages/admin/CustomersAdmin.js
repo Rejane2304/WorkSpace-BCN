@@ -28,8 +28,6 @@ function CustomersAdmin() {
     ciudad: "",
     codigoPostal: "",
     imagen: "",
-    password: "",
-    passwordConfirm: "",
   })
   const [editImageFile, setEditImageFile] = useState(null)
   const [isUploadingImage, setIsUploadingImage] = useState(false)
@@ -48,7 +46,6 @@ function CustomersAdmin() {
   const [isCreating, setIsCreating] = useState(false)
   const [createImageFile, setCreateImageFile] = useState(null)
   const [isUploadingCreateImage, setIsUploadingCreateImage] = useState(false)
-  const [mostrarPasswordEdit, setMostrarPasswordEdit] = useState(false)
 
   function handleCreateImageChange(e) {
     const file = e.target.files?.[0]
@@ -65,7 +62,6 @@ function CustomersAdmin() {
     }
     reader.readAsDataURL(file)
   }
-  const [mostrarPasswordEditConfirm, setMostrarPasswordEditConfirm] = useState(false)
   const [mostrarPasswordCreate, setMostrarPasswordCreate] = useState(false)
   const [mostrarPasswordCreateConfirm, setMostrarPasswordCreateConfirm] = useState(false)
   const [toast, setToast] = useState({ type: "info", message: "" })
@@ -152,8 +148,6 @@ function CustomersAdmin() {
       ciudad: getCustomerField(customer, "ciudad"),
       codigoPostal: getCustomerField(customer, "codigoPostal"),
       imagen: getCustomerField(customer, "imagen"),
-      password: "",
-      passwordConfirm: "",
     })
     setEditImageFile(null)
   }
@@ -162,33 +156,6 @@ function CustomersAdmin() {
     if (!editCustomer) return
 
     try {
-      if (editForm.password || editForm.passwordConfirm) {
-        if (editForm.password !== editForm.passwordConfirm) {
-          setModalConfig({
-            isOpen: true,
-            title: "Contraseña no coincide",
-            message: "La nueva contraseña y su confirmación deben ser iguales.",
-            confirmLabel: "Cerrar",
-            cancelLabel: null,
-            onConfirm: () => setModalConfig((prev) => ({ ...prev, isOpen: false })),
-            onCancel: null,
-          })
-          return
-        }
-        if (editForm.password.length < 6) {
-          setModalConfig({
-            isOpen: true,
-            title: "Contraseña insegura",
-            message: "La nueva contraseña debe tener al menos 6 caracteres.",
-            confirmLabel: "Cerrar",
-            cancelLabel: null,
-            onConfirm: () => setModalConfig((prev) => ({ ...prev, isOpen: false })),
-            onCancel: null,
-          })
-          return
-        }
-      }
-
       let imagenUrl = editForm.imagen
 
       if (editImageFile) {
@@ -208,10 +175,6 @@ function CustomersAdmin() {
         ciudad: editForm.ciudad.trim(),
         codigoPostal: editForm.codigoPostal.trim(),
         imagen: imagenUrl,
-      }
-
-      if (editForm.password && editForm.password === editForm.passwordConfirm) {
-        payload.password = editForm.password.trim()
       }
 
       const response = await customersAPI.update(editCustomer._id, payload)

@@ -62,12 +62,13 @@ function Header() {
   }
 
   return (
-    <header className="header">
+    <header className={`header ${isAdmin ? 'admin-header' : ''}`}>
       <div className="header-container">
         <div className="header-content">
-          <Link to="/" className="logo" onClick={closeMenu}>
+          <Link to={isAdmin ? "/admin" : "/"} className="logo" onClick={closeMenu}>
             <span className="logo-workspace">WorkSpace</span>
             <span className="logo-bcn">BCN</span>
+            {isAdmin && <span className="admin-badge">ADMIN</span>}
           </Link>
 
           <div className="header-right">

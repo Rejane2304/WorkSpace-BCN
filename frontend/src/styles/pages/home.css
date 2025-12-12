@@ -1,9 +1,9 @@
-.home-ws-primary {
-  color: var(--color-primary);
+.hero-white-container .home-ws-primary {
+  color: var(--color-primary) !important;
   font-weight: 800;
 }
-.home-ws-turquoise {
-  color: var(--color-turquoise);
+.hero-white-container .home-ws-turquoise {
+  color: var(--color-turquoise) !important;
   font-weight: 800;
 }
 .home-fs-1-25 {
@@ -43,21 +43,14 @@
   padding: 3rem;
 }
 .home-cta-bg {
-  background-color: var(--color-primary);
-  color: #ffffff;
+  background-color: var(--color-hero-bg);
+  color: var(--color-hero-text);
 }
 .home-cta-radius {
   border-radius: var(--border-radius);
 }
 .home-cta-link-mt-1-5 {
   margin-top: 1.5rem;
-  background-color: #ffffff;
-  color: var(--color-primary);
-  border: none;
-}
-.home-cta-link-mt-1-5:hover {
-  background-color: var(--color-surface-soft);
-  color: var(--color-primary-strong);
 }
 .hero {
   padding: 4rem 0;
@@ -101,10 +94,17 @@
 }
 
 .hero-white-container {
-  background-color: var(--color-accent);
+  background-color: var(--color-hero-bg);
   border-radius: var(--border-radius);
   padding: var(--spacing-lg);
   box-shadow: var(--shadow-md);
+  color: var(--color-hero-text);
+}
+
+.hero-white-container h1,
+.hero-white-container p,
+.hero-white-container span {
+  color: var(--color-hero-text) !important;
 }
 
 .home-features {
@@ -174,11 +174,11 @@
   margin-top: var(--spacing-xl);
   text-align: center;
   padding: 3rem;
-  background-color: var(--color-primary);
+  background-color: var(--color-hero-bg);
   border-radius: var(--border-radius);
-  color: #ffffff;
+  color: var(--color-hero-text);
 }
 
 .home-cta h2 {
-  color: #ffffff;
+  color: var(--color-hero-text);
 }

@@ -1,8 +1,13 @@
 :root {
   /* === COLORES PRINCIPALES === */
-  --color-primary: #c86a16; /* Oscurecido para mejor contraste */
+  --color-primary: #e1924d;
+  --color-primary-darker: #c86a16;
   --color-primary-strong: #a0500b;
   --color-primary-light: #f7e6c7;
+
+  /* Paleta personalizada Hero */
+  --color-hero-bg: #e0c589;
+  --color-hero-text: #2e3642;
   
   --color-secondary: #408197;
   

@@ -484,6 +484,9 @@ html, body {
   color: #fff !important;
   box-shadow: var(--shadow-sm);
   border-color: var(--color-primary) !important;
+  opacity: 0.6;
+  pointer-events: none;
+  cursor: default;
 }
 
 .product-list {

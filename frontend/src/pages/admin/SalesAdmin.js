@@ -19,7 +19,7 @@ function SalesAdmin() {
   const [sales, setSales] = useState([])
   const [statusFilter, setStatusFilter] = useState("todas")
   const STATUS_FILTER_OPTIONS = [
-    { value: "todas", label: "Todas Categorías" },
+    { value: "todas", label: "Todos los Estados" },
     { value: "pending", label: "Pendiente" },
     { value: "processing", label: "Procesando" },
     { value: "shipped", label: "Enviado" },

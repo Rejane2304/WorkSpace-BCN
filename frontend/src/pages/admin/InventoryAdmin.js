@@ -200,47 +200,51 @@ function InventoryAdmin() {
               </tr>
             </thead>
             <tbody>
-              {products.map((product) => (
-                <tr key={product._id} className="inventoryadmin-table-row">
-                  <td className="inventoryadmin-table-td">{product.nombre || product.name}</td>
-                  <td className="inventoryadmin-table-td">{product.category}</td>
-                  <td className="inventoryadmin-table-td inventoryadmin-table-td-right">
-                    {formatCurrency(product.price)}
-                  </td>
-                  <td className={`inventoryadmin-table-td inventoryadmin-table-td-right inventoryadmin-fw-600 ${product.stock < 5 ? 'text-error' : ''}`}>
-                    {product.stock}
-                  </td>
-                  <td className="inventoryadmin-table-td inventoryadmin-table-td-right">
-                    {product.minStock ?? product.stockMinimo ?? "-"}
-                  </td>
-                  <td className="inventoryadmin-table-td">
-                    <div className="inventoryadmin-flex inventoryadmin-gap-05 inventoryadmin-justify-center inventoryadmin-flex-wrap">
-                      <button
-                        type="button"
-                        className="btn btn-inventory-in"
-                        onClick={() => handleTableMovement(product._id, "entrada", 1)}
-                      >
-                        +1
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-inventory-out"
-                        onClick={() => handleTableMovement(product._id, "salida", 1)}
-                        disabled={product.stock <= 0}
-                      >
-                        -1
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-outline"
-                        onClick={() => navigate(`/admin/inventario/${product._id}`)}
-                      >
-                        Control Individual
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
+              {products.map((product) => {
+                const minStock = product.minStock ?? product.stockMinimo ?? 5;
+                const isLowStock = product.stock <= minStock;
+                return (
+                  <tr key={product._id} className={`inventoryadmin-table-row ${isLowStock ? 'inventoryadmin-row-low-stock' : ''}`}>
+                    <td className="inventoryadmin-table-td">{product.nombre || product.name}</td>
+                    <td className="inventoryadmin-table-td">{product.category}</td>
+                    <td className="inventoryadmin-table-td inventoryadmin-table-td-right">
+                      {formatCurrency(product.price)}
+                    </td>
+                    <td className={`inventoryadmin-table-td inventoryadmin-table-td-right inventoryadmin-fw-600 ${isLowStock ? 'text-error' : ''}`}>
+                      {product.stock}
+                    </td>
+                    <td className="inventoryadmin-table-td inventoryadmin-table-td-right">
+                      {product.minStock ?? product.stockMinimo ?? "-"}
+                    </td>
+                    <td className="inventoryadmin-table-td">
+                      <div className="inventoryadmin-flex inventoryadmin-gap-05 inventoryadmin-justify-center inventoryadmin-flex-wrap">
+                        <button
+                          type="button"
+                          className="btn btn-inventory-in"
+                          onClick={() => handleTableMovement(product._id, "entrada", 1)}
+                        >
+                          +1
+                        </button>
+                        <button
+                          type="button"
+                          className="btn btn-inventory-out"
+                          onClick={() => handleTableMovement(product._id, "salida", 1)}
+                          disabled={product.stock <= 0}
+                        >
+                          -1
+                        </button>
+                        <button
+                          type="button"
+                          className="btn btn-outline"
+                          onClick={() => navigate(`/admin/inventario/${product._id}`)}
+                        >
+                          Control Individual
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
         </div>

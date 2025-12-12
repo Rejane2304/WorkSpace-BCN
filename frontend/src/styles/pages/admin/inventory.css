@@ -99,6 +99,14 @@
   min-width: 200px;
 }
 
+.inventoryadmin-row-low-stock {
+  background-color: rgba(231, 76, 60, 0.1); /* Light red background */
+}
+
+.inventoryadmin-row-low-stock:hover {
+  background-color: rgba(231, 76, 60, 0.15);
+}
+
 @media (max-width: 480px) {
   .inventoryadmin-stat-item {
     flex: 1 1 100%;

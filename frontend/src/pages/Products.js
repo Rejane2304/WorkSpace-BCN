@@ -134,6 +134,16 @@ function Products() {
   
     return (
       <div className="container">
+        <Modal
+          isOpen={modalConfig.isOpen}
+          title={modalConfig.title}
+          message={modalConfig.message}
+          confirmLabel={modalConfig.confirmLabel}
+          cancelLabel={modalConfig.cancelLabel}
+          onConfirm={modalConfig.onConfirm}
+          onCancel={modalConfig.onCancel}
+          onClose={modalConfig.onClose}
+        />
         <div className="hero-white-container products-my-25">
           <div className="products-panel card products-panel-transparent">
             <div className="products-header products-mb-25">
@@ -182,16 +192,6 @@ function Products() {
                 </button>
               </div>
             </div>
-            <Modal
-              isOpen={modalConfig.isOpen}
-              title={modalConfig.title}
-              message={modalConfig.message}
-              confirmLabel={modalConfig.confirmLabel}
-              cancelLabel={modalConfig.cancelLabel}
-              onConfirm={modalConfig.onConfirm}
-              onCancel={modalConfig.onCancel}
-              onClose={modalConfig.onClose}
-            />
             {viewMode === "grid" ? (
               <div className="product-grid">
                 {Array.isArray(filteredProducts) && filteredProducts.map((product) => (
