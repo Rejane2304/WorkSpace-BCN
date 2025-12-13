@@ -147,7 +147,7 @@ function CartPage() {
             </div>
             {cart.map((item) => (
               <div key={item._id} className="cart-table-row">
-                <div>
+                <div className="cart-col-product">
                 <div className="cart-item-info">
                     <img
                       src={item.image || item.imagen || '/assets/no-image.png'}
@@ -160,7 +160,7 @@ function CartPage() {
                     </div>
                   </div>
                 </div>
-                <div>
+                <div className="cart-col-quantity" data-label="Cantidad">
                   <input
                     type="number"
                     min="1"
@@ -169,9 +169,9 @@ function CartPage() {
                     className="input input-quantity"
                   />
                 </div>
-                <div>{formatCurrency(item.price)}</div>
-                <div>{formatCurrency((item.price || 0) * (item.quantity || 0))}</div>
-                <div>
+                <div className="cart-col-price" data-label="Precio">{formatCurrency(item.price)}</div>
+                <div className="cart-col-subtotal" data-label="Subtotal">{formatCurrency((item.price || 0) * (item.quantity || 0))}</div>
+                <div className="cart-col-actions" data-label="Acciones">
                   <button
                     className="btn btn-outline btn-xs"
                     onClick={() =>
