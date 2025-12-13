@@ -24,7 +24,9 @@ function Login() {
     try {
       const response = await auth.login(email, password)
       login(response.data.user, response.data.token)
-      if (response.data.user.role === "admin") {
+      
+      const userRole = response.data.user.role?.toLowerCase() || "cliente"
+      if (userRole === "admin") {
         navigate("/admin")
       } else {
         navigate("/productos")

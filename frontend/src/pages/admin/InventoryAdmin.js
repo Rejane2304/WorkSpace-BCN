@@ -23,7 +23,6 @@ function InventoryAdmin() {
     onCancel: null,
   })
 
-  const toastElement = null 
 
   const generalModal = (
     <Modal
@@ -127,7 +126,6 @@ function InventoryAdmin() {
   if (!stats) {
     return (
       <>
-        {toastElement}
         {generalModal}
         <div className="container text-center inventoryadmin-py-4">
           <div className="card inventoryadmin-inline-block inventoryadmin-py-2-3">
@@ -157,11 +155,11 @@ function InventoryAdmin() {
           </div>
           <div className="inventoryadmin-stat-item">
             <p className="inventoryadmin-fs-09 inventoryadmin-text-light">Productos con stock bajo</p>
-            <p className="inventoryadmin-fs-1-4 inventoryadmin-fw-600" style={{ fontSize: '2rem' }}>{stats.productosStockBajo}</p>
+            <p className="inventoryadmin-fs-1-4 inventoryadmin-fw-600" style={{ fontSize: '2rem', color: stats.productosStockBajo > 0 ? 'var(--color-warning)' : 'inherit' }}>{stats.productosStockBajo}</p>
           </div>
           <div className="inventoryadmin-stat-item">
             <p className="inventoryadmin-fs-09 inventoryadmin-text-light">Productos agotados</p>
-            <p className="inventoryadmin-fs-1-4 inventoryadmin-fw-600" style={{ fontSize: '2rem' }}>{stats.productosAgotados}</p>
+            <p className="inventoryadmin-fs-1-4 inventoryadmin-fw-600" style={{ fontSize: '2rem', color: stats.productosAgotados > 0 ? 'var(--color-error)' : 'inherit' }}>{stats.productosAgotados}</p>
           </div>
           <div className="inventoryadmin-stat-item">
             <p className="inventoryadmin-fs-09 inventoryadmin-text-light">Valor total de inventario</p>
@@ -202,15 +200,24 @@ function InventoryAdmin() {
             <tbody>
               {products.map((product) => {
                 const minStock = product.minStock ?? product.stockMinimo ?? 5;
-                const isLowStock = product.stock <= minStock;
+                const isOutOfStock = product.stock === 0;
+                const isLowStock = product.stock <= minStock && !isOutOfStock;
+                
+                let stockColor = 'inherit';
+                if (isOutOfStock) stockColor = 'var(--color-error)';
+                if (isLowStock) stockColor = 'var(--color-warning)';
+
                 return (
-                  <tr key={product._id} className={`inventoryadmin-table-row ${isLowStock ? 'inventoryadmin-row-low-stock' : ''}`}>
+                  <tr key={product._id} className="inventoryadmin-table-row">
                     <td className="inventoryadmin-table-td">{product.nombre || product.name}</td>
                     <td className="inventoryadmin-table-td">{product.category}</td>
                     <td className="inventoryadmin-table-td inventoryadmin-table-td-right">
                       {formatCurrency(product.price)}
                     </td>
-                    <td className={`inventoryadmin-table-td inventoryadmin-table-td-right inventoryadmin-fw-600 ${isLowStock ? 'text-error' : ''}`}>
+                    <td 
+                      className="inventoryadmin-table-td inventoryadmin-table-td-right inventoryadmin-fw-600"
+                      style={{ color: stockColor }}
+                    >
                       {product.stock}
                     </td>
                     <td className="inventoryadmin-table-td inventoryadmin-table-td-right">

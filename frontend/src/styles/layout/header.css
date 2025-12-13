@@ -22,35 +22,6 @@
   z-index: 100;
 }
 
-.admin-header {
-  background-color: #1a1a1a;
-  color: #ffffff;
-}
-
-.admin-header .logo-workspace,
-.admin-header .logo-bcn,
-.admin-header .nav-link,
-.admin-header .menu-toggle {
-  color: #ffffff;
-}
-
-.admin-header .nav-link:hover,
-.admin-header .nav-link.active {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.admin-badge {
-  font-size: 0.7rem;
-  background-color: #c0392b;
-  color: #ffffff;
-  padding: 2px 6px;
-  border-radius: 4px;
-  margin-left: 8px;
-  vertical-align: middle;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
 .header-content {
   display: flex;
   justify-content: space-between;
@@ -247,11 +218,6 @@
     z-index: 200;
   }
 
-  .admin-header .nav.open {
-    background-color: #1a1a1a;
-    border: 1px solid #333;
-  }
-
   .nav.open .nav-link {
     width: 100%;
     text-align: left;
@@ -274,12 +240,12 @@
 }
 
 @media (max-width: 480px) {
-  .nav-dropdown-toggle > span:not(.header-avatar-arrow),
-  .header-avatar-arrow {
+  .nav-dropdown-toggle:not(.is-admin) > span:not(.header-avatar-arrow),
+  .nav-dropdown-toggle:not(.is-admin) .header-avatar-arrow {
     display: none;
   }
   
-  .nav-dropdown-toggle {
+  .nav-dropdown-toggle:not(.is-admin) {
     padding: 0;
     gap: 0;
   }

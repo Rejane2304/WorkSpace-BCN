@@ -6,13 +6,11 @@ import Toast from "../../components/Toast";
 import FilterSelect from "../../components/FilterSelect";
 import { formatCurrency } from "../../utils/format";
 import { devLog, devError } from "../../utils/devlog";
-// Opciones de filtro de categoría para productos
 const CATEGORY_FILTER_OPTIONS = [
   { value: "todas", label: "Todas Categorías" },
   { value: "informatica", label: "Informática" },
   { value: "oficina", label: "Oficina" },
   { value: "audiovisual", label: "Audiovisual" },
-  // Agrega aquí más categorías si es necesario
 ];
 
 function ProductsAdmin() {
@@ -89,7 +87,6 @@ function ProductsAdmin() {
   async function handleSubmit(e) {
     e.preventDefault()
 
-    // Validación de categoría obligatoria
     if (!formData.category || formData.category === "todas") {
       setToast({ type: "error", message: "Selecciona una categoría válida para el producto." });
       return;
@@ -101,11 +98,9 @@ function ProductsAdmin() {
       }
 
       const datos = {};
-      // Solo enviar campos requeridos y válidos
       if (formData.name && formData.name.trim() !== "") datos.name = formData.name.trim();
       if (formData.description && formData.description.trim() !== "") datos.description = formData.description.trim();
       if (formData.category && formData.category !== "todas") {
-        // Buscar el label correspondiente al value seleccionado
         const catObj = CATEGORY_FILTER_OPTIONS.find(opt => opt.value === formData.category);
         if (catObj) datos.category = catObj.label;
       }
@@ -115,7 +110,6 @@ function ProductsAdmin() {
       if (formData.minStock !== "" && !isNaN(Number(formData.minStock))) datos.minStock = Number(formData.minStock);
       if (formData.maxStock !== "" && !isNaN(Number(formData.maxStock))) datos.maxStock = Number(formData.maxStock);
 
-      console.log('Payload enviado a la API:', datos);
       if (editingProduct) {
         await productsAPI.update(editingProduct._id, datos);
         setToast({ type: "success", message: "El producto se ha actualizado correctamente." });
@@ -134,7 +128,6 @@ function ProductsAdmin() {
     }
   }
 
-  // Cargar productos desde la API
   async function loadProducts() {
     try {
       const response = await productsAPI.getAll();
@@ -147,10 +140,8 @@ function ProductsAdmin() {
     }
   }
 
-  // Cargar productos al montar el componente y suscribirse a eventos en tiempo real
   useEffect(() => {
     loadProducts();
-    // Listen for real-time updates
     socket.on("productsUpdated", loadProducts);
     return () => {
       socket.off("productsUpdated", loadProducts);
@@ -191,14 +182,16 @@ function ProductsAdmin() {
     })
     .filter((product) => {
       if (selectedCategory === "todas") return true;
-      // Normaliza ambos valores para comparar correctamente
-      const prodCat = (product.category || '').toLowerCase().trim();
-      const selCat = (selectedCategory || '').toLowerCase().trim();
+      
+      const normalize = (str) => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+      
+      const prodCat = normalize(product.category || '');
+      const selCat = normalize(selectedCategory || '');
+      
       return prodCat === selCat;
     })
     .sort((a, b) => (a.name || "").localeCompare(b.name || ""));
 
-  // Open form for new or edit
   function openForm(product = null) {
     if (product) {
       setEditingProduct(product);
@@ -232,7 +225,6 @@ function ProductsAdmin() {
     setShowForm(true);
   }
 
-  // Clear editingProduct after save/cancel
   useEffect(() => {
     if (!showForm) {
       setEditingProduct(null);
@@ -415,11 +407,12 @@ function ProductsAdmin() {
               />
             </div>
           </div>
-          <div className="producto-view-toggle productsadmin-view-toggle">
+          <div className="product-view-toggle productsadmin-view-toggle">
             <button
               type="button"
               className={"btn btn-secondary " + (viewMode === "grid" ? "active" : "")}
               onClick={() => setViewMode("grid")}
+              disabled={viewMode === "grid"}
             >
               Vista en tarjetas
             </button>
@@ -427,6 +420,7 @@ function ProductsAdmin() {
               type="button"
               className={"btn btn-secondary " + (viewMode === "list" ? "active" : "")}
               onClick={() => setViewMode("list")}
+              disabled={viewMode === "list"}
             >
               Vista en lista
             </button>

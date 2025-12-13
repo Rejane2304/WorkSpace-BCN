@@ -165,7 +165,7 @@ function SalesAdmin() {
   const filteredSales = sales
     .filter((sale) => {
       if (statusFilter === "todas") return true;
-      
+
       const saleStatus = (sale.status || "").toLowerCase();
       const filterStatus = statusFilter.toLowerCase();
       
@@ -427,7 +427,28 @@ function SalesAdmin() {
         ))}
       </div>
 
-      {filteredSales.length === 0 && <p className="text-center">No hay ventas con este estado</p>}
+      {filteredSales.length === 0 && (
+        <div className="text-center sales-admin-empty-state">
+          <p className="sales-admin-empty-message">
+            {search 
+              ? `No se encontraron ventas que coincidan con "${search}"` 
+              : statusFilter !== "todas" 
+                ? `No hay ventas con el estado "${STATUS_FILTER_OPTIONS.find(o => o.value === statusFilter)?.label}"`
+                : "No hay ventas registradas aún."}
+          </p>
+          {(search || statusFilter !== "todas") && (
+            <button 
+              className="btn btn-outline btn-sm mt-2"
+              onClick={() => {
+                setSearch("")
+                setStatusFilter("todas")
+              }}
+            >
+              Limpiar filtros
+            </button>
+          )}
+        </div>
+      )}
     </div>
   )
 }

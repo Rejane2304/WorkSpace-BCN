@@ -46,7 +46,7 @@
 
 .base-form-shell {
   width: 100%;
-  min-height: 100vh;
+  flex: 1;
   background: linear-gradient(180deg, rgba(244, 246, 249, 0.8), rgba(244, 246, 249, 1));
   display: flex;
   flex-direction: column;

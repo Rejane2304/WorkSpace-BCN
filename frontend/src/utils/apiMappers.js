@@ -131,12 +131,24 @@ const buildPaymentSale = (payment = {}) => {
 
 const mapPaymentFromApi = (payment = {}) => {
   const paymentDetails = {
+    last4Digits: payment.paymentDetails?.last4Digits || payment.paymentDetails?.ultimos4Digitos || "",
+    paypalEmail: payment.paymentDetails?.paypalEmail || payment.paymentDetails?.emailPaypal || "",
     ultimos4Digitos: payment.paymentDetails?.last4Digits || payment.paymentDetails?.ultimos4Digitos || "",
     emailPaypal: payment.paymentDetails?.paypalEmail || payment.paymentDetails?.emailPaypal || "",
   };
 
+  const saleObj = payment.sale || payment.order || payment.venta || {};
+
   return {
+    ...payment,
     _id: payment._id,
+    amount: payment.amount || payment.monto || 0,
+    paymentMethod: payment.paymentMethod || payment.method || payment.metodoPago || "",
+    status: payment.status || payment.estado || "",
+    paymentDate: payment.paymentDate || payment.fechaPago,
+    errorMessage: payment.errorMessage || payment.mensajeError || "",
+    sale: saleObj,
+    
     monto: payment.amount || payment.monto || 0,
     metodoPago: payment.paymentMethod || payment.method || payment.metodoPago || "",
     estado: toSpanishPaymentStatus(payment.status || payment.estado || ""),

@@ -8,7 +8,7 @@ import Toast from "../components/Toast.js"
 import { normalizePhone, isValidPhone } from "../utils/validation"
 
 function Profile() {
-  const { user, isAuthenticated, updateUser } = useAuth()
+  const { user, isAuthenticated, updateUser, isAdmin } = useAuth()
   const [profile, setProfile] = useState({
     nombre: "",
     email: "",
@@ -167,7 +167,12 @@ function Profile() {
         email: updatedProfile.email || user?.email,
       })
       setToast({ type: "success", message: "Perfil actualizado correctamente." })
-      setTimeout(() => navigate("/productos"), 1500)
+      
+      if (isAdmin) {
+        setTimeout(() => navigate("/admin"), 1500)
+      } else {
+        setTimeout(() => navigate("/productos"), 1500)
+      }
 
       setPasswordForm({
         password: "",

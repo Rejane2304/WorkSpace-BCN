@@ -112,11 +112,10 @@ function CartPage() {
   return (
     <div className="container cartpage-padding-y-2 cartpage-minh-70vh">
       <div className="cart-hero">
-        <div>
-          <h1 className="cart-title">Carrito</h1>
-          <p className="text-center">
-            Tus productos seleccionados están esperando.<br/>
-            Añade ítems y pasa al pago seguro.
+        <div className="cart-hero-content">
+          <h1 className="cart-title">Tu Carrito de Compras</h1>
+          <p className="cart-subtitle">
+            Revisa los productos que has seleccionado. Cuando estés listo, procede al pago de forma segura.
           </p>
         </div>
         <div className="cart-hero-actions">
@@ -132,8 +131,11 @@ function CartPage() {
 
       {cart.length === 0 ? (
         <div className="empty-cart-card">
-          <p>Tu carrito está vacío.</p>
-          <p className="text-small">Añade productos para continuar con el proceso de compra.</p>
+          <h3>Tu carrito está vacío</h3>
+          <p className="text-muted">Parece que aún no has añadido ningún producto. Explora nuestro catálogo y encuentra lo que necesitas.</p>
+          <button className="btn btn-outline mt-4" onClick={() => navigate('/productos')}>
+            Ver Productos
+          </button>
         </div>
       ) : (
         <>

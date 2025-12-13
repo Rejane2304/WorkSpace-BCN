@@ -360,15 +360,6 @@ function CustomersAdmin() {
         onClose={() => setToast((prev) => ({ ...prev, message: "" }))}
       />
       <Modal
-        isOpen={modalConfig.isOpen}
-        title={modalConfig.title}
-        message={modalConfig.message}
-        confirmLabel={modalConfig.confirmLabel}
-        cancelLabel={modalConfig.cancelLabel}
-        onConfirm={modalConfig.onConfirm}
-        onCancel={modalConfig.onCancel}
-      />
-      <Modal
         isOpen={!!editCustomer}
         title="Editar cliente"
         confirmLabel="Guardar"
@@ -734,6 +725,17 @@ function CustomersAdmin() {
           </tbody>
         </table>
       </div>
+
+      <Modal
+        isOpen={modalConfig.isOpen}
+        title={modalConfig.title}
+        message={modalConfig.message}
+        confirmLabel={modalConfig.confirmLabel}
+        cancelLabel={modalConfig.cancelLabel}
+        onConfirm={modalConfig.onConfirm}
+        onCancel={modalConfig.onCancel}
+        onClose={() => setModalConfig((prev) => ({ ...prev, isOpen: false }))}
+      />
     </div>
   )
 }

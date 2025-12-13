@@ -62,13 +62,12 @@ function Header() {
   }
 
   return (
-    <header className={`header ${isAdmin ? 'admin-header' : ''}`}>
+    <header className="header">
       <div className="header-container">
         <div className="header-content">
           <Link to={isAdmin ? "/admin" : "/"} className="logo" onClick={closeMenu}>
             <span className="logo-workspace">WorkSpace</span>
             <span className="logo-bcn">BCN</span>
-            {isAdmin && <span className="admin-badge">ADMIN</span>}
           </Link>
 
           <div className="header-right">
@@ -88,12 +87,6 @@ function Header() {
               {!isAdmin && (
                 <Link to="/contacto" className="nav-link" onClick={closeMenu}>
                   Contacto
-                </Link>
-              )}
-
-              {isAdmin && (
-                <Link to="/admin" className="nav-link" onClick={closeMenu}>
-                  Panel Admin
                 </Link>
               )}
 
@@ -130,7 +123,7 @@ function Header() {
                 <div className="nav-dropdown header-user">
                   <button
                     type="button"
-                    className="nav-link nav-dropdown-toggle"
+                    className={`nav-link nav-dropdown-toggle ${isAdmin ? "is-admin" : ""}`}
                     onClick={() => setIsUserDropdownOpen((prev) => !prev)}
                   >
                     <div className="header-avatar">
@@ -156,9 +149,11 @@ function Header() {
               )}
             </div>
 
-            <button className="menu-toggle" onClick={toggleMenu} aria-label="Alternar menú">
-              {"☰"}
-            </button>
+            {!isAdmin && (
+              <button className="menu-toggle" onClick={toggleMenu} aria-label="Alternar menú">
+                {"☰"}
+              </button>
+            )}
           </div>
 
         </div>
