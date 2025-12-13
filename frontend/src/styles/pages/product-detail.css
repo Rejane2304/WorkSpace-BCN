@@ -1,3 +1,12 @@
+.orange-title {
+  color: var(--color-primary);
+}
+
+.product-detail-description {
+  margin-bottom: 1.2rem;
+  color: var(--color-text);
+  font-size: 1.1rem;
+}
 .productdetail-py-3 {
   padding: 3rem 0;
 }

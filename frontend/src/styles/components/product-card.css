@@ -1,3 +1,21 @@
+.d-flex {
+  display: flex;
+}
+.align-center {
+  align-items: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.gap-1 {
+  gap: 1rem;
+}
+.m-0 {
+  margin: 0;
+}
+.fs-lg {
+  font-size: 1.25rem;
+}
 .cursor-pointer {
   cursor: pointer;
 }

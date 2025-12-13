@@ -88,11 +88,9 @@ function ProductDetail() {
         </div>
 
         <div className="product-detail-info">
-          <h1 className="product-detail-title">{product.name || product.nombre}</h1>
-          <p className={"product-detail-category"}>{product.category || product.categoria}</p>
-
+          <h1 className="product-detail-title orange-title">{product.name || product.nombre}</h1>
           {(product.description || product.descripcion) && (
-            <p className="productdetail-mt-1">
+            <p className="product-detail-description">
               {(() => {
                 const text = String(product.description || product.descripcion).trim()
                 if (!text) return ""
@@ -104,7 +102,7 @@ function ProductDetail() {
               })()}
             </p>
           )}
-
+          <p className={"product-detail-category"}>{product.category || product.categoria}</p>
           <div className="product-detail-price">
             {formatCurrency(product.price || product.precio)}
           </div>
