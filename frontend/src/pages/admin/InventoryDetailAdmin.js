@@ -217,7 +217,7 @@ function InventoryDetailAdmin() {
           Introduce la cantidad y, si lo necesitas, un motivo para dejar trazabilidad clara.
         </p>
 
-        <div className="flex gap-2">
+        <div className="flex gap-2 inventorydetailadmin-form-row">
           <div className="form-group inventorydetailadmin-flex-1">
             <label className="label">Cantidad</label>
             <input
@@ -248,7 +248,7 @@ function InventoryDetailAdmin() {
           message={toast.message}
           onClose={() => setToast((prev) => ({ ...prev, message: "" }))}
         />
-        <div className="flex gap-2 inventorydetailadmin-mt-1 inventorydetailadmin-flex-wrap">
+        <div className="flex gap-2 inventorydetailadmin-mt-1 inventorydetailadmin-flex-wrap inventorydetailadmin-actions-row">
           <button
             type="button"
             className="btn btn-inventory-in"

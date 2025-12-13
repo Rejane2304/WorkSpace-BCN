@@ -1,12 +1,108 @@
 @media (max-width: 768px) {
-  .inventoryadmin-table-th,
-  .inventoryadmin-table-td {
-    font-size: 0.92rem;
-    padding: 0.4rem 0.2rem;
+  .inventoryadmin-table, 
+  .inventoryadmin-table tbody, 
+  .inventoryadmin-table tr, 
+  .inventoryadmin-table td {
+    display: block;
+    width: 100%;
   }
+
+  .inventoryadmin-table-head {
+    display: none;
+  }
+
+  .inventoryadmin-table-row {
+    background: #fff;
+    border: 1px solid var(--color-accent);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 4px 16px rgba(101, 78, 42, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    overflow: hidden;
+  }
+
+  .inventoryadmin-table .inventoryadmin-table-td {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px dashed #e6dccb;
+    text-align: left;
+    font-size: 1rem;
+    color: #5a4a42;
+  }
+
+  .inventoryadmin-table-td:nth-of-type(1) {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    
+    background-color: var(--color-accent);
+    width: calc(100% + 3rem);
+    margin: -1.5rem -1.5rem 1rem -1.5rem;
+    padding: 1rem 1.5rem;
+    border-bottom: none;
+    border-radius: 15px 15px 0 0;
+    
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-primary-darker);
+  }
+  
+  .inventoryadmin-table-td:nth-of-type(1)::before {
+    content: none;
+  }
+
+  .inventoryadmin-table-td:last-child {
+    border-bottom: none;
+    justify-content: center;
+    padding-top: 1.2rem;
+    padding-bottom: 0;
+  }
+
+  .inventoryadmin-table-td:not(:first-child):not(:last-child)::before {
+    font-weight: 600;
+    color: var(--color-text-light);
+    margin-right: 0.5rem;
+  }
+
+  .inventoryadmin-table-td:nth-of-type(2) {
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    font-weight: 500;
+    color: var(--color-text-light);
+    font-size: 1.05rem;
+    padding-bottom: 1rem;
+  }
+  .inventoryadmin-table-td:nth-of-type(2)::before { content: none; }
+
+  .inventoryadmin-table-td:nth-of-type(3),
+  .inventoryadmin-table-td:nth-of-type(4),
+  .inventoryadmin-table-td:nth-of-type(5) {
+    justify-content: flex-start;
+    text-align: left;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+  }
+
+  .inventoryadmin-table-td:nth-of-type(3)::before { content: "Precio:"; font-size: 0.95rem; font-weight: 500; }
+  .inventoryadmin-table-td:nth-of-type(4)::before { content: "Stock:"; font-size: 0.95rem; font-weight: 500; }
+  .inventoryadmin-table-td:nth-of-type(5)::before { content: "Stock mín:"; font-size: 0.95rem; font-weight: 500; }
+
   .inventoryadmin-filtros-bar {
     flex-direction: column;
     gap: 0.75rem;
+  }
+  
+  .inventoryadmin-table-td .btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.95rem;
   }
 }
 
@@ -100,7 +196,7 @@
 }
 
 .inventoryadmin-row-low-stock {
-  background-color: rgba(231, 76, 60, 0.1); /* Light red background */
+  background-color: rgba(231, 76, 60, 0.1);
 }
 
 .inventoryadmin-row-low-stock:hover {

@@ -12,6 +12,7 @@ import { sortProductsByName } from "../../utils/sortProducts";
 function InventoryAdmin() {
   const [stats, setStats] = useState(null)
   const [products, setProducts] = useState([])
+  const [search, setSearch] = useState("")
   const [toast, setToast] = useState({ type: "info", message: "" })
   const [modalConfig, setModalConfig] = useState({
     isOpen: false,
@@ -123,6 +124,13 @@ function InventoryAdmin() {
     })
   }
 
+  const filteredProducts = products.filter((product) => {
+    const term = search.toLowerCase()
+    const name = (product.nombre || product.name || "").toLowerCase()
+    const category = (product.category || "").toLowerCase()
+    return name.includes(term) || category.includes(term)
+  })
+
   if (!stats) {
     return (
       <>
@@ -180,6 +188,18 @@ function InventoryAdmin() {
           Gestiona el stock de todos los productos desde una única vista.<br />
           Usa las acciones rápidas por fila o selecciona un producto para editarlo en el panel de control individual.
         </p>
+        
+        <div style={{ marginBottom: 24, marginTop: 16 }}>
+            <input
+              type="text"
+              placeholder="Buscar productos..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="input"
+              style={{ border: '2px solid var(--color-primary)', borderRadius: 12, width: '100%' }}
+            />
+        </div>
+
         <div className="inventoryadmin-overflow-x-auto inventoryadmin-mt-1">
           <Toast
             type={toast.type}
@@ -198,7 +218,7 @@ function InventoryAdmin() {
               </tr>
             </thead>
             <tbody>
-              {products.map((product) => {
+              {filteredProducts.map((product) => {
                 const minStock = product.minStock ?? product.stockMinimo ?? 5;
                 const isOutOfStock = product.stock === 0;
                 const isLowStock = product.stock <= minStock && !isOutOfStock;

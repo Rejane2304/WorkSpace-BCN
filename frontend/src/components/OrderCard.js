@@ -4,10 +4,27 @@ import { translateOrderStatus } from "../utils/translation";
 
 function OrderCard({ order }) {
   const items = order.items || order.productos || [];
+
+  const getStatusBadgeClass = (status) => {
+    switch (status) {
+      case 'pending': return 'badge badge-warning';
+      case 'processing': return 'badge badge-info';
+      case 'shipped': return 'badge badge-purple';
+      case 'delivered': return 'badge badge-success';
+      case 'cancelled': return 'badge badge-error';
+      case 'paid': return 'badge badge-success';
+      default: return 'badge badge-neutral';
+    }
+  };
+
   return (
     <article className="order-card">
       <div className="order-card-content">
-        <div className="text-small order-card-status">{translateOrderStatus(order.status)}</div>
+        <div className="order-card-status-wrapper" style={{ marginBottom: '8px' }}>
+          <span className={getStatusBadgeClass(order.status)}>
+            {translateOrderStatus(order.status)}
+          </span>
+        </div>
         <div className="order-card-items">
           {items.map((item, idx) => {
             const prod = item.product || item.producto || {};

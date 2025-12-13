@@ -214,19 +214,20 @@ function Products() {
                         <img src={imgSrc} alt={prodName} />
                       </div>
                       <div className="product-list-card-info">
-                        <div className="product-list-card-row product-list-card-name">{product.nombre || product.name}</div>
-                        <div className="product-list-card-row text-success">{product.categoria || product.category}</div>
-                        <div className="product-list-card-row product-list-card-price">{(product.precio || product.price) + ' €'}</div>
+                        <div className="product-list-card-row product-list-card-name color-primary fw-bold">{product.nombre || product.name}</div>
+                        <div className="product-list-card-row color-success fw-bold">{product.categoria || product.category}</div>
+                        <div className="product-list-card-row product-list-card-price color-primary fw-bold">{(product.precio || product.price) + ' €'}</div>
                       </div>
                       <div className="product-list-card-actions">
                         <button
-                          className={`btn btn-primary btn-ms ${canPurchase ? "products-cursor-pointer" : "products-cursor-not-allowed"}`}
+                          className={`btn btn-primary btn-ms btn-equal ${canPurchase ? "products-cursor-pointer" : "products-cursor-not-allowed"}`}
                           onClick={() => { if (canPurchase) addToCart(product); }}
                           disabled={!canPurchase}
+                          style={{ cursor: canPurchase ? "pointer" : "not-allowed" }}
                         >
                           Comprar
                         </button>
-                        <Link to={`/productos/${product._id}`} className="btn btn-outline btn-ms">
+                        <Link to={`/productos/${product._id}`} className="btn btn-secondary btn-ms btn-equal">
                           Ver detalles
                         </Link>
                         {isAdmin && (

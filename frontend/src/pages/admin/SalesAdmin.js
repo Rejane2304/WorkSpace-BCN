@@ -127,6 +127,18 @@ function SalesAdmin() {
     pagado: "paid",
   }
 
+  const getStatusBadgeClass = (status) => {
+    switch (status) {
+      case 'pending': return 'badge badge-warning';
+      case 'processing': return 'badge badge-info';
+      case 'shipped': return 'badge badge-purple';
+      case 'delivered': return 'badge badge-success';
+      case 'cancelled': return 'badge badge-error';
+      case 'paid': return 'badge badge-success';
+      default: return 'badge badge-neutral';
+    }
+  };
+
   const openSaleEditModal = (sale) => {
     setSaleEditTarget(sale)
     setEditSaleStatus(sale.status || "")
@@ -218,7 +230,7 @@ function SalesAdmin() {
       />
       <Modal
         isOpen={!!selectedSale}
-        title="Detalle de venta"
+        title="Detalle Completo de Venta"
         confirmLabel="Cerrar"
         cancelLabel={null}
         onConfirm={() => setSelectedSale(null)}
@@ -226,41 +238,38 @@ function SalesAdmin() {
         onClose={() => setSelectedSale(null)}
       >
         {selectedSale && (
-          <div>
-            <p>
-              <strong>ID:</strong> {selectedSale._id}
-            </p>
+          <div className="sales-detail-modal-content">
+            <div style={{ marginBottom: '1.5rem', borderBottom: '1px solid #eee', paddingBottom: '1rem' }}>
+              <p><strong>ID Venta:</strong> {selectedSale._id}</p>
+              <p><strong>Fecha:</strong> {selectedSale.saleDate ? new Date(selectedSale.saleDate).toLocaleString() : "-"}</p>
+              <p><strong>Estado Actual:</strong> <span className={getStatusBadgeClass(selectedSale.status)}>{getStatusLabel(selectedSale.status)}</span></p>
+            </div>
 
-            <p>
-              <strong>Cliente:</strong> {selectedSale.customer?.name || "Cliente anónimo"} ({selectedSale.customer?.email || "sin email"})
-            </p>
-            <p>
-              <strong>Estado:</strong> {getStatusLabel(selectedSale.status)}
-            </p>
-            <p>
-              <strong>Fecha:</strong>{" "}
-              {selectedSale.saleDate ? new Date(selectedSale.saleDate).toLocaleString() : "-"}
-            </p>
-
-            <div className="sales-admin-margin-top-1">
-              <h3>Dirección de envío</h3>
-              <p className="sales-admin-margin-top-025 sales-admin-color-text-light sales-admin-fontsize-09">
-                {selectedSale.shippingAddress?.street || "-"}
-                {selectedSale.shippingAddress?.street && <br />}
-                {selectedSale.shippingAddress?.postalCode} {selectedSale.shippingAddress?.city}
-              </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
+              <div>
+                <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>Información del Cliente</h3>
+                <p><strong>Nombre:</strong> {selectedSale.customer?.name || "Anónimo"}</p>
+                <p><strong>Email:</strong> {selectedSale.customer?.email || "-"}</p>
+                {selectedSale.customer?.phone && <p><strong>Teléfono:</strong> {selectedSale.customer.phone}</p>}
+              </div>
+              <div>
+                <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>Dirección de Envío</h3>
+                <p>{selectedSale.shippingAddress?.street || "Calle no especificada"}</p>
+                <p>{selectedSale.shippingAddress?.postalCode} {selectedSale.shippingAddress?.city}</p>
+                <p>{selectedSale.shippingAddress?.country || ""}</p>
+              </div>
             </div>
 
             <div className="sales-admin-margin-top-1">
-              <h3>Productos</h3>
+              <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>Productos ({selectedSale.items?.length || 0})</h3>
               <div className="sales-admin-overflow-x-auto sales-admin-mt-05">
-                <table className="sales-admin-table-full">
+                <table className="sales-admin-table-full" style={{ width: '100%', borderCollapse: 'collapse' }}>
                   <thead className="sales-admin-bg-accent">
                     <tr>
                       <th className="sales-admin-padding-xs sales-admin-text-left">Producto</th>
-                      <th className="sales-admin-padding-xs sales-admin-text-right">Cantidad</th>
-                      <th className="sales-admin-padding-xs sales-admin-text-right">Precio unitario</th>
-                      <th className="sales-admin-padding-xs sales-admin-text-right">Subtotal</th>
+                      <th className="sales-admin-padding-xs sales-admin-text-right">Cant.</th>
+                      <th className="sales-admin-padding-xs sales-admin-text-right">Precio</th>
+                      <th className="sales-admin-padding-xs sales-admin-text-right">Total</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -270,7 +279,7 @@ function SalesAdmin() {
                         item.producto?.nombre ||
                         `producto-${item.cantidad}-${index}`
                       return (
-                        <tr key={itemKey}>
+                        <tr key={itemKey} style={{ borderBottom: '1px solid #f0f0f0' }}>
                           <td className="sales-admin-padding-xs">
                             {item.producto?.nombre || "Producto eliminado"}
                           </td>
@@ -289,10 +298,8 @@ function SalesAdmin() {
               </div>
             </div>
 
-            <div className="sales-admin-margin-top-1 sales-admin-text-align-right">
-              <p>
-                <strong>Total:</strong> {formatCurrency(selectedSale.total)}
-              </p>
+            <div className="sales-admin-margin-top-1 sales-admin-text-align-right" style={{ fontSize: '1.2rem', marginTop: '1.5rem', borderTop: '1px solid #eee', paddingTop: '1rem' }}>
+              <p><strong>Total Pagado:</strong> {formatCurrency(selectedSale.total)}</p>
             </div>
           </div>
         )}
@@ -375,17 +382,14 @@ function SalesAdmin() {
           <div key={sale._id} className="sales-admin-summary-card" style={{ padding: '1rem', fontSize: '0.9rem' }}>
             <div className="sales-admin-flex-row-wrap sales-admin-align-center">
               <div className="sales-admin-flex-2">
-                <p style={{ wordBreak: "break-all" }}><strong>ID venta:</strong> {sale._id}</p>
-                <p><strong>Cliente:</strong> {sale.customer?.name || "Cliente anónimo"} ({sale.customer?.email || "sin email"})</p>
-                <p><strong>Monto total:</strong> {formatCurrency(sale.total)}</p>
-                <p><strong>Fecha:</strong> {sale.saleDate ? new Date(sale.saleDate).toLocaleString() : "-"}</p>
-                <p><strong>Estado:</strong> {getStatusLabel(sale.status)}</p>
-                <p style={{ wordBreak: "break-word" }}><strong>Dirección:</strong> {sale.shippingAddress?.street || "No disponible"}, {sale.shippingAddress?.city || "Sin ciudad"}</p>
-                <p><strong>Artículos:</strong> {sale.items?.length || 0}</p>
+                <p style={{ wordBreak: "break-all" }}><strong>ID:</strong> {sale._id}</p>
+                <p><strong>Cliente:</strong> {sale.customer?.name || "Cliente anónimo"}</p>
+                <p><strong>Fecha:</strong> {sale.saleDate ? new Date(sale.saleDate).toLocaleDateString() : "-"}</p>
+                <p><strong>Total:</strong> {formatCurrency(sale.total)}</p>
               </div>
               <div className="sales-admin-flex-1-center">
-                <div className="sales-admin-flex-row-wrap sales-admin-justify-center">
-                  {sale.items?.slice(0, 4).map((item, idx) => {
+                <div className="sales-admin-flex-row-wrap sales-admin-justify-center" style={{ marginBottom: '0.5rem' }}>
+                  {sale.items?.slice(0, 3).map((item, idx) => {
                     const prod = item.product || item.producto || {};
                     const imgSrc = prod.image || prod.imagen || "/assets/no-image.png";
                     const prodName = prod.name || prod.nombre || "Producto";
@@ -399,11 +403,9 @@ function SalesAdmin() {
                     );
                   })}
                 </div>
-                <p className="sales-admin-mt-05 sales-admin-fontsize-085 sales-admin-color-text-light">
-                  {sale.items?.length || 0} artículos · Envío: {sale.shippingAddress?.city || "sin ciudad"}
-                </p>
-                <div className="sales-admin-status-actions">
-                  <span className="sales-admin-status-pill">{getStatusLabel(sale.status)}</span>
+                
+                <div className="sales-admin-status-actions" style={{ flexDirection: 'column', gap: '0.5rem', alignItems: 'center' }}>
+                  <span className={getStatusBadgeClass(sale.status)}>{getStatusLabel(sale.status)}</span>
                   <div className="sales-admin-status-buttons">
                     <button
                       type="button"

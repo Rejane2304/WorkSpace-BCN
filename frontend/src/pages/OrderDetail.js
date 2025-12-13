@@ -51,6 +51,17 @@ function OrderDetail() {
   const statusKey = (order.status ?? order.payment?.status ?? 'pendiente').toString().toLowerCase()
   const orderStatusLabel = translateOrderStatus(order.status ?? order.payment?.status)
 
+  const getStatusBadgeClass = (status) => {
+    const s = (status || '').toLowerCase();
+    if (s === 'pending' || s === 'pendiente') return 'badge badge-warning';
+    if (s === 'processing' || s === 'procesando') return 'badge badge-info';
+    if (s === 'shipped' || s === 'enviado') return 'badge badge-purple';
+    if (s === 'delivered' || s === 'entregado' || s === 'completed' || s === 'completado') return 'badge badge-success';
+    if (s === 'cancelled' || s === 'cancelado' || s === 'failed' || s === 'fallido') return 'badge badge-error';
+    if (s === 'paid' || s === 'pagado') return 'badge badge-success';
+    return 'badge badge-neutral';
+  };
+
   const handlePrint = () => {
     window.print()
   }
@@ -69,9 +80,11 @@ function OrderDetail() {
             <p>Número de pedido: <strong>{order._id}</strong></p>
             <p>Fecha: {new Date(order.createdAt).toLocaleDateString("es-ES", { hour: "2-digit", minute: "2-digit" })}</p>
           </div>
-          <div className={`order-status-pill order-status-${statusKey}`}>
-            <span>{orderStatusLabel}</span>
-            <p className="text-small">Total: {formatCurrency(orderTotals.total)}</p>
+          <div style={{ textAlign: 'right' }}>
+            <span className={getStatusBadgeClass(order.status ?? order.payment?.status)} style={{ fontSize: '1rem', padding: '0.5em 1em' }}>
+              {orderStatusLabel}
+            </span>
+            <p className="text-small" style={{ marginTop: '0.5rem' }}>Total: {formatCurrency(orderTotals.total)}</p>
           </div>
         </header>
 

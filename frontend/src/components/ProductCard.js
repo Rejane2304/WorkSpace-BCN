@@ -24,32 +24,28 @@ function ProductCard({ product, onAddToCart, isAdmin }) {
         />
       </div>
       <div className="product-info">
-        <h3 className="titulo-producto">{product.name}</h3>
+        <h3 className="product-title color-primary fw-bold">{product.name}</h3>
         <div className="product-info-header">
-          <p className="product-category">{product.category}</p>
-          <span className="product-price">{formatCurrency(product.price)}</span>
+          <p className="product-category color-success fw-bold">{product.category}</p>
+          <span className="product-price color-primary fw-bold">{formatCurrency(product.price)}</span>
         </div>
 
-        <div className="product-card-actions-row">
-          <div className="product-buttons">
-            <Link
-              to={`/productos/${product._id}`}
-              className="btn btn-secondary btn-ms"
-            >
-              Ver Detalle
-            </Link>
-          </div>
-          <div className="product-card-actions-right">
-            <button
-              type="button"
-              onClick={handleBuy}
-              className="btn btn-primary btn-ms"
-              disabled={!canPurchase}
-              style={{ cursor: canPurchase ? "pointer" : "not-allowed" }}
-            >
-              Comprar
-            </button>
-          </div>
+        <div className="product-card-actions-row product-card-actions-equal">
+          <button
+            type="button"
+            onClick={handleBuy}
+            className="btn btn-primary btn-ms btn-equal"
+            disabled={!canPurchase}
+            style={{ cursor: canPurchase ? "pointer" : "not-allowed" }}
+          >
+            Comprar
+          </button>
+          <Link
+            to={`/productos/${product._id}`}
+            className="btn btn-secondary btn-ms btn-equal"
+          >
+            Ver detalles
+          </Link>
         </div>
         {isAdmin && (
           <div className="product-card-warning">

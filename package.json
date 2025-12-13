@@ -2,6 +2,7 @@
   "name": "workspacebcn",
   "private": true,
   "scripts": {
+    "test": "npm run test:all",
     "test:all": "npm run test --prefix backend && npm run test --prefix frontend",
     "test:local": "echo 'Sin tests locales'"
   },

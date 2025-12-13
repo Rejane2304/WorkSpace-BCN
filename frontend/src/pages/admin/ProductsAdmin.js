@@ -146,7 +146,6 @@ function ProductsAdmin() {
     return () => {
       socket.off("productsUpdated", loadProducts);
     };
-    // eslint-disable-next-line
   }, []);
 
   async function deleteProduct(id) {
@@ -474,9 +473,10 @@ function ProductsAdmin() {
                   <img src={imgSrc} alt={prodName} />
                 </div>
                 <div className="product-list-card-info">
-                  <div className="product-list-card-row product-list-card-name">{product.name}</div>
+                  <div className="product-list-card-row productsadmin-card-title" style={{fontSize: '1.1rem', marginBottom: '0.2rem'}}>{product.name}</div>
+                  <div className="product-list-card-row" style={{fontSize: '0.9rem', color: '#666', margin: '0.2rem 0'}}>{product.description?.slice(0, 100)}{product.description?.length > 100 ? '...' : ''}</div>
                   <div className="product-list-card-row productsadmin-category-text">{product.category}</div>
-                  <div className="product-list-card-row product-list-card-price">{formatCurrency(product.price)}</div>
+                  <div className="product-list-card-row productsadmin-price-text">{formatCurrency(product.price)}</div>
                   <div className="product-list-card-row">Stock: {product.stock}</div>
                 </div>
                 <div className="product-list-card-actions">

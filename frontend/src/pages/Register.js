@@ -1,6 +1,6 @@
 import "../styles/pages/baseForm.css";
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
 import { auth } from "../api/api"
@@ -23,8 +23,18 @@ function Register() {
   const [profileImageName, setProfileImageName] = useState("")
   const [imagePreview, setImagePreview] = useState("")
 
-  const { login } = useAuth()
+  const { login, isAuthenticated, isAdmin } = useAuth()
   const navigate = useNavigate()
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      if (isAdmin) {
+        navigate("/admin")
+      } else {
+        navigate("/productos")
+      }
+    }
+  }, [isAuthenticated, isAdmin, navigate])
 
   function handleChange(e) {
     setFormData({

@@ -1,3 +1,10 @@
+/* Utilidades para colores y fuente */
+.color-primary { color: var(--color-primary) !important; }
+.color-success { color: var(--color-success) !important; }
+.fw-bold { font-weight: 700 !important; }
+/* Botones igual tamaño */
+.btn-equal { min-width: 140px; max-width: 180px; width: 100%; }
+.product-card-actions-equal { gap: 1rem; }
 /* ================================================
    1. BASE - Fundamentos y estilos globales
    ================================================ */
@@ -23,6 +30,7 @@
 @import url('./components/tables.css');
 @import url('./components/modals.css');
 @import url('./components/filters.css');
+@import url('./components/badges.css');
 @import url('./components/product-card.css');
 @import url('./components/orders.css');
 @import url('./components/scroll-to-top.css');

@@ -1,3 +1,22 @@
+.productsadmin-btn-create {
+  min-width: 180px;
+  margin-bottom: 32px;
+  display: block;
+  margin-top: 0.5rem;
+  background: linear-gradient(135deg, rgba(226, 128, 67, 0.8), rgba(93, 187, 183, 0.8)) !important;
+  border: none !important;
+  color: var(--color-text-dark) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px !important;
+  padding: 10px 20px !important;
+  font-weight: 600 !important;
+}
+
+.productsadmin-btn-create:hover {
+  background: linear-gradient(135deg, rgba(200, 116, 47, 0.85), rgba(89, 173, 171, 0.85)) !important;
+  transform: translateY(-2px);
+}
+
 .container,
 .container-full {
   max-width: 1200px;
@@ -480,11 +499,11 @@ html, body {
 }
 
 .product-view-toggle .btn.active {
-  background: var(--color-primary) !important;
-  color: #fff !important;
+  background: #e09c4a !important;
+  color: var(--color-text-dark) !important;
   box-shadow: var(--shadow-sm);
-  border-color: var(--color-primary) !important;
-  opacity: 0.6;
+  border-color: #e09c4a !important;
+  opacity: 1;
   pointer-events: none;
   cursor: default;
 }
@@ -609,26 +628,30 @@ html, body {
     align-items: stretch !important;
     gap: 1rem !important;
   }
+
+  .fila-filtros-productos {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
   
   .products-filter-row {
     display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
+    flex-direction: column !important;
     width: 100% !important;
     gap: 0.8rem !important;
-    align-items: center !important;
+    align-items: stretch !important;
   }
   
   .products-search-bar {
     flex: 1 1 auto !important;
-    width: auto !important;
+    width: 100% !important;
     min-width: 0 !important;
     margin: 0 !important;
   }
 
   .products-category-bar {
     flex: 1 1 auto !important;
-    width: auto !important;
+    width: 100% !important;
     min-width: 0 !important;
     margin: 0 !important;
     display: block !important;
@@ -778,7 +801,19 @@ html, body {
     gap: 0.7rem !important;
   }
 
-  .products-panel input,
+  .products-filter-row {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 0.8rem !important;
+  }
+  
+  .products-search-bar {
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+  }
   .products-panel select,
   .products-panel button {
     width: 100%; 
@@ -813,8 +848,8 @@ html, body {
     min-width: 0;
     box-sizing: border-box;
     margin-bottom: 0.3rem;
-    background: var(--color-turquoise, #3ec6c6);
-    color: #2c3e50;
+    background: #e09c4a;
+    color: #333;
     font-weight: 600;
     border-radius: 8px;
     font-size: 0.9rem;
@@ -824,7 +859,7 @@ html, body {
   }
   .products-panel button.btn:active,
   .products-panel button.btn:focus {
-    background: var(--color-turquoise-strong, #2ea7a7);
+    background: #c2863e;
   }
 
   .productsadmin-btn-add {
@@ -941,6 +976,33 @@ html, body {
   .order-detail-table td {
     padding: 0.3rem 0.2rem !important;
     font-size: 0.95rem !important;
+  }
+
+  /* Modal Fixes for Mobile */
+  .modal-content {
+    width: 95% !important;
+    max-width: 95% !important;
+    margin: 1rem auto !important;
+    padding: 1rem !important;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
+  .modal-content form .flex {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  
+  .modal-content form .form-group {
+    width: 100% !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .modal-content form .input,
+  .modal-content form .textarea,
+  .modal-content form select {
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 }
 

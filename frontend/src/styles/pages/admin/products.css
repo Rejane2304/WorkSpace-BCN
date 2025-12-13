@@ -158,6 +158,7 @@
   font-size: 1.4rem;
   margin-bottom: 6px;
   line-height: 1.2;
+  color: var(--color-primary-darker);
 }
 .productsadmin-desc-minh {
   min-height: auto;

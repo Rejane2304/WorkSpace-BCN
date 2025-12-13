@@ -140,14 +140,30 @@
 
 .sales-admin-controls {
   display: flex;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-md);
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  width: 100%;
 }
 
 .sales-admin-controls label {
   display: none;
+}
+
+.sales-admin-controls > div {
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sales-admin-controls .select-custom,
+.sales-admin-controls .select-custom-control,
+.sales-admin-controls input {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  min-width: 0 !important;
 }
 
 .sales-admin-status-actions {

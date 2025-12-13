@@ -75,7 +75,7 @@ describe("SalesAdmin page (datos mockeados)", () => {
 
   it("muestra al menos una venta mockeada, resumen y alertas", async () => {
     renderSalesAdmin()
-    await screen.findAllByText(/ID venta:/i, {}, { timeout: 10000 })
+    await screen.findAllByText(/ID:/i, {}, { timeout: 10000 })
     
     expect(screen.getByText(/Total de ventas:/i)).toBeInTheDocument()
     expect(screen.getByText(/Ventas filtradas:/i)).toBeInTheDocument()
@@ -83,13 +83,13 @@ describe("SalesAdmin page (datos mockeados)", () => {
     
     const cards = document.querySelectorAll('.sales-admin-summary-card')
     expect(cards.length).toBeGreaterThan(0)
-    expect(cards[0]).toHaveTextContent(/ID venta:/i)
+    expect(cards[0]).toHaveTextContent(/ID:/i)
   })
 
   it("filtros por texto y estado funcionan con datos mockeados", async () => {
     const user = userEvent.setup()
     renderSalesAdmin()
-    await screen.findAllByText(/ID venta:/i, {}, { timeout: 10000 })
+    await screen.findAllByText(/ID:/i, {}, { timeout: 10000 })
     const searchInput = screen.getByPlaceholderText(/Buscar por ID, nombre o email/i)
     await act(async () => {
       await user.clear(searchInput)
@@ -116,7 +116,7 @@ describe("SalesAdmin page (datos mockeados)", () => {
   it("abre el modal de editar y permite cambiar estado mockeado", async () => {
     const user = userEvent.setup()
     renderSalesAdmin()
-    await screen.findAllByText(/ID venta:/i, {}, { timeout: 10000 })
+    await screen.findAllByText(/ID:/i, {}, { timeout: 10000 })
     
     const editButtons = await screen.findAllByRole("button", { name: /Editar/i })
     expect(editButtons.length).toBeGreaterThan(0)

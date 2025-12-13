@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Link } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
 
@@ -9,11 +9,11 @@ function Header() {
   const [cartCount, setCartCount] = useState(0)
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [avatarUrl, setAvatarUrl] = useState(user?.image || user?.imagen || "")
-
-  useEffect(() => {
-    setAvatarUrl(user?.image || user?.imagen || "")
-  }, [user?.image, user?.imagen])
+  const dropdownRef = useRef(null)
+  const triggerRef = useRef(null)
+  
+  // Usamos directamente los datos del usuario del contexto para evitar problemas de sincronización
+  const currentAvatarUrl = user?.image || user?.imagen || ""
 
   const refreshCartCount = () => {
     try {
@@ -43,6 +43,25 @@ function Header() {
       window.removeEventListener("storage", handleCartUpdated)
     }
   }, [])
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        isUserDropdownOpen &&
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target) &&
+        triggerRef.current &&
+        !triggerRef.current.contains(event.target)
+      ) {
+        setIsUserDropdownOpen(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [isUserDropdownOpen])
 
   const closeMenu = () => {
     setIsMenuOpen(false)
@@ -104,7 +123,7 @@ function Header() {
             </nav>
 
             <div className="header-actions">
-              {isAuthenticated && !isAdmin && (
+              {!isAdmin && (
                 <Link to="/carrito" className="nav-link header-cart-link" onClick={closeMenu}>
                   <span className="header-cart-icon" aria-label="Carrito">
                     🛒
@@ -122,14 +141,15 @@ function Header() {
               {isAuthenticated && (
                 <div className="nav-dropdown header-user">
                   <button
+                    ref={triggerRef}
                     type="button"
                     className={`nav-link nav-dropdown-toggle ${isAdmin ? "is-admin" : ""}`}
                     onClick={() => setIsUserDropdownOpen((prev) => !prev)}
                   >
                     <div className="header-avatar">
-                      {avatarUrl ? (
+                      {currentAvatarUrl ? (
                         <img
-                          src={avatarUrl}
+                          src={currentAvatarUrl}
                           alt={user?.nombre ? `Avatar de ${user.nombre}` : "Avatar de usuario"}
                         />
                       ) : (
@@ -160,7 +180,7 @@ function Header() {
       </div>
 
       {isAuthenticated && isUserDropdownOpen && (
-        <div className="nav-dropdown-menu">
+        <div className="nav-dropdown-menu" ref={dropdownRef}>
           <button
             type="button"
             className="nav-dropdown-close"
