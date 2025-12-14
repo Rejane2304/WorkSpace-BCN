@@ -1,4 +1,3 @@
-
 function Footer() {
   const navLinks = [
     { label: "Inicio", href: "/" },

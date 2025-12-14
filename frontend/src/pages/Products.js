@@ -236,7 +236,7 @@ function Products() {
                           </div>
                         )}
                         {!isAvailable && (
-                          <p className="text-secondary text-center products-mt-05">
+                          <p className="product-out-stock text-center products-mt-05">
                             Producto sin stock
                           </p>
                         )}

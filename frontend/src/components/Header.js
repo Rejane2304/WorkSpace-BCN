@@ -1,18 +1,18 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
 
 function Header() {
   const { user, isAuthenticated, isAdmin, logout } = useAuth()
+  const navigate = useNavigate()
   const [cartCount, setCartCount] = useState(0)
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const dropdownRef = useRef(null)
   const triggerRef = useRef(null)
   
-  // Usamos directamente los datos del usuario del contexto para evitar problemas de sincronización
   const currentAvatarUrl = user?.image || user?.imagen || ""
 
   const refreshCartCount = () => {
@@ -231,6 +231,7 @@ function Header() {
             onClick={() => {
               logout()
               closeMenu()
+              navigate("/")
             }}
           >
             Cerrar Sesión

@@ -1,12 +1,12 @@
 :root {
-  /* === COLORES PRINCIPALES === */
+  
   --color-primary: #e1924d;
   --color-primary-darker: #c86a16;
   --color-primary-strong: #a0500b;
   --color-primary-light: #f7e6c7;
 
-  /* Paleta personalizada Hero */
-  --color-hero-bg: #e0c589;
+  
+  --color-hero-bg: #f3c178;
   --color-hero-text: #2e3642;
   
   --color-secondary: #408197;
@@ -17,34 +17,34 @@
   --color-warning: #f4b860;
   --color-accent: #eab96b;
   
-  /* === COLORES DE FONDO === */
+  
   --color-background: #f5f5f7;
   --color-background-alt: #f5f5f7;
   --color-surface: #ffffff;
   --color-surface-soft: #fdfdfd;
   
-  /* === COLORES DE FORMULARIOS === */
+  
   --color-input-bg: #f6f6f6;
   --color-input-border: var(--color-primary, #e1924d);
   --color-border: #d8e0e8;
   
-  /* === COLORES DE TEXTO === */
+  
   --color-text: #515a62;
   --color-text-light: #7b8794;
   --color-text-dark: #222f3e;
   --color-text-darker: #2b1d00;
   
-  /* === ESTADOS === */
+  
   --color-success: #2bb673;
   --color-error: #d64545;
   --color-info: #408197;
   --color-warning-state: #ffb020;
   
-  /* === TIPOGRAFÍA === */
+  
   --font-main: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-headings: "Space Grotesk", "Poppins", "Segoe UI", sans-serif;
   
-  /* Tamaños de fuente */
+  
   --font-size-xs: 0.75rem;    /* 12px */
   --font-size-sm: 0.875rem;   /* 14px */
   --font-size-base: 1rem;     /* 16px */
@@ -54,18 +54,18 @@
   --font-size-2xl: 1.875rem;  /* 30px */
   --font-size-3xl: 2.25rem;   /* 36px */
   
-  /* Pesos de fuente */
+  
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
   
-  /* Line heights */
+  
   --line-height-tight: 1.25;
   --line-height-normal: 1.5;
   --line-height-relaxed: 1.75;
   
-  /* === ESPACIADO === */
+  
   --spacing-xxs: 0.25rem;   /* 4px */
   --spacing-xs: 0.5rem;     /* 8px */
   --spacing-sm: 0.75rem;    /* 12px */
@@ -75,7 +75,7 @@
   --spacing-2xl: 3rem;      /* 48px */
   --spacing-3xl: 4rem;      /* 64px */
   
-  /* === BORDER RADIUS === */
+  
   --border-radius-sm: 8px;
   --border-radius: 12px;
   --border-radius-md: 16px;
@@ -83,19 +83,19 @@
   --border-radius-xl: 24px;
   --border-radius-full: 9999px;
   
-  /* === SOMBRAS === */
+  
   --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
   --shadow-xl: 0 12px 48px rgba(0, 0, 0, 0.2);
   
-  /* === TRANSICIONES === */
+  
   --transition-fast: 150ms ease;
   --transition-normal: 250ms ease;
   --transition-slow: 350ms ease;
   
-  /* === Z-INDEX === */
+  
   --z-index-dropdown: 1000;
   --z-index-sticky: 1020;
   --z-index-fixed: 1030;
@@ -104,7 +104,7 @@
   --z-index-popover: 1060;
   --z-index-tooltip: 1070;
   
-  /* === BREAKPOINTS === */
+  
   --breakpoint-xs: 480px;
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
@@ -112,7 +112,7 @@
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1536px;
   
-  /* === ANCHOS MÁXIMOS === */
+  
   --max-width-xs: 320px;
   --max-width-sm: 480px;
   --max-width-md: 768px;

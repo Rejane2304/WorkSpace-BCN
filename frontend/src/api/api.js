@@ -21,7 +21,6 @@ const api = axios.create({
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token")
   if (token) {
-    // Ensure no double quotes in token
     const cleanToken = token.replace(/^"|"$/g, '')
     config.headers.Authorization = `Bearer ${cleanToken}`
   }
@@ -34,8 +33,6 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response && error.response.status === 401) {
-      // If we get a 401, it might mean the token is expired or invalid
-      // We should clear the token and redirect to login, but only if we are not already there
       const currentPath = window.location.pathname
       if (currentPath !== "/login" && currentPath !== "/register") {
         localStorage.removeItem("token")

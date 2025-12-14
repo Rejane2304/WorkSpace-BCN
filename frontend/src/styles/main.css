@@ -1,28 +1,21 @@
-/* Utilidades para colores y fuente */
-.color-primary { color: var(--color-primary) !important; }
-.color-success { color: var(--color-success) !important; }
-.fw-bold { font-weight: 700 !important; }
-/* Botones igual tamaño */
-.btn-equal { min-width: 140px; max-width: 180px; width: 100%; }
+.color-primary { color: var(--color-primary); }
+.color-success { color: var(--color-success); }
+.fw-bold { font-weight: 700; }
+
+.btn-equal { min-width: 80px; max-width: 100px; width: 100%; }
 .product-card-actions-equal { gap: 1rem; }
-/* ================================================
-   1. BASE - Fundamentos y estilos globales
-   ================================================ */
+
 @import url('./base/variables.css');
 @import url('./base/reset.css');
 @import url('./base/typography.css');
 
-/* ================================================
-   2. LAYOUT - Estructura de página
-   ================================================ */
+
 @import url('./layout/container.css');
 @import url('./layout/grid.css');
 @import url('./layout/header.css');
 @import url('./layout/footer.css');
 
-/* ================================================
-   3. COMPONENTS - Componentes reutilizables
-   ================================================ */
+
 @import url('./components/buttons.css');
 @import url('./components/cards.css');
 @import url('./components/forms.css');
@@ -35,11 +28,7 @@
 @import url('./components/orders.css');
 @import url('./components/scroll-to-top.css');
 
-/* ================================================
-   4. PAGES - Estilos específicos de páginas
-   ================================================ */
 
-/* Public Pages */
 @import url('./pages/home.css');
 @import url('./pages/contact.css');
 @import url('./pages/products.css');
@@ -52,7 +41,6 @@
 @import url('./pages/profile.css');
 
 
-/* Admin Pages */
 @import url('./pages/admin/dashboard.css');
 @import url('./pages/admin/products.css');
 @import url('./pages/admin/product-edit.css');
@@ -62,9 +50,7 @@
 @import url('./pages/admin/payments.css');
 @import url('./pages/admin/sales.css');
 
-/* ================================================
-   5. UTILITIES - Clases de utilidad
-   ================================================ */
+
 @import url('./utilities/spacing.css');
 @import url('./utilities/display.css');
 @import url('./utilities/colors.css');

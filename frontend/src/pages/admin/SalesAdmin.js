@@ -357,9 +357,8 @@ function SalesAdmin() {
         </section>
       )}
 
-      <div className="sales-admin-controls">
-        <div className="flex gap-2 sales-admin-align-center">
-          <label>Filtrar por estado:</label>
+      <div className="sales-filters-row">
+        <div>
           <FilterSelect
             value={statusFilter}
             onChange={setStatusFilter}

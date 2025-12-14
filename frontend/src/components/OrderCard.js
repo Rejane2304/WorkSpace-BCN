@@ -6,15 +6,14 @@ function OrderCard({ order }) {
   const items = order.items || order.productos || [];
 
   const getStatusBadgeClass = (status) => {
-    switch (status) {
-      case 'pending': return 'badge badge-warning';
-      case 'processing': return 'badge badge-info';
-      case 'shipped': return 'badge badge-purple';
-      case 'delivered': return 'badge badge-success';
-      case 'cancelled': return 'badge badge-error';
-      case 'paid': return 'badge badge-success';
-      default: return 'badge badge-neutral';
-    }
+    const s = (status || '').toLowerCase();
+    if (s === 'pending' || s === 'pendiente') return 'badge badge-warning';
+    if (s === 'processing' || s === 'procesando') return 'badge badge-info';
+    if (s === 'shipped' || s === 'enviado') return 'badge badge-purple';
+    if (s === 'delivered' || s === 'entregado' || s === 'completed' || s === 'completado') return 'badge badge-success';
+    if (s === 'cancelled' || s === 'cancelado' || s === 'failed' || s === 'fallido') return 'badge badge-error';
+    if (s === 'paid' || s === 'pagado') return 'badge badge-success';
+    return 'badge badge-neutral';
   };
 
   return (

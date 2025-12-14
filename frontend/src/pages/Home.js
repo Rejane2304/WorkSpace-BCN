@@ -12,7 +12,7 @@ function Inicio() {
               <span className="home-ws-primary">WorkSpace</span>
               <span className="home-ws-turquoise">BCN</span>!
             </h1>
-            <p className="home-fs-1-25 home-mt-1 home-color-text-light">
+            <p className="home-fs-1-25 home-mt-1 hero-trust-text">
               Tu tienda de confianza para productos informáticos, de oficina y audiovisuales.
             </p>
             <p className="home-fs-1 home-mt-075 home-color-primary-strong">

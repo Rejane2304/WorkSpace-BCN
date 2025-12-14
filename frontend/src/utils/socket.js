@@ -5,7 +5,6 @@ const getSocketUrl = () => {
     return process.env.REACT_APP_SOCKET_URL;
   }
   
-  // Fallback: try to derive from API URL if available
   if (process.env.REACT_APP_API_URL) {
     try {
       const url = new URL(process.env.REACT_APP_API_URL);

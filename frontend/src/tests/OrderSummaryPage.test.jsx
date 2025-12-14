@@ -11,10 +11,6 @@ jest.mock("../api/api", () => ({
   }
 }))
 
-const mockPrint = jest.fn()
-const mockClose = jest.fn()
-const mockWrite = jest.fn()
-
 const clienteSeed = {
   _id: "seed-user-id",
   nombre: "María Rodriguez",

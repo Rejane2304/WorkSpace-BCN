@@ -102,7 +102,6 @@ const mapSaleFromApi = (sale = {}) => ({
   },
 })
 
-
 const buildPaymentSale = (payment = {}) => {
   const sale = payment.sale || payment.order || null;
   if (!sale) {

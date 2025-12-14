@@ -1,3 +1,98 @@
+.sales-filters-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.sales-filters-row > div {
+  flex: 1 1 260px;
+  max-width: 400px;
+  min-width: 180px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+  .sales-filters-row > div {
+    flex: 1 1 50px;
+    max-width: 100%;
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 700px) {
+  .sales-filters-row {
+    flex-direction: column;
+    gap: 0.2rem;
+    align-items: stretch;
+    margin-bottom: 0.5rem;
+  }
+  .sales-filters-row > div {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin-bottom: 0 !important;
+  }
+  .sales-filters-row > div > * {
+    margin-bottom: 0 !important;
+  }
+}
+
+.sales-admin-status-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  min-width: 140px;
+  margin-top: var(--spacing-sm);
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.sales-admin-status-buttons {
+  display: flex;
+  gap: var(--spacing-xs);
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: center;
+}
+.sales-admin-status-buttons .btn {
+  width: 120px;
+  min-width: 100px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+@media (max-width: 700px) {
+  .sales-admin-status-buttons {
+    flex-direction: row;
+    gap: 0.7rem;
+    justify-content: center;
+  }
+  .sales-admin-status-buttons .btn {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .sales-filters-row > div {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+  }
+}
+
+
+@media (max-width: 700px) {
+  .sales-filters-row {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+}
 .sales-admin-mt-1 {
   margin-top: 1rem;
 }
@@ -163,14 +258,6 @@
 .sales-admin-controls input {
   width: 100% !important;
   box-sizing: border-box !important;
-  min-width: 0 !important;
-}
-
-.sales-admin-status-actions {
-  margin-top: var(--spacing-sm);
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-sm);
   align-items: center;
   justify-content: space-between;
 }
@@ -180,11 +267,6 @@
   border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-.sales-admin-status-buttons {
-  display: flex;
-  gap: var(--spacing-xs);
-  flex-wrap: wrap;
-}
 
 .sales-admin-alerts {
   margin-bottom: var(--spacing-lg);

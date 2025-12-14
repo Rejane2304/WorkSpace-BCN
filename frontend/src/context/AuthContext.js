@@ -48,7 +48,6 @@ export function AuthProvider({ children }) {
     let savedToken = localStorage.getItem("token")
 
     if (savedUser && savedToken) {
-      // Clean token if it has quotes
       if (savedToken.startsWith('"') && savedToken.endsWith('"')) {
         savedToken = savedToken.slice(1, -1)
         localStorage.setItem("token", savedToken)

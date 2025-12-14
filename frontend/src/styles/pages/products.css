@@ -1,18 +1,3 @@
-/* --- Fix fondo blanco forzado en productos (desktop y mobile) --- */
-.hero-white-container,
-.products-panel-transparent {
-  background: #fff !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-@media (max-width: 600px) {
-  .hero-white-container,
-  .products-panel-transparent {
-    background: #fff !important;
-  }
-}
-
 .container,
 .container-full {
   max-width: 1200px;
@@ -245,7 +230,7 @@
   color: var(--color-primary, #e09c4a);
 }
 .select-custom-control {
-  width: 260px;
+  width: 382px;
   max-width: 100%;
   min-width: 180px;
   margin: 0;
@@ -946,7 +931,7 @@ html, body {
     font-size: 0.95rem !important;
   }
 
-  /* Modal Fixes for Mobile */
+  
   .modal-content {
     width: 95% !important;
     max-width: 95% !important;
@@ -977,12 +962,13 @@ html, body {
 .products-my-25 {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
+  background: #fff;
 }
 .products-panel-transparent {
   margin-bottom: 2.5rem;
   padding-top: 2.5rem;
   box-shadow: none;
-  background: transparent;
+  background: #fff;
 }
 .products-mb-25 {
   margin-bottom: 2.5rem;

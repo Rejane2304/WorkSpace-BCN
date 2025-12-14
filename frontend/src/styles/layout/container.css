@@ -1,4 +1,3 @@
-/* === MAIN CONTAINER === */
 .app {
   display: flex;
   flex-direction: column;
@@ -26,7 +25,7 @@ main {
   background-color: var(--color-background-alt);
 }
 
-/* === RESPONSIVE CONTAINERS === */
+
 .container-sm {
   max-width: var(--max-width-sm);
 }
@@ -47,7 +46,7 @@ main {
   max-width: var(--max-width-2xl);
 }
 
-/* === MEDIA QUERIES FOR CONTAINERS === */
+
 @media (max-width: 768px) {
   .container {
     padding-left: var(--spacing-md);

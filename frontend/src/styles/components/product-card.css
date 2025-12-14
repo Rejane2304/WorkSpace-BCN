@@ -1,3 +1,10 @@
+.product-out-stock {
+  color: var(--color-error, #d32f2f);
+  font-weight: 500;
+}
+.product-title {
+  color: var(--color-primary, #e28043);
+}
 .d-flex {
   display: flex;
 }

@@ -53,7 +53,7 @@ function ProductCard({ product, onAddToCart, isAdmin }) {
           </div>
         )}
         {!isAvailable && (
-          <p className="text-secondary text-center" style={{ marginTop: "0.5rem" }}>
+          <p className="product-out-stock text-center" style={{ marginTop: "0.5rem" }}>
             Producto sin stock
           </p>
         )}

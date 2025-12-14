@@ -1,4 +1,3 @@
-/* === BOX SIZING === */
 *,
 *::before,
 *::after {
@@ -7,7 +6,6 @@
   padding: 0;
 }
 
-/* === RESET BÁSICO === */
 html {
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
@@ -22,16 +20,14 @@ body {
   line-height: var(--line-height-normal);
   color: var(--color-text);
   background-color: var(--color-background);
-  overflow-x: hidden; /* Evitar scroll horizontal en móvil */
+  overflow-x: hidden; 
 }
 
-/* === LISTAS === */
 ul,
 ol {
   list-style: none;
 }
 
-/* === ENLACES === */
 a {
   text-decoration: none;
   color: inherit;
@@ -41,7 +37,6 @@ a:hover {
   text-decoration: none;
 }
 
-/* === IMÁGENES === */
 img,
 picture,
 video,
@@ -52,9 +47,7 @@ svg {
   height: auto;
 }
 
-/* === FORMULARIOS === */
 input,
-
 button,
 textarea,
 select {
@@ -79,14 +72,14 @@ button:focus {
   outline: none;
 }
 
-/* === TABLAS === */
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
 }
 
-/* === TIPOGRAFÍA === */
+
 h1,
 h2,
 h3,
@@ -103,7 +96,7 @@ p {
   margin: 0;
 }
 
-/* === ACCESIBILIDAD === */
+
 .sr-only {
   position: absolute;
   width: 1px;

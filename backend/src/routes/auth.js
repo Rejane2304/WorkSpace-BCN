@@ -8,7 +8,6 @@ const router = express.Router()
 
 async function handleRegister(req, res) {
   try {
-    console.log("[REGISTRO] Payload recibido:", req.body)
     const {
       name,
       email,
@@ -22,21 +21,17 @@ async function handleRegister(req, res) {
     } = req.body
 
     if (!name || !name.trim()) {
-      console.warn("[REGISTRO] Faltó el campo 'name' en el registro:", req.body)
       return res.status(400).json({ mensaje: "El campo 'nombre' es obligatorio." })
     }
     if (!email || !email.trim()) {
-      console.warn("[REGISTRO] Faltó el campo 'email' en el registro:", req.body)
       return res.status(400).json({ mensaje: "El campo 'email' es obligatorio." })
     }
     if (!password || !password.trim()) {
-      console.warn("[REGISTRO] Faltó el campo 'password' en el registro:", req.body)
       return res.status(400).json({ mensaje: "El campo 'contraseña' es obligatorio." })
     }
 
     const existingUser = await User.findOne({ email })
     if (existingUser) {
-      console.warn("[REGISTRO] Usuario ya existe:", email)
       return res.status(400).json({ mensaje: "El usuario ya existe" })
     }
 
@@ -48,11 +43,8 @@ async function handleRegister(req, res) {
         imageUrl = imageData
       } else {
         try {
-          console.log("[REGISTRO] Subiendo imagen de perfil a Cloudinary...")
           imageUrl = await uploadImage(imageData, "Perfil", { fileName: imageName })
-          console.log("[REGISTRO] Imagen subida correctamente:", imageUrl)
         } catch (error) {
-          console.error("[REGISTRO] Error al subir imagen de perfil:", error)
           return res.status(500).json({ mensaje: "Error al subir la imagen de perfil", error: error.message })
         }
       }
@@ -68,13 +60,10 @@ async function handleRegister(req, res) {
     if (postalCode && postalCode.trim() !== "") userData.postalCode = postalCode
     if (imageUrl) userData.image = imageUrl
 
-    console.log("[REGISTRO] Datos a guardar en MongoDB:", userData)
     const newUser = new User(userData)
     try {
       await newUser.save()
-      console.log("[REGISTRO] Usuario guardado correctamente en MongoDB:", newUser)
     } catch (saveError) {
-      console.error("[REGISTRO] Error al guardar usuario en MongoDB:", saveError)
       return res.status(500).json({ mensaje: "Error al guardar usuario en la base de datos", error: saveError.message })
     }
 
@@ -97,7 +86,6 @@ async function handleRegister(req, res) {
       },
     })
   } catch (error) {
-    console.error("[REGISTRO] Error inesperado en registro:", error)
     res.status(500).json({ mensaje: "Error al registrar usuario", error: error.message })
   }
 }

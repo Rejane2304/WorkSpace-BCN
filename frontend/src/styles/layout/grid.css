@@ -1,10 +1,9 @@
-/* === GRID PRINCIPAL === */
 .grid {
   display: grid;
   gap: var(--spacing-md);
 }
 
-/* === GRID COLUMNS === */
+
 .grid-cols-1 {
   grid-template-columns: repeat(1, 1fr);
 }
@@ -29,7 +28,7 @@
   grid-template-columns: repeat(6, 1fr);
 }
 
-/* === GRID AUTO FIT === */
+
 .grid-auto-fit {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -42,7 +41,7 @@
   gap: var(--spacing-md);
 }
 
-/* === GAP === */
+
 .gap-xs {
   gap: var(--spacing-xs);
 }
@@ -63,7 +62,7 @@
   gap: var(--spacing-xl);
 }
 
-/* === FLEXBOX === */
+
 .flex {
   display: flex;
 }
@@ -86,7 +85,7 @@
   flex-wrap: nowrap;
 }
 
-/* === JUSTIFY CONTENT === */
+
 .justify-start {
   justify-content: flex-start;
 }
@@ -111,7 +110,7 @@
   justify-content: space-evenly;
 }
 
-/* === ALIGN ITEMS === */
+
 .items-start {
   align-items: flex-start;
 }
@@ -132,7 +131,7 @@
   align-items: baseline;
 }
 
-/* === FLEX GROW/SHRINK === */
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -145,7 +144,7 @@
   flex: none;
 }
 
-/* === GRID RESPONSIVO === */
+
 @media (max-width: 1024px) {
   .grid-cols-6,
   .grid-cols-5,

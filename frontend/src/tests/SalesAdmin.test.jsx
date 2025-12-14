@@ -143,7 +143,6 @@ describe("SalesAdmin page (datos mockeados)", () => {
       expect(screen.getByText(/Estado actualizado correctamente/i)).toBeInTheDocument()
     }, { timeout: 10000 })
 
-    // Esperar a que se recarguen las ventas para evitar warnings de act()
     await waitFor(() => {
       expect(salesAPI.getAll).toHaveBeenCalledTimes(2)
     })

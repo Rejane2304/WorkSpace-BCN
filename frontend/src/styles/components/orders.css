@@ -1,3 +1,48 @@
+.badge {
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 999px;
+  background: #eee;
+  color: var(--color-text-dark);
+  border: none;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 1px 4px rgba(64,129,151,0.06);
+  letter-spacing: 0.01em;
+  transition: background 0.2s, color 0.2s;
+}
+.badge-success {
+  background: #e6f9ed;
+  color: var(--color-success, #2bb673);
+  border: 2px solid var(--color-success, #2bb673);
+}
+.badge-warning {
+  background: #fff7e6;
+  color: var(--color-warning-state, #ffb020);
+  border: 2px solid var(--color-warning-state, #ffb020);
+}
+.badge-info {
+  background: #e6f0fa;
+  color: var(--color-info, #408197);
+  border: 2px solid var(--color-info, #408197);
+}
+.badge-error {
+  background: #fdeaea;
+  color: var(--color-error, #d64545);
+  border: 2px solid var(--color-error, #d64545);
+}
+.badge-purple {
+  background: #f3e6fa;
+  color: #8e44ad;
+  border: 2px solid #8e44ad;
+}
+.badge-neutral {
+  background: #f4f4f4;
+  color: var(--color-text-dark);
+  border: 2px solid #e0e0e0;
+}
+
 .order-card {
   display: flex;
   align-items: center;
@@ -168,7 +213,7 @@
 
   .order-card-content {
     flex: 1 1 60%;
-    min-width: 0; /* Allow shrinking for ellipsis */
+    min-width: 0; 
   }
 
   .order-card-total-section {

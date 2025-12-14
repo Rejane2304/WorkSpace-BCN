@@ -7,7 +7,7 @@ import Toast from "../components/Toast.js"
 import { formatCurrency } from "../utils/format"
 import OrderMetaPanel from "../components/OrderMetaPanel"
 import OrderProductCard from "../components/OrderProductCard"
-import { buildOrderPrintAddress, buildOrderPrintTotals, getItemName, getItemPrice, getItemQuantity, getOrderItems, getOrderTotals, getShippingAddress } from "../utils/orderHelpers"
+import { getOrderItems, getOrderTotals, getShippingAddress } from "../utils/orderHelpers"
 import { translateOrderStatus } from "../utils/translation"
 
 function OrderDetail() {
@@ -48,7 +48,6 @@ function OrderDetail() {
   const orderItems = getOrderItems(order)
   const orderShippingAddress = getShippingAddress(order)
   const orderTotals = getOrderTotals(order, orderItems)
-  const statusKey = (order.status ?? order.payment?.status ?? 'pendiente').toString().toLowerCase()
   const orderStatusLabel = translateOrderStatus(order.status ?? order.payment?.status)
 
   const getStatusBadgeClass = (status) => {
@@ -96,7 +95,6 @@ function OrderDetail() {
                 <OrderProductCard key={item.producto?._id || item.producto || item._id || `order-item-${index}`} item={item} />
               ))}
             </div>
-            {/* Métricas después */}
             <div className="order-metrics">
               <div>
                 <p className="text-secondary">Subtotal</p>

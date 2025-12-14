@@ -4,6 +4,7 @@ Este documento contiene todas las instrucciones, requisitos y especificaciones n
 
 ---
 
+
 ## ÍNDICE
 
 1. [Contexto del Proyecto]

@@ -6,7 +6,6 @@
 }
 
 @media print {
-  /* Ocultar elementos de navegación y UI */
   .header,
   .footer,
   .order-actions,
@@ -17,7 +16,7 @@
     display: none !important;
   }
 
-  /* Resetear layout para impresión */
+
   body,
   .container,
   .card,
@@ -33,7 +32,7 @@
     overflow: visible !important;
   }
 
-  /* Ajustar tipografía */
+  
   body {
     font-size: 12pt;
     line-height: 1.5;
@@ -43,7 +42,7 @@
     color: black !important;
   }
 
-  /* Layout de la orden */
+  
   .order-summary-grid {
     display: block !important;
   }
@@ -58,7 +57,7 @@
     display: block !important;
   }
 
-  /* Estilo de tarjeta de producto simplificado para impresión */
+  
   .order-product-card {
     border-bottom: 1px solid #ddd;
     padding: 1rem 0;
@@ -68,10 +67,10 @@
   }
 
   .order-product-image {
-    display: none; /* Opcional: ocultar imágenes para ahorrar tinta */
+    display: none; 
   }
 
-  /* Métricas alineadas a la derecha */
+  
   .order-metrics {
     margin-top: 2rem;
     text-align: right;
@@ -86,7 +85,7 @@
     margin-bottom: 0.5rem;
   }
 
-  /* Header del pedido */
+  
   .order-summary-header {
     border-bottom: 2px solid black;
     padding-bottom: 1rem;
