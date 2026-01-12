@@ -41,6 +41,9 @@ export function AuthProvider({ children }) {
     setToken(null)
     localStorage.removeItem("token")
     localStorage.removeItem("user")
+    localStorage.removeItem("carrito")
+    // Notifica a toda la app que el usuario cerró sesión y el carrito fue vaciado
+    window.dispatchEvent(new Event("cart-updated"))
   }
 
   useEffect(() => {

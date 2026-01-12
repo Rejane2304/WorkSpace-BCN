@@ -327,7 +327,7 @@ function CheckoutPage() {
               message={toast.message}
               onClose={clearToast}
             />
-            <button className="btn btn-primary" type="submit" disabled={isSubmitting}>
+            <button className="btn btn-primary" type="submit" disabled={isSubmitting} data-testid="confirm-order-button">
               {isSubmitting ? "Procesando..." : "Confirmar pedido"}
             </button>
           </form>

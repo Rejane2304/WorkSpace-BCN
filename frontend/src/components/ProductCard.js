@@ -11,7 +11,7 @@ function ProductCard({ product, onAddToCart, isAdmin }) {
     onAddToCart(product);
   };
 
-  const prod = product || product.producto || {};
+  const prod = product?.producto || product || {};
   const imgSrc = prod.image || prod.imagen || "/assets/no-image.png";
   const prodName = prod.name || prod.nombre || "Producto";
   return (
@@ -26,7 +26,7 @@ function ProductCard({ product, onAddToCart, isAdmin }) {
       <div className="product-info">
         <h3 className="product-title fw-bold">{product.name}</h3>
         <div className="product-info-header d-flex align-center justify-between">
-          <p className="product-category text-success m-0" style={{ fontWeight: 700 }}>{product.category}</p>
+          <p className="productsadmin-category-text m-0" style={{ fontWeight: 700 }}>{product.category}</p>
           <span className="product-price text-primary fs-lg" style={{ fontWeight: 700 }}>{formatCurrency(product.price)}</span>
         </div>
 

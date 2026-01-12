@@ -2,38 +2,62 @@
 
 import { useState, useEffect, useCallback } from "react"
 import { useNavigate } from "react-router-dom"
+import { useLocation } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
 import Toast from "../components/Toast.js"
 import { formatCurrency } from "../utils/format"
 
 function CartPage() {
+    // ...existing code...
   const [cart, setCart] = useState([])
   const { isAuthenticated, isAdmin } = useAuth()
   const navigate = useNavigate()
   const [toast, setToast] = useState({ type: "info", message: "" })
   const [confirmModal, setConfirmModal] = useState({ isOpen: false, productId: null, productName: "" })
+  const location = useLocation();
 
-  useEffect(() => {
-    const savedCart = JSON.parse(localStorage.getItem("carrito") || "[]")
-    const normalizedCart = savedCart.map((item) => {
-      const quantity = typeof item.quantity === 'number' && !isNaN(item.quantity)
-        ? item.quantity
-        : (typeof item.cantidad === 'number' && !isNaN(item.cantidad) ? item.cantidad : 1)
-      const image = item.image || item.imagen || "";
-      return {
-        ...item,
-        quantity,
-        price: item.price ?? item.precio ?? 0,
-        category: item.category ?? item.categoria ?? "",
-        image,
+
+    // Cierra el modal si el carrito queda vacío
+    useEffect(() => {
+      if (cart.length === 0 && confirmModal.isOpen) {
+        setConfirmModal({ isOpen: false, productId: null, productName: "" });
       }
-    })
-    setCart(normalizedCart)
+    }, [cart.length, confirmModal.isOpen]);
+
+  // Inicializa el carrito y sincroniza cuando cambia localStorage (logout)
+  useEffect(() => {
+    const syncCart = () => {
+      const savedCart = JSON.parse(localStorage.getItem("carrito") || "[]")
+      const normalizedCart = savedCart.map((item) => {
+        const quantity = typeof item.quantity === 'number' && !isNaN(item.quantity)
+          ? item.quantity
+          : (typeof item.cantidad === 'number' && !isNaN(item.cantidad) ? item.cantidad : 1)
+        const image = item.image || item.imagen || "";
+        return {
+          ...item,
+          quantity,
+          price: item.price ?? item.precio ?? 0,
+          category: item.category ?? item.categoria ?? "",
+          image,
+        }
+      })
+      setCart(normalizedCart)
+    }
+    syncCart()
+    const handleStorage = (e) => {
+      if (e.key === "carrito" || e.key === null) {
+        syncCart()
+      }
+    }
+    window.addEventListener("storage", handleStorage)
+    window.addEventListener("cart-updated", syncCart)
+    return () => {
+      window.removeEventListener("storage", handleStorage)
+      window.removeEventListener("cart-updated", syncCart)
+    }
   }, [])
 
-  useEffect(() => {
-    window.dispatchEvent(new Event("cart-updated"))
-  }, [cart])
+  // Eliminado useEffect que disparaba 'cart-updated' en cada cambio de 'cart' para evitar bucle infinito
 
   function persistCart(updatedCart) {
     setCart(updatedCart)
@@ -59,6 +83,7 @@ function CartPage() {
     setConfirmModal({ isOpen: false, productId: null, productName: "" })
   }, [])
 
+
   useEffect(() => {
     if (isAdmin) {
       setToast({ type: "warning", message: "Los administradores no pueden utilizar el carrito." })
@@ -66,6 +91,8 @@ function CartPage() {
       return
     }
   }, [isAdmin, navigate])
+
+  // (Eliminado) El carrito es público, no se debe redirigir si no hay sesión
 
   useEffect(() => {
     if (!confirmModal.isOpen) return
@@ -90,6 +117,11 @@ function CartPage() {
     persistCart([])
     setToast({ type: "info", message: "Carrito limpiado" })
   }
+
+  // Cierra el modal si la ruta cambia
+  useEffect(() => {
+    setConfirmModal({ isOpen: false, productId: null, productName: "" });
+  }, [location.pathname]);
 
   function proceedToCheckout() {
     if (!cart.length) {

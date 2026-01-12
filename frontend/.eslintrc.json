@@ -1,11 +1,38 @@
 {
-  "extends": ["react-app"],
-  "overrides": [
-    {
-      "files": ["cypress/**/*.js"],
-      "env": { "cypress/globals": true },
-      "plugins": ["cypress"],
-      "extends": ["plugin:cypress/recommended"]
-    }
-  ]
+	"env": {
+		"browser": true,
+		"es2021": true,
+		"node": true,
+		"jest": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended"
+	],
+	"parser": "@babel/eslint-parser",
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": "latest",
+		"sourceType": "module",
+		"requireConfigFile": false
+	},
+	"plugins": [
+		"react",
+		"react-hooks"
+	],
+	"rules": {
+		"react/react-in-jsx-scope": "off",
+		"react/prop-types": "off",
+		"react-hooks/rules-of-hooks": "error",
+		"react-hooks/exhaustive-deps": "warn",
+		"no-unused-vars": "warn"
+	},
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	}
 }
+

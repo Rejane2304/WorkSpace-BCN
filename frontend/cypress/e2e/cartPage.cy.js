@@ -27,23 +27,11 @@ describe('Cart Page E2E', () => {
     cy.get('[data-testid="password-input"]').type('password123');
     cy.get('[data-testid="login-button"]').click();
     cy.wait(500);
-    // Inicializar el carrito en localStorage con un producto de ejemplo
-    cy.window().then((win) => {
-      win.localStorage.setItem('carrito', JSON.stringify([
-        {
-          _id: 'test-product-id',
-          name: 'Producto Test',
-          price: 10.99,
-          quantity: 1,
-          category: 'Test',
-          image: '/assets/no-image.png'
-        }
-      ]));
-    });
+    // Agregar un producto real al carrito usando el botón en /productos
+    cy.visit('/productos');
+    cy.get('[data-testid="add-to-cart-button"]').first().click();
     cy.visit('/carrito');
     cy.wait(500);
-    // Limpiar el carrito antes de cada test (opcional, si tienes botón o endpoint)
-    // cy.clearLocalStorage('carrito');
   });
 
   it('muestra el título del carrito', () => {
@@ -81,17 +69,16 @@ describe('Cart Page E2E', () => {
 
   it('puede pagar si hay productos', () => {
     cy.get('[data-testid="pay-button"]').should('not.be.disabled').click();
-    cy.wait(5000); // Espera adicional para la redirección
-    cy.url().then((url) => {
-      if (url.includes('/login')) {
-        cy.get('[data-testid="email-input"]').type('maria.rodriguez@email.com');
-        cy.get('[data-testid="password-input"]').type('password123');
-        cy.get('[data-testid="login-button"]').click();
-        cy.wait(3000); // Espera adicional tras login
-      }
-    });
-    cy.wait(3000); // Espera final para asegurar la redirección
-    cy.url().should('include', '/orders/success');
-    cy.contains('¡Gracias por tu compra!').should('be.visible');
+    cy.url({ timeout: 10000 }).should('include', '/checkout');
+    // Completar el formulario de checkout si es necesario
+    cy.get('input[aria-label="Nombre completo"]', { timeout: 5000 }).clear().type('María Rodríguez');
+    cy.get('input[aria-label="Email"]', { timeout: 5000 }).clear().type('maria.rodriguez@email.com');
+    cy.get('input[aria-label="Calle"]', { timeout: 5000 }).clear().type('Carrer del Mar 18');
+    cy.get('input[aria-label="Ciudad"]', { timeout: 5000 }).clear().type('Barcelona');
+    cy.get('input[aria-label="Código postal"]', { timeout: 5000 }).clear().type('08003');
+    cy.get('input[aria-label="País"]', { timeout: 5000 }).clear().type('España');
+    cy.get('input[aria-label="Teléfono"]', { timeout: 5000 }).clear().type('612345678');
+    cy.get('[data-testid="confirm-order-button"]').should('not.be.disabled').click();
+    cy.contains('¡Gracias por tu compra!', { timeout: 10000 }).should('be.visible');
   });
 });

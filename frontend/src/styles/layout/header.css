@@ -5,6 +5,8 @@
   padding-left: 2rem;
   padding-right: 2rem;
   box-sizing: border-box;
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 600px) {
@@ -203,20 +205,6 @@
     display: none;
   }
 
-  .nav.open {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    width: min(180px, 65vw);
-    padding: calc(var(--spacing-xs) * 0.7);
-    border-radius: var(--border-radius);
-    background-color: var(--color-background-alt);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-    position: absolute;
-    right: 0;
-    top: calc(100% + var(--spacing-xs));
-    z-index: 200;
-  }
 
   .nav.open .nav-link {
     width: 100%;
@@ -288,7 +276,7 @@
   box-shadow: var(--shadow-md);
   padding: 0.5rem 1.2rem;
   min-width: 230px;
-  z-index: 200;
+  z-index: 500;
 }
 
 .nav-dropdown-item {

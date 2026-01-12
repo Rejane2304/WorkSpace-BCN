@@ -52,7 +52,7 @@ function Products() {
           setProducts(Array.isArray(res.data) ? res.data : []);
           setIsLoading(false);
         })
-        .catch((err) => {
+        .catch(() => {
           setIsLoading(false);
           setModalConfig({
             isOpen: true,

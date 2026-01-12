@@ -5,6 +5,14 @@ import dotenv from "dotenv"
 import { connectDatabase } from "./config/database.js"
 import { initSocket } from "./socket.js"
 
+process.on("uncaughtException", (err) => {
+  devError("[uncaughtException]", err);
+});
+
+process.on("unhandledRejection", (reason, promise) => {
+  devError("[unhandledRejection]", reason);
+});
+
 import productsRoutes from "./src/routes/products.js"
 import customersRoutes from "./src/routes/customers.js"
 import salesRoutes from "./src/routes/sales.js"
@@ -24,6 +32,11 @@ const app = express()
 app.use(cors()) 
 app.use(express.json()) 
 
+app.use((req, res, next) => {
+  devLog(`[Request] ${req.method} ${req.url}`);
+  next();
+});
+
 if (process.env.NODE_ENV !== "test") {
   connectDatabase()
 }
@@ -42,6 +55,11 @@ app.use("/api/orders", ordersRoutes)
 app.get("/", (req, res) => {
   res.json({ mensaje: "API de WorkSpaceBCN funcionando" })
 })
+
+app.use((err, req, res, next) => {
+  devError("[Express Error]", err);
+  res.status(500).json({ mensaje: "Error interno del servidor", error: err.message });
+});
 
 let server = null;
 if (process.env.NODE_ENV !== "test") {

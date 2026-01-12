@@ -5,8 +5,9 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
+    "dev": "nodemon server.js",
+    "dev:pm2": "pm2 start server.js --watch --no-daemon",
     "start": "node server.js",
-    "dev": "node --watch server.js",
     "seed": "node seeds/seed.js",
     "rename:collections": "node scripts/renameCollections.js",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --runInBand --ci",
@@ -32,6 +33,8 @@
   },
   "devDependencies": {
     "jest": "^29.5.0",
+    "nodemon": "^3.1.11",
+    "pm2": "^6.0.14",
     "supertest": "^6.3.3"
   }
 }
