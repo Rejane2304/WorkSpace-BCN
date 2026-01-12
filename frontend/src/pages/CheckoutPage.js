@@ -190,6 +190,7 @@ function CheckoutPage() {
 
       localStorage.removeItem("carrito")
       window.dispatchEvent(new Event("cart-updated"))
+      console.log("Redirigiendo a /orders/success con ID:", createdOrder?._id, createdOrder)
       navigate(`/orders/success/${createdOrder._id}`, { replace: true })
     } catch (error) {
       updateToast({

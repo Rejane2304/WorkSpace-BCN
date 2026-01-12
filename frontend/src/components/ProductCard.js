@@ -37,6 +37,7 @@ function ProductCard({ product, onAddToCart, isAdmin }) {
             className="btn btn-primary btn-equal"
             disabled={!canPurchase}
             style={{ cursor: canPurchase ? "pointer" : "not-allowed" }}
+            data-testid="add-to-cart-button"
           >
             Comprar
           </button>

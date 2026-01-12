@@ -9,5 +9,9 @@
   "dependencies": {
     "eslint-config-react-app": "^7.0.1",
     "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.2",
+    "eslint-plugin-cypress": "^5.2.1"
   }
 }

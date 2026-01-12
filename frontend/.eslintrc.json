@@ -1,0 +1,11 @@
+{
+  "extends": ["react-app"],
+  "overrides": [
+    {
+      "files": ["cypress/**/*.js"],
+      "env": { "cypress/globals": true },
+      "plugins": ["cypress"],
+      "extends": ["plugin:cypress/recommended"]
+    }
+  ]
+}

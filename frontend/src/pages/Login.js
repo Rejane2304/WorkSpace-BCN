@@ -68,6 +68,7 @@ function Login() {
               className="base-form-input"
               required
               placeholder="nombre@ejemplo.com"
+              data-testid="email-input"
             />
           </div>
 
@@ -83,6 +84,7 @@ function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 className="base-form-input"
                 required
+                data-testid="password-input"
               />
               <button
                 type="button"
@@ -124,6 +126,7 @@ function Login() {
             type="submit"
             className="btn btn-primary login-btn-block"
             disabled={isLoading}
+            data-testid="login-button"
           >
             {isLoading ? "Iniciando sesión..." : "Iniciar Sesión"}
           </button>
