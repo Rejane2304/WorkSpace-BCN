@@ -89,7 +89,6 @@ function OrderDetail() {
 
         <div className="order-summary-grid">
           <section className="order-summary-panel">
-            {/* Productos primero */}
             <div className="order-product-grid">
               {orderItems.map((item, index) => (
                 <OrderProductCard key={item.producto?._id || item.producto || item._id || `order-item-${index}`} item={item} />
