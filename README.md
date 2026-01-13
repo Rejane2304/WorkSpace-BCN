@@ -2,7 +2,7 @@
 
 **WorkSpaceBCN** es una plataforma de comercio electrónico Full Stack diseñada para la venta de productos informáticos, de oficina y audiovisuales. Este proyecto demuestra una arquitectura robusta y escalable utilizando el stack MERN (MongoDB, Express, React, Node.js), cumpliendo con estándares profesionales de desarrollo y buenas prácticas.
 
----
+----
 
 ## 🚀 Enlaces de Despliegue (Demo)
 
@@ -15,7 +15,7 @@ El proyecto se encuentra desplegado y operativo en los siguientes enlaces:
 - **Admin:** `admin@workspacebcn.com` / `admin123`
 - **Cliente:** `maria.rodriguez@email.com` / `password123`
 
----
+----
 
 ## Tabla de Contenidos
 
@@ -34,7 +34,7 @@ El proyecto se encuentra desplegado y operativo en los siguientes enlaces:
   - [Estructura del Repositorio]
   - [Autor]
 
----
+----
 
 ## Características Principales
 
@@ -46,7 +46,7 @@ El proyecto se encuentra desplegado y operativo en los siguientes enlaces:
 - **Gestión de Imágenes:** Integración con Cloudinary para subida y optimización de imágenes.
 - **Diseño Responsive:** Interfaz adaptada a dispositivos móviles y escritorio utilizando CSS puro y Variables CSS.
 
----
+----
 
 ## Tecnologías Utilizadas
 
@@ -66,7 +66,7 @@ El proyecto se encuentra desplegado y operativo en los siguientes enlaces:
 - **Testing:** Jest y React Testing Library
 - **HTTP Client:** Axios
 
----
+----
 
 ## Arquitectura del Proyecto
 
@@ -75,7 +75,7 @@ El proyecto sigue una estructura de **monorepo** (aunque gestionado en carpetas 
 - **/backend:** Contiene toda la lógica del servidor, API RESTful, modelos de datos y scripts de utilidad.
 - **/frontend:** Contiene la aplicación cliente (SPA) construida con React.
 
----
+----
 
 ## Requisitos Previos
 
@@ -84,8 +84,6 @@ Asegúrate de tener instalado lo siguiente:
 - **npm** (v8 o superior)
 - **MongoDB** (Instancia local o URI de MongoDB Atlas)
 - Cuenta en **Cloudinary** (para gestión de imágenes)
-
----
 
 ## Instalación y Ejecución
 
@@ -110,16 +108,24 @@ CLOUDINARY_API_KEY=tu_api_key
 CLOUDINARY_API_SECRET=tu_api_secret
 NODE_ENV=development
 ```
-
 **Poblar la Base de Datos (Seed):**
 ```bash
 npm run seed
 ```
 *Esto leerá los archivos CSV en `backend/data` y cargará usuarios, productos, ventas, etc.*
 
-**Iniciar Servidor:**
+**Iniciar Backend (desarrollo):**
 ```bash
 npm run dev
+```
+**Iniciar Backend (producción):**
+```bash
+npm start
+```
+
+**Ejecutar tests Backend:**
+```bash
+npm test
 ```
 
 ### 3. Configuración del Frontend
@@ -130,47 +136,80 @@ npm install
 ```
 El frontend está configurado para conectar con `http://localhost:5001` por defecto (proxy en package.json o configuración de API).
 
-**Iniciar Cliente:**
+**Iniciar Frontend:**
 ```bash
 npm start
 ```
 
----
+**Ejecutar tests Frontend:**
+```bash
+npm test
+```
+
+**Build de producción Frontend:**
+```bash
+npm run build
+```
 
 ## Estructura del Repositorio
 
 ```
 WorkSpace-BCN/
-├── backend/                # Servidor Node.js/Express
-│   ├── config/             # Configuraciones (DB, Cloudinary)
-│   ├── data/               # Archivos CSV para el seed
-│   ├── seeds/              # Script de poblado de DB
+├── AGENTS.md
+├── README.md
+├── backend/
+│   ├── README.md
+│   ├── config/
+│   ├── data/
+│   ├── public/
+│   │   └── assets/
+│   ├── seeds/
 │   ├── src/
-│   │   ├── middleware/     # Auth, validaciones
-│   │   ├── models/         # Esquemas Mongoose
-│   │   ├── routes/         # Definición de endpoints (Lógica de controladores aquí)
-│   │   └── utils/          # Utilidades
-│   ├── tests/              # Tests de integración y unitarios
-│   ├── server.js           # Punto de entrada del servidor
-│   └── socket.js           # Configuración de WebSockets
-│
-├── frontend/               # Cliente React
-│   ├── public/             # Assets estáticos
-│   └── src/
-│       ├── api/            # Configuración Axios
-│       ├── assets/         # Recursos estáticos (imágenes, iconos)
-│       ├── components/     # Componentes reutilizables
-│       ├── context/        # Contextos (Auth)
-│       ├── hooks/          # Custom Hooks
-│       ├── pages/          # Vistas principales
-│       ├── styles/         # Archivos CSS modulares
-│       ├── tests/          # Tests de componentes
-│       └── utils/          # Funciones de utilidad
-│
-└── AGENTS.md               # Documentación para Agentes IA
+│   │   ├── middleware/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   └── utils/
+│   ├── tests/
+│   ├── server.js
+│   ├── socket.js
+│   ├── package.json
+│   └── .env / .env.example
+├── cypress/
+├── frontend/
+│   ├── README.md
+│   ├── build/
+│   ├── cypress/
+│   ├── public/
+│   │   └── assets/
+│   │   ├── index.html
+│   │   └── manifest.json
+│   ├── src/
+│   │   ├── App.js
+│   │   ├── api/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── hooks/
+│   │   ├── index.js
+│   │   ├── pages/
+│   │   ├── setupTests.js
+│   │   ├── styles/
+│   │   │   ├── main.css
+│   │   │   ├── base/
+│   │   │   ├── components/
+│   │   │   ├── layout/
+│   │   │   ├── pages/
+│   │   │   └── utilities/
+│   │   ├── tests/
+│   │   └── utils/
+│   ├── package.json
+│   ├── cypress.config.js
+│   ├── eslint.config.js
+│   ├── jest.config.js
+│   └── .eslintrc.json / .babelrc
+├── package.json
+└── .gitignore
 ```
-
----
 
 ## Autor
 

@@ -21,35 +21,22 @@ Este directorio contiene el servidor y la API RESTful de **WorkSpaceBCN**. Const
 
 ## Scripts Disponibles
 
-| Comando | Descripción |
-|---------|-------------|
-| `npm start` | Inicia el servidor en modo producción. |
-| `npm run dev` | Inicia el servidor en modo desarrollo con `nodemon` (recarga automática). |
-| `npm run seed` | Ejecuta el script de poblado de base de datos. **¡Atención! Borra los datos existentes.** |
-| `npm test` | Ejecuta la suite de pruebas automatizadas. |
+| Comando           | Descripción                                                        |
+|-------------------|--------------------------------------------------------------------|
+| `npm start`       | Inicia el servidor en modo producción (`node server.js`).           |
+| `npm run dev`     | Inicia el servidor en modo desarrollo con `nodemon`.               |
+| `npm run seed`    | Ejecuta el script de poblado de base de datos (`node seeds/seed.js`). **¡Atención! Borra los datos existentes.** |
+| `npm test`        | Ejecuta la suite de pruebas unitarias e integración (Jest + Supertest). |
 
 ---
 
-## Variables de Entorno (.env)
+## Testing
 
-Crea un archivo `.env` en la raíz de `/backend` con las siguientes claves:
-
-```env
-# Servidor
-PORT=5001
-NODE_ENV=development
-
-# Base de Datos
-MONGODB_URI=mongodb+srv://<usuario>:<password>@cluster.mongodb.net/workspacebcn
-
-# Seguridad
-JWT_SECRET=tu_clave_secreta_super_segura
-
-# Cloudinary (Imágenes)
-CLOUDINARY_CLOUD_NAME=tu_cloud_name
-CLOUDINARY_API_KEY=tu_api_key
-CLOUDINARY_API_SECRET=tu_api_secret
-```
+- **Unitarios e integración:**
+  - Ejecuta `npm test` para correr los tests con Jest y Supertest.
+  - Los archivos de prueba están en `tests/` y cubren endpoints, lógica de negocio y utilidades.
+- **End-to-End (E2E):**
+  - Los flujos principales pueden ser probados desde el frontend con Cypress, pero el backend está cubierto por integración y unitarios.
 
 ---
 
@@ -58,13 +45,15 @@ CLOUDINARY_API_SECRET=tu_api_secret
 - **`config/`**: Configuración de base de datos y servicios externos (Cloudinary).
 - **`data/`**: Archivos `.csv` fuente para el seed (users.csv, products.csv, etc.).
 - **`public/assets/`**: Imágenes locales usadas como fallback o carga inicial.
-- **`seeds/`**: Lógica del script de importación de datos (`seed.js`).
+- **`seeds/`**: Script de poblado de base de datos (`seed.js`).
 - **`src/`**:
-    - **`middleware/`**: `auth.js` (verificación de token y roles).
-    - **`models/`**: Definición de esquemas Mongoose (`User`, `Product`, `Order`, etc.).
-    - **`routes/`**: Controladores y definición de rutas de la API.
-    - **`utils/`**: Funciones auxiliares (logs, traducciones).
-- **`tests/`**: Pruebas automatizadas de los flujos de negocio.
+    - **`middleware/`**: Middlewares de autenticación y validación.
+    - **`models/`**: Esquemas Mongoose para cada colección.
+    - **`routes/`**: Endpoints de la API REST.
+    - **`utils/`**: Funciones de utilidad y helpers.
+- **`tests/`**: Pruebas unitarias e integración (`.test.js`).
+- **`server.js`**: Punto de entrada del servidor.
+- **`socket.js`**: Configuración de WebSockets.
 
 ---
 
@@ -94,7 +83,7 @@ CLOUDINARY_API_SECRET=tu_api_secret
 
 ## Testing
 
-El proyecto incluye tests de integración que verifican el flujo completo de negocio (Login -> Compra -> Stock).
+El proyecto incluye pruebas unitarias y de integración que cubren los principales endpoints y lógica de negocio (autenticación, ventas, pagos, utilidades, etc.). 
 
 Para ejecutar los tests:
 ```bash

@@ -22,11 +22,23 @@ Este directorio contiene la aplicación cliente de **WorkSpaceBCN**, una Single 
 
 ## Scripts Disponibles
 
-| Comando | Descripción |
-|---------|-------------|
-| `npm start` | Inicia la aplicación en modo desarrollo (http://localhost:3000). |
-| `npm test` | Ejecuta la suite de pruebas (Jest + React Testing Library). |
-| `npm run build` | Compila la aplicación para producción en la carpeta `build`. |
+| Comando           | Descripción                                                                 |
+|-------------------|-----------------------------------------------------------------------------|
+| `npm start`       | Inicia la aplicación en modo desarrollo (http://localhost:3000).            |
+| `npm test`        | Ejecuta la suite de pruebas unitarias e integración (React Testing Library). |
+| `npm run build`   | Compila la aplicación para producción en la carpeta `build`.                 |
+| `npx cypress run --config-file cypress.config.js` | Ejecuta las pruebas E2E con Cypress.        |
+
+---
+
+## Testing
+
+- **Unitarios e integración:**
+  - Ejecuta `npm test` para correr los tests con Jest y React Testing Library.
+  - Los archivos de prueba están en `src/tests/` y siguen el formato `.test.jsx`.
+- **End-to-End (E2E):**
+  - Ejecuta `npx cypress run --config-file cypress.config.js` para pruebas E2E automatizadas.
+  - Los tests E2E están en `cypress/e2e/` y cubren los flujos principales del usuario y admin.
 
 ---
 
@@ -36,18 +48,13 @@ Este directorio contiene la aplicación cliente de **WorkSpaceBCN**, una Single 
 - **`src/`**:
     - **`api/`**: Configuración de Axios e interceptores para llamadas al backend.
     - **`assets/`**: Imágenes y recursos estáticos del frontend.
-    - **`components/`**:
-        - **`common/`**: Componentes genéricos (Botones, Inputs).
-        - **`orders/`**: Componentes específicos de órdenes.
-        - Componentes globales (`Header`, `Footer`, `ProductCard`).
+    - **`components/`**: Componentes reutilizables (`ProductCard`, `Modal`, `Header`, `Footer`, `OrderCard`, `PaymentMethodSelect`, `Toast`, etc.).
     - **`context/`**: `AuthContext.js` (Proveedor de autenticación).
     - **`hooks/`**: Custom hooks (`useAsyncAction`, `useToastManager`).
-    - **`pages/`**: Vistas principales (Rutas).
-        - **`admin/`**: Vistas del panel de administración (`SalesAdmin`, `ProductsAdmin`).
-        - `Home.js`, `Login.js`, `CartPage.js`, etc.
-    - **`styles/`**: Archivos CSS organizados por responsabilidad (base, layout, components, pages).
-    - **`tests/`**: Archivos de prueba (`.test.jsx`).
-    - **`utils/`**: Funciones de utilidad (formateo de moneda, fechas).
+    - **`pages/`**: Vistas principales (Home, Login, CartPage, CheckoutPage, OrdersHistory, OrderDetail, Perfil, Contact, y admin).
+    - **`styles/`**: Archivos CSS organizados por responsabilidad (main.css, base, layout, components, pages, utilities).
+    - **`tests/`**: Archivos de prueba unitarios e integración (`.test.jsx`).
+    - **`utils/`**: Funciones de utilidad (formateo de moneda, fechas, helpers).
 
 ---
 
@@ -58,14 +65,3 @@ El frontend maneja dos niveles de acceso:
 2. **Administrador:** Acceso al menú "Admin" para gestionar productos, ventas, pagos y usuarios.
 
 La protección de rutas se realiza mediante componentes wrapper que verifican el estado en `AuthContext`.
-
----
-
-## Testing
-
-Los tests del frontend están diseñados para ser **independientes**. Utilizan `jest.mock` para simular las respuestas de la API, permitiendo probar la interfaz y la lógica de negocio sin necesidad de tener el backend ejecutándose.
-
-Para correr los tests:
-```bash
-npm test
-```
