@@ -177,7 +177,7 @@ function Products() {
                 onClick={() => setViewMode("grid")}
                 disabled={viewMode === "grid"}
               >
-                Vista en tarjetas
+                Tarjetas
               </button>
               <button
                 type="button"
@@ -185,7 +185,7 @@ function Products() {
                 onClick={() => setViewMode("list")}
                 disabled={viewMode === "list"}
               >
-                Vista en lista
+                Lista
               </button>
             </div>
           </div>

@@ -8,7 +8,6 @@ import Toast from "../components/Toast.js"
 import { formatCurrency } from "../utils/format"
 
 function CartPage() {
-    // ...existing code...
   const [cart, setCart] = useState([])
   const { isAuthenticated, isAdmin } = useAuth()
   const navigate = useNavigate()
@@ -17,14 +16,13 @@ function CartPage() {
   const location = useLocation();
 
 
-    // Cierra el modal si el carrito queda vacío
     useEffect(() => {
       if (cart.length === 0 && confirmModal.isOpen) {
         setConfirmModal({ isOpen: false, productId: null, productName: "" });
       }
     }, [cart.length, confirmModal.isOpen]);
 
-  // Inicializa el carrito y sincroniza cuando cambia localStorage (logout)
+  
   useEffect(() => {
     const syncCart = () => {
       const savedCart = JSON.parse(localStorage.getItem("carrito") || "[]")
@@ -57,7 +55,6 @@ function CartPage() {
     }
   }, [])
 
-  // Eliminado useEffect que disparaba 'cart-updated' en cada cambio de 'cart' para evitar bucle infinito
 
   function persistCart(updatedCart) {
     setCart(updatedCart)
@@ -92,8 +89,6 @@ function CartPage() {
     }
   }, [isAdmin, navigate])
 
-  // (Eliminado) El carrito es público, no se debe redirigir si no hay sesión
-
   useEffect(() => {
     if (!confirmModal.isOpen) return
 
@@ -118,7 +113,6 @@ function CartPage() {
     setToast({ type: "info", message: "Carrito limpiado" })
   }
 
-  // Cierra el modal si la ruta cambia
   useEffect(() => {
     setConfirmModal({ isOpen: false, productId: null, productName: "" });
   }, [location.pathname]);

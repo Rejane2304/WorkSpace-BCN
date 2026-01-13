@@ -1,5 +1,3 @@
-
-// ESLint config for React + JSX (ESM format)
 export default [
   {
     files: ["**/*.{js,jsx}", "**/*.js", "**/*.jsx"],
@@ -22,7 +20,6 @@ export default [
       }
     },
     rules: {
-      // Puedes agregar reglas personalizadas aquí
     }
   }
 ];

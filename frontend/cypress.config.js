@@ -2,8 +2,8 @@ const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: 'http://localhost:3000', // Cambia el puerto si tu app usa otro
+    baseUrl: 'http://localhost:3000', 
     supportFile: false,
-    specPattern: 'cypress/e2e/**/*.cy.js'
+    specPattern: 'frontend/cypress/e2e/**/*.cy.js'
   }
 });

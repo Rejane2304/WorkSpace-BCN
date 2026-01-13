@@ -1,9 +1,6 @@
-// Test E2E robusto para CartPage con Cypress
-
 /// <reference types="cypress" />
 
 
-// Helper para loguear como cliente
 function loginCliente() {
   cy.visit('/login');
   cy.get('[data-testid="email-input"]').type('maria.rodriguez@email.com');
@@ -11,25 +8,23 @@ function loginCliente() {
   cy.get('[data-testid="login-button"]').click();
 }
 
-// Helper para preparar el carrito con al menos un producto
 function prepararCarritoConProducto() {
   loginCliente();
   cy.visit('/productos');
-  cy.get('[data-testid="add-to-cart-button"]').first().click();
+  cy.get('[data-testid="add-to-cart-button"]:not([disabled])').first().click();
   cy.visit('/cart');
 }
 
 describe('Cart Page E2E', () => {
   beforeEach(() => {
-    // Loguear como cliente antes de cada test
     cy.visit('/login');
     cy.get('[data-testid="email-input"]').type('maria.rodriguez@email.com');
     cy.get('[data-testid="password-input"]').type('password123');
     cy.get('[data-testid="login-button"]').click();
     cy.wait(500);
-    // Agregar un producto real al carrito usando el botón en /productos
+    
     cy.visit('/productos');
-    cy.get('[data-testid="add-to-cart-button"]').first().click();
+    cy.get('[data-testid="add-to-cart-button"]:not([disabled])').first().click();
     cy.visit('/carrito');
     cy.wait(500);
   });
@@ -70,7 +65,6 @@ describe('Cart Page E2E', () => {
   it('puede pagar si hay productos', () => {
     cy.get('[data-testid="pay-button"]').should('not.be.disabled').click();
     cy.url({ timeout: 10000 }).should('include', '/checkout');
-    // Completar el formulario de checkout si es necesario
     cy.get('input[aria-label="Nombre completo"]', { timeout: 5000 }).clear().type('María Rodríguez');
     cy.get('input[aria-label="Email"]', { timeout: 5000 }).clear().type('maria.rodriguez@email.com');
     cy.get('input[aria-label="Calle"]', { timeout: 5000 }).clear().type('Carrer del Mar 18');

@@ -238,7 +238,6 @@
     display: inline-flex;
   }
 
-  /* Selector más específico que sobrescribe sin !important */
   .header-actions .header-register {
     display: none;
   }
