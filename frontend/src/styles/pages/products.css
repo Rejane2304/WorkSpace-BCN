@@ -725,6 +725,61 @@ html, body {
 }
 
 @media (max-width: 600px) {
+  .product-list-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .product-list-card .btn,
+  .product-list-card .btn-secondary,
+  .product-list-card .btn-primary {
+    width: 90%;
+    min-width: 120px;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+  .product-view-toggle {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: var(--spacing-xs, 0.5rem) !important;
+    justify-content: center !important;
+    margin-bottom: 1.5rem !important;
+    width: 100% !important;
+  }
+  .product-view-toggle > .btn {
+    width: 100% !important;
+    min-width: 120px !important;
+    padding: 0.5rem 1.5rem !important;
+    font-size: 0.95rem !important;
+    border-radius: 999px !important;
+    border: 2px solid var(--color-primary) !important;
+    background: var(--color-bg, #f9f9f9) !important;
+    color: var(--color-primary) !important;
+    cursor: pointer !important;
+    transition: background 0.2s, color 0.2s, border 0.2s, box-shadow 0.2s !important;
+    font-family: var(--font-main) !important;
+    font-weight: 600 !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+  }
+  .product-view-toggle > .btn.active {
+    background: #e09c4a !important;
+    color: #222 !important;
+    box-shadow: 0 2px 8px rgba(224,156,74,0.15) !important;
+    border: 2px solid #e09c4a !important;
+  }
+  .product-view-toggle > .btn:not(.active):hover {
+    background: #f5e2c7 !important;
+    color: var(--color-primary) !important;
+    box-shadow: 0 1px 4px rgba(224,156,74,0.10) !important;
+  }
+  .product-view-toggle > .btn:focus {
+    outline: 2px solid var(--color-primary) !important;
+  }
   .container,
   .container-full,
   .container.products-padding-y-2 {

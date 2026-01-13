@@ -8,6 +8,7 @@ import { products as productsAPI } from "../api/api"
 import ProductCard from "../components/ProductCard.js"
 import FilterSelect from "../components/FilterSelect"
 import Modal from "../components/Modal.js"
+import "../styles/pages/products.css"
 
 function normalizeText(text) {
   return text
@@ -175,7 +176,7 @@ function Products() {
                   />
                 </div>
               </div>
-              <div className="product-view-toggle products-view-toggle-flex">
+              <div className="product-view-toggle">
                 <button
                   type="button"
                   className={"btn btn-secondary " + (viewMode === "grid" ? "active" : "")}
@@ -252,7 +253,7 @@ function Products() {
     );
   }
   
-  export default Products; 
+  export default Products;
 
 
 
