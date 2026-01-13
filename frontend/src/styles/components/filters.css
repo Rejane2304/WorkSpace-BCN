@@ -42,12 +42,12 @@
 }
 
 .filters-bar input,
-  .filters-bar select,
-  .select-custom-control {
-    min-width: 100%;
-    max-width: 100%;
-    margin-right: 0;
-  }
+.filters-bar select,
+.select-custom-control {
+  min-width: 100%;
+  max-width: 100%;
+  margin-right: 0;
+}
 
 .products-filters .input,
 .products-filters .select {
@@ -65,7 +65,7 @@
 .admin-clients-controls input,
 .admin-clients-controls select {
   border: 2px solid var(--color-warning);
-  background-color: #ffffff;
+  background-color: #fff;
   border-radius: var(--border-radius-sm);
   padding: var(--spacing-xs) var(--spacing-sm);
   font-family: var(--font-main);
@@ -82,6 +82,6 @@
 .admin-clients-controls .select,
 .admin-inventory-controls .input,
 .admin-inventory-controls .select {
-  background-color: #ffffff !important;
-  border-color: var(--color-warning) !important;
+  background-color: #fff;
+  border-color: var(--color-warning);
 }

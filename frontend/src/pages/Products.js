@@ -1,5 +1,3 @@
-"use client"
-
 import { useState, useEffect } from "react"
 import { socket } from "../utils/socket"
 import { Link } from "react-router-dom"
@@ -86,15 +84,10 @@ function Products() {
     }
     if (selectedCategory !== "todas") {
       const normalizedCategory = normalizeText(selectedCategory);
-      console.log("[Filtro] selectedCategory:", selectedCategory, "normalized:", normalizedCategory);
       results = results.filter((product) => {
         const prodCat = product.categoria || product.category || "";
         const prodCatNorm = normalizeText(prodCat);
-        const match = prodCatNorm === normalizedCategory;
-        if (!match) {
-          console.log("[Filtro] No match:", { prodCat, prodCatNorm, normalizedCategory });
-        }
-        return match;
+        return prodCatNorm === normalizedCategory;
       });
     }
     setFilteredProducts(Array.isArray(results) ? results : []);
@@ -125,135 +118,141 @@ function Products() {
     });
   }
 
-    if (isLoading) {
-      return (
-        <div className="container text-center products-py-4">
-          Cargando productos...
-        </div>
-      )
-    }
-  
+  if (isLoading) {
     return (
-      <div className="container">
-        <Modal
-          isOpen={modalConfig.isOpen}
-          title={modalConfig.title}
-          message={modalConfig.message}
-          confirmLabel={modalConfig.confirmLabel}
-          cancelLabel={modalConfig.cancelLabel}
-          onConfirm={modalConfig.onConfirm}
-          onCancel={modalConfig.onCancel}
-          onClose={modalConfig.onClose}
-        />
-        <div className="hero-white-container products-my-25">
-          <div className="products-panel card products-panel-transparent">
-            <div className="products-header products-mb-25">
-              <h1 className="page-title">Nuestros productos</h1>
-              <p className="text-small products-meta">
-                Mostrando {filteredProducts.length} de {products.length} productos disponibles
-              </p>
-            </div>
-            <p className="text-small products-description products-mb-25">
-              Colecciones seleccionadas para equipar oficinas, estudios y espacios creativos en Barcelona.
+      <div className="container text-center products-py-4">
+        Cargando productos...
+      </div>
+    )
+  }
+
+  return (
+    <div className="products-page container">
+      <Modal
+        isOpen={modalConfig.isOpen}
+        title={modalConfig.title}
+        message={modalConfig.message}
+        confirmLabel={modalConfig.confirmLabel}
+        cancelLabel={modalConfig.cancelLabel}
+        onConfirm={modalConfig.onConfirm}
+        onCancel={modalConfig.onCancel}
+        onClose={modalConfig.onClose}
+      />
+      <div className="hero-white-container products-my-25">
+        <div className="products-panel card products-panel-transparent">
+          <div className="products-header products-mb-25">
+            <h1 className="page-title">Nuestros productos</h1>
+            <p className="text-small products-meta">
+              Mostrando {filteredProducts.length} de {products.length} productos disponibles
             </p>
-            <div className="products-top-bar products-top-bar-flex">
-              <div className="flex gap-3 products-filter-row products-flex-1">
-                <input
-                  type="text"
-                  placeholder="Buscar productos..."
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  className="input input-filter products-input-w products-search-bar"
-                  aria-label="Buscar productos"
+          </div>
+          <p className="text-small products-description products-mb-25">
+            Colecciones seleccionadas para equipar oficinas, estudios y espacios creativos en Barcelona.
+          </p>
+          <div className="products-top-bar products-top-bar-flex">
+            <div className="flex gap-3 products-filter-row products-flex-1">
+              <input
+                type="text"
+                placeholder="Buscar productos..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="input input-filter products-input-w products-search-bar"
+                aria-label="Buscar productos"
+              />
+              <div className="products-category-bar">
+                <FilterSelect
+                  value={selectedCategory}
+                  onChange={setSelectedCategory}
+                  options={CATEGORY_FILTER_OPTIONS}
+                  placeholder="Categoría"
+                  dataTestId="products-category-filter"
                 />
-                <div className="products-category-bar">
-                  <FilterSelect
-                    value={selectedCategory}
-                    onChange={setSelectedCategory}
-                    options={CATEGORY_FILTER_OPTIONS}
-                    placeholder="Categoría"
-                    dataTestId="products-category-filter"
-                  />
-                </div>
-              </div>
-              <div className="product-view-toggle">
-                <button
-                  type="button"
-                  className={"btn btn-secondary " + (viewMode === "grid" ? "active" : "")}
-                  onClick={() => setViewMode("grid")}
-                  disabled={viewMode === "grid"}
-                >
-                  Vista en tarjetas
-                </button>
-                <button
-                  type="button"
-                  className={"btn btn-secondary " + (viewMode === "list" ? "active" : "")}
-                  onClick={() => setViewMode("list")}
-                  disabled={viewMode === "list"}
-                >
-                  Vista en lista
-                </button>
               </div>
             </div>
-            {viewMode === "grid" ? (
-              <div className="product-grid">
-                {Array.isArray(filteredProducts) && filteredProducts.map((product) => (
-                  <ProductCard key={product._id} product={product} onAddToCart={addToCart} isAdmin={isAdmin} />
-                ))}
-              </div>
-            ) : (
-              <div className="product-list-card-container">
-                {Array.isArray(filteredProducts) && filteredProducts.map((product) => {
-                  const prod = product || product.producto || {};
-                  const imgSrc = prod.image || prod.imagen || "/assets/no-image.png";
-                  const prodName = prod.name || prod.nombre || "Producto";
-                  const isAvailable = product.stock > 0;
-                  const canPurchase = isAvailable && !isAdmin;
-                  return (
-                    <div className="product-list-card" key={product._id}>
-                      <div className="product-list-card-img">
-                        <img src={imgSrc} alt={prodName} />
+
+            <div className="product-view-toggle">
+              <button
+                type="button"
+                className={"btn btn-secondary " + (viewMode === "grid" ? "active" : "")}
+                onClick={() => setViewMode("grid")}
+                disabled={viewMode === "grid"}
+              >
+                Vista en tarjetas
+              </button>
+              <button
+                type="button"
+                className={"btn btn-secondary " + (viewMode === "list" ? "active" : "")}
+                onClick={() => setViewMode("list")}
+                disabled={viewMode === "list"}
+              >
+                Vista en lista
+              </button>
+            </div>
+          </div>
+
+          {viewMode === "grid" ? (
+            <div className="product-grid">
+              {Array.isArray(filteredProducts) && filteredProducts.map((product) => (
+                <ProductCard key={product._id} product={product} onAddToCart={addToCart} isAdmin={isAdmin} />
+              ))}
+            </div>
+          ) : (
+            <div className="product-list-card-container">
+              {Array.isArray(filteredProducts) && filteredProducts.map((product) => {
+                const prod = product || product.producto || {};
+                const imgSrc = prod.image || prod.imagen || "/assets/no-image.png";
+                const prodName = prod.name || prod.nombre || "Producto";
+                const isAvailable = product.stock > 0;
+                const canPurchase = isAvailable && !isAdmin;
+
+                return (
+                  <div className="product-list-card" key={product._id}>
+                    <div className="product-list-card-img">
+                      <img src={imgSrc} alt={prodName} />
+                    </div>
+                    <div className="product-list-card-info">
+                      <div className="product-list-card-row product-list-card-name color-primary fw-bold">
+                        {product.nombre || product.name}
                       </div>
-                      <div className="product-list-card-info">
-                        <div className="product-list-card-row product-list-card-name color-primary fw-bold">{product.nombre || product.name}</div>
-                        <div className="product-list-card-row color-success fw-bold">{product.categoria || product.category}</div>
-                        <div className="product-list-card-row product-list-card-price color-primary fw-bold">{(product.precio || product.price) + ' €'}</div>
+                      <div className="product-list-card-row color-success fw-bold">
+                        {product.categoria || product.category}
                       </div>
-                      <div className="product-list-card-actions">
-                        <button
-                          className={`btn btn-primary btn-ms btn-equal ${canPurchase ? "products-cursor-pointer" : "products-cursor-not-allowed"}`}
-                          onClick={() => { if (canPurchase) addToCart(product); }}
-                          disabled={!canPurchase}
-                          style={{ cursor: canPurchase ? "pointer" : "not-allowed" }}
-                        >
-                          Comprar
-                        </button>
-                        <Link to={`/productos/${product._id}`} className="btn btn-secondary btn-ms btn-equal">
-                          Ver detalles
-                        </Link>
-                        {isAdmin && (
-                          <div className="clients-only-notice">
-                            Solo clientes pueden comprar
-                          </div>
-                        )}
-                        {!isAvailable && (
-                          <p className="product-out-stock text-center products-mt-05">
-                            Producto sin stock
-                          </p>
-                        )}
+                      <div className="product-list-card-row product-list-card-price color-primary fw-bold">
+                        {(product.precio || product.price) + " €"}
                       </div>
                     </div>
-                  );
-                })}
-              </div>
-            )}
-          </div>
+                    <div className="product-list-card-actions">
+                      <button
+                        className={`btn btn-primary btn-ms btn-equal ${canPurchase ? "products-cursor-pointer" : "products-cursor-not-allowed"}`}
+                        onClick={() => { if (canPurchase) addToCart(product); }}
+                        disabled={!canPurchase}
+                        style={{ cursor: canPurchase ? "pointer" : "not-allowed" }}
+                      >
+                        Comprar
+                      </button>
+                      <Link to={`/productos/${product._id}`} className="btn btn-secondary btn-ms btn-equal">
+                        Ver detalles
+                      </Link>
+                      {isAdmin && (
+                        <div className="clients-only-notice">
+                          Solo clientes pueden comprar
+                        </div>
+                      )}
+                      {!isAvailable && (
+                        <p className="product-out-stock text-center products-mt-05">
+                          Producto sin stock
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
-    );
-  }
-  
-  export default Products;
+    </div>
+  );
+}
 
-
-
+export default Products;

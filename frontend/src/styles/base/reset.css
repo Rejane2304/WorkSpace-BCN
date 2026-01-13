@@ -20,7 +20,6 @@ body {
   line-height: var(--line-height-normal);
   color: var(--color-text);
   background-color: var(--color-background);
-  overflow-x: hidden; 
 }
 
 ul,
@@ -72,13 +71,11 @@ button:focus {
   outline: none;
 }
 
-
 table {
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
 }
-
 
 h1,
 h2,
@@ -95,7 +92,6 @@ h6 {
 p {
   margin: 0;
 }
-
 
 .sr-only {
   position: absolute;
