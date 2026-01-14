@@ -1,5 +1,3 @@
-/* Color verde para categorías de producto en todas las vistas */
-
 .color-primary { color: var(--color-primary); }
 .color-success { color: var(--color-success); }
 .fw-bold { font-weight: 700; }
