@@ -1,0 +1,41 @@
+/* Espaciado entre botones de acción en la página de detalle */
+.product-detail .product-card-actions,
+.product-detail .product-detail-actions {
+  display: flex;
+  gap: var(--spacing-md, 1rem);
+  flex-wrap: wrap;
+}
+/* Separación entre el header y la tarjeta de detalle */
+.product-detail {
+  margin-top: var(--spacing-xl, 3rem);
+}
+/* productdetail.css - Estilos específicos para la página de detalle de producto */
+
+.product-detail-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-md);
+  background: var(--color-bg-light, #fff);
+  border-radius: var(--border-radius-md, 12px);
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.product-image {
+  max-width: 100%;
+  max-height: 350px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--border-radius-sm, 8px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  background: var(--color-bg-light, #fff);
+  transition: box-shadow 0.2s;
+}
+
+@media (max-width: 600px) {
+  .product-image {
+    max-height: 200px;
+  }
+}
