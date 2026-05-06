@@ -293,3 +293,30 @@
   border-radius: 8px;
   margin: 2px;
 }
+
+.sales-admin-counters {
+  display: flex;
+  gap: var(--spacing-lg);
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin-bottom: var(--spacing-md);
+}
+
+.sales-admin-counters > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.sales-admin-fontweight-500 {
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .sales-admin-counters {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    align-items: flex-start;
+  }
+}
