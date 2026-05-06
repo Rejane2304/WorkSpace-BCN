@@ -1,4 +1,3 @@
-"use client"
 
 import { devError } from "../../utils/devlog"
 
@@ -132,7 +131,7 @@ function AdminProductEdit() {
   }
 
   async function uploadImageToCloudinary() {
-    if (!imageFile) return formData.imagen
+    if (!imageFile) return formData.image
 
     setIsUploadingImage(true)
     try {
@@ -149,7 +148,7 @@ function AdminProductEdit() {
         onConfirm: () => setModalConfig((prev) => ({ ...prev, isOpen: false })),
         onCancel: null,
       })
-      return formData.imagen
+      return formData.image
     } finally {
       setIsUploadingImage(false)
     }
