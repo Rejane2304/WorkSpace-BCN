@@ -58,6 +58,7 @@ function CartPage() {
   function persistCart(updatedCart) {
     setCart(updatedCart)
     localStorage.setItem("carrito", JSON.stringify(updatedCart))
+    window.dispatchEvent(new Event("cart-updated"))
   }
 
   function updateQuantity(productId, newQuantity) {

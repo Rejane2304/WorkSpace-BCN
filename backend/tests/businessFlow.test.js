@@ -2,9 +2,7 @@ import request from 'supertest';
 import mongoose from 'mongoose';
 import app from '../server.js';
 import Product from '../src/models/Product.js';
-import dotenv from 'dotenv';
-
-dotenv.config();
+import { connectTestDatabase, disconnectTestDatabase, clearTestData } from './setup.js';
 
 let customerToken;
 let targetProduct;
@@ -16,9 +14,15 @@ const TEST_USER = {
 };
 
 beforeAll(async () => {
-    if (mongoose.connection.readyState === 0) {
-        await mongoose.connect(process.env.MONGODB_URI);
-    }
+    await connectTestDatabase();
+});
+
+afterAll(async () => {
+    await disconnectTestDatabase();
+});
+
+beforeEach(async () => {
+    await clearTestData();
 });
 
 afterAll(async () => {
@@ -82,6 +86,10 @@ describe('Flujo de Negocio Completo: Compra y Gestión de Stock', () => {
 
         expect(res.statusCode).toEqual(201);
         expect(res.body.order).toHaveProperty('_id');
+        createdOrderId = res.body.order._id;
+        if (res.body.sale) {
+            createdSaleId = res.body.sale._id;
+        }
         console.log(`Orden creada ID: ${res.body.order._id}`);
     });
 
