@@ -4,7 +4,11 @@
   "scripts": {
     "test": "npm run test:all",
     "test:all": "npm run test --prefix backend && npm run test --prefix frontend",
-    "test:local": "echo 'Sin tests locales'"
+    "test:local": "echo 'Sin tests locales'",
+    "dev": "echo 'Ejecutar en terminales separadas: npm run dev (backend) y npm start (frontend)' ",
+    "seed": "npm run seed --prefix backend",
+    "build": "npm run build --prefix frontend",
+    "start": "npm start --prefix backend"
   },
   "dependencies": {
     "eslint-config-react-app": "^7.0.1",

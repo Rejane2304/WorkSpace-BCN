@@ -1,7 +1,7 @@
 {
   "name": "workspacebcn-backend",
   "version": "1.0.0",
-  "description": "Backend Node.js simple para WorkSpaceBCN",
+  "description": "Backend Node.js para WorkSpaceBCN - API RESTful con autenticación JWT, gestión de archivos Cloudinary, WebSockets y base de datos MongoDB",
   "main": "server.js",
   "type": "module",
   "scripts": {

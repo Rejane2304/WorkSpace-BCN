@@ -204,9 +204,8 @@ WorkSpace-BCN/
 │   │   └── utils/
 │   ├── package.json
 │   ├── cypress.config.js
-│   ├── eslint.config.js
 │   ├── jest.config.js
-│   └── .eslintrc.json / .babelrc
+│   └── .eslintrc.json
 ├── package.json
 └── .gitignore
 ```
