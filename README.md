@@ -128,6 +128,12 @@ npm start
 npm test
 ```
 
+**Ejecutar TODOS los tests (desde la raíz):**
+```bash
+cd ..
+npm run test:all
+```
+
 ### 3. Configuración del Frontend
 En una nueva terminal:
 ```bash
