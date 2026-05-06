@@ -19,7 +19,7 @@ function OrderCard({ order }) {
   return (
     <article className="order-card">
       <div className="order-card-content">
-        <div className="order-card-status-wrapper" style={{ marginBottom: '8px' }}>
+        <div className="order-card-status-wrapper">
           <span className={getStatusBadgeClass(order.status)}>
             {translateOrderStatus(order.status)}
           </span>

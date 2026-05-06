@@ -71,6 +71,18 @@
   margin-bottom: 2px;
 }
 
+.order-card-status-wrapper {
+  margin-bottom: 8px;
+  display: inline-flex;
+  max-width: 100%;
+}
+
+.order-card-status-wrapper .badge {
+  white-space: nowrap;
+  overflow: visible;
+  display: inline-block;
+}
+
 .order-card-items {
   display: flex;
   flex-wrap: wrap;
@@ -298,6 +310,21 @@
   .badge {
     font-size: 0.9rem;
     padding: 0.3em 1em;
+    white-space: nowrap;
+    overflow: visible;
+    display: inline-block;
+  }
+
+  .order-card-status-wrapper {
+    margin-bottom: 6px;
+    display: inline-flex;
+    max-width: 100%;
+  }
+
+  .order-card-status-wrapper .badge {
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: unset;
   }
 }
 
@@ -366,6 +393,25 @@
   .badge {
     font-size: 0.85rem;
     padding: 0.25em 0.8em;
+    white-space: nowrap;
+    overflow: visible;
+    display: inline-block;
+    min-width: fit-content;
+    max-width: none;
+  }
+
+  .order-card-status-wrapper {
+    margin-bottom: 8px;
+    display: inline-flex;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .order-card-status-wrapper .badge {
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: unset;
+    min-width: fit-content;
   }
 }
 
