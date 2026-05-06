@@ -54,7 +54,6 @@
   margin-bottom: 18px;
   max-width: 100%;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 .order-card-content {
@@ -63,7 +62,6 @@
   gap: 8px;
   flex: 1;
   min-width: 0;
-  overflow: hidden;
 }
 
 .order-card-status {
@@ -75,12 +73,16 @@
   margin-bottom: 8px;
   display: inline-flex;
   max-width: 100%;
+  width: auto;
 }
 
 .order-card-status-wrapper .badge {
-  white-space: nowrap;
-  overflow: visible;
-  display: inline-block;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  display: inline-block !important;
+  max-width: none !important;
+  width: auto !important;
+  min-width: fit-content !important;
 }
 
 .order-card-items {
