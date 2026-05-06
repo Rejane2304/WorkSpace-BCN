@@ -1,13 +1,13 @@
 import request from "supertest"
 import app from "../server.js"
-import { connectDatabase, disconnectDatabase } from "../config/database.js"
+import { connectTestDatabase, disconnectTestDatabase } from "./setup.js"
 
 describe("Auth API - errores", () => {
   beforeAll(async () => {
-    await connectDatabase()
-  })
+    await connectTestDatabase()
+  }, 30000)
   afterAll(async () => {
-    await disconnectDatabase()
+    await disconnectTestDatabase()
   })
   it("rechaza login con credenciales incorrectas", async () => {
     const resp = await request(app).post("/api/auth/login").send({

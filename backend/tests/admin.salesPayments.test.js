@@ -1,29 +1,33 @@
 import request from "supertest"
 import app from "../server.js"
-import { connectDatabase, disconnectDatabase } from "../config/database.js"
+import { connectTestDatabase, disconnectTestDatabase, seedTestData } from "./setup.js"
 
 const ADMIN_EMAIL = "admin@workspacebcn.com"
 const ADMIN_PASSWORD = "admin123"
 
-describe("Admin sales & payments endpoints (solo consulta de datos reales)", () => {
+describe("Admin sales & payments endpoints", () => {
   let adminToken = null
   let userToken = null
+
   beforeAll(async () => {
-    await connectDatabase()
+    await connectTestDatabase()
+    await seedTestData()
+
     const adminResp = await request(app).post("/api/auth/login").send({
       email: ADMIN_EMAIL,
       password: ADMIN_PASSWORD,
     })
     adminToken = adminResp.body.token
+
     const userResp = await request(app).post("/api/auth/login").send({
       email: "maria.rodriguez@email.com",
       password: "password123",
     })
     userToken = userResp.body.token
-  })
+  }, 30000)
 
   afterAll(async () => {
-    await disconnectDatabase()
+    await disconnectTestDatabase()
   })
 
   it("permite al admin listar resumen de ventas", async () => {

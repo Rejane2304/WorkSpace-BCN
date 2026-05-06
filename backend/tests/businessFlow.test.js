@@ -1,35 +1,33 @@
 import request from 'supertest';
-import mongoose from 'mongoose';
 import app from '../server.js';
 import Product from '../src/models/Product.js';
-import { connectTestDatabase, disconnectTestDatabase, clearTestData } from './setup.js';
+import { connectTestDatabase, disconnectTestDatabase, clearTestData, seedTestData } from './setup.js';
 
 let customerToken;
 let targetProduct;
 let initialStock;
+let createdOrderId;
+let createdSaleId;
 
 const TEST_USER = {
     email: 'maria.rodriguez@email.com',
     password: 'password123'
 };
 
-beforeAll(async () => {
-    await connectTestDatabase();
-});
-
-afterAll(async () => {
-    await disconnectTestDatabase();
-});
-
-beforeEach(async () => {
-    await clearTestData();
-});
-
-afterAll(async () => {
-    await mongoose.connection.close();
-});
-
 describe('Flujo de Negocio Completo: Compra y Gestión de Stock', () => {
+
+    beforeAll(async () => {
+        await connectTestDatabase();
+    }, 30000);
+
+    afterAll(async () => {
+        await disconnectTestDatabase();
+    });
+
+    beforeEach(async () => {
+        await clearTestData();
+        await seedTestData();
+    });
 
     test('1. Preparación: Identificar un producto con stock', async () => {
         targetProduct = await Product.findOne({ stock: { $gt: 0 } });
@@ -52,6 +50,20 @@ describe('Flujo de Negocio Completo: Compra y Gestión de Stock', () => {
     });
 
     test('3. Transacción: Crear una Orden (Comprar)', async () => {
+        // Asegurar que tenemos un producto disponible
+        targetProduct = await Product.findOne({ stock: { $gt: 0 } });
+        expect(targetProduct).toBeDefined();
+        initialStock = targetProduct.stock;
+
+        // Login primero
+        const loginRes = await request(app)
+            .post('/api/auth/login')
+            .send({
+                email: TEST_USER.email,
+                password: TEST_USER.password
+            });
+        customerToken = loginRes.body.token;
+
         const orderData = {
             items: [
                 {
@@ -94,14 +106,101 @@ describe('Flujo de Negocio Completo: Compra y Gestión de Stock', () => {
     });
 
     test('4. Validación de Negocio: El stock debe haber disminuido', async () => {
+        // Setup: crear producto y hacer login
+        targetProduct = await Product.findOne({ stock: { $gt: 0 } });
+        expect(targetProduct).toBeDefined();
+        initialStock = targetProduct.stock;
+
+        const loginRes = await request(app)
+            .post('/api/auth/login')
+            .send({
+                email: TEST_USER.email,
+                password: TEST_USER.password
+            });
+        customerToken = loginRes.body.token;
+
+        // Crear orden
+        const orderData = {
+            items: [
+                {
+                    product: targetProduct._id,
+                    name: targetProduct.name,
+                    quantity: 1,
+                    unitPrice: targetProduct.price,
+                    image: targetProduct.image
+                }
+            ],
+            shippingAddress: {
+                street: 'Calle Test 123',
+                city: 'Barcelona',
+                postalCode: '08001',
+                country: 'España'
+            },
+            paymentMethod: 'tarjeta',
+            itemsPrice: targetProduct.price,
+            shippingPrice: 0,
+            taxPrice: targetProduct.price * 0.21,
+            totalPrice: targetProduct.price * 1.21
+        };
+
+        await request(app)
+            .post('/api/orders')
+            .set('Authorization', `Bearer ${customerToken}`)
+            .send(orderData);
+
+        // Validar que el stock disminuyó
         const updatedProduct = await Product.findById(targetProduct._id);
-        
+
         console.log(`Stock anterior: ${initialStock}, Stock actual: ${updatedProduct.stock}`);
-        
+
         expect(updatedProduct.stock).toBe(initialStock - 1);
     });
 
     test('5. Validación de Relaciones: La orden pertenece al usuario', async () => {
+        // Setup: crear producto y hacer login
+        targetProduct = await Product.findOne({ stock: { $gt: 0 } });
+        expect(targetProduct).toBeDefined();
+
+        const loginRes = await request(app)
+            .post('/api/auth/login')
+            .send({
+                email: TEST_USER.email,
+                password: TEST_USER.password
+            });
+        customerToken = loginRes.body.token;
+
+        // Crear orden
+        const orderData = {
+            items: [
+                {
+                    product: targetProduct._id,
+                    name: targetProduct.name,
+                    quantity: 1,
+                    unitPrice: targetProduct.price,
+                    image: targetProduct.image
+                }
+            ],
+            shippingAddress: {
+                street: 'Calle Test 123',
+                city: 'Barcelona',
+                postalCode: '08001',
+                country: 'España'
+            },
+            paymentMethod: 'tarjeta',
+            itemsPrice: targetProduct.price,
+            shippingPrice: 0,
+            taxPrice: targetProduct.price * 0.21,
+            totalPrice: targetProduct.price * 1.21
+        };
+
+        const orderRes = await request(app)
+            .post('/api/orders')
+            .set('Authorization', `Bearer ${customerToken}`)
+            .send(orderData);
+
+        expect(orderRes.statusCode).toEqual(201);
+
+        // Validar que la orden pertenece al usuario
         const res = await request(app)
             .get('/api/orders/me')
             .set('Authorization', `Bearer ${customerToken}`);
@@ -109,8 +208,8 @@ describe('Flujo de Negocio Completo: Compra y Gestión de Stock', () => {
         expect(res.statusCode).toEqual(200);
         expect(Array.isArray(res.body.orders)).toBe(true);
         expect(res.body.orders.length).toBeGreaterThan(0);
-        
-        const hasProduct = res.body.orders.some(order => 
+
+        const hasProduct = res.body.orders.some(order =>
             order.items.some(item => {
                 const productId = item.product._id || item.product;
                 return productId.toString() === targetProduct._id.toString();
