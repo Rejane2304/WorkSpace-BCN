@@ -150,7 +150,7 @@
   color: var(--color-primary);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   .base-form-card {
     max-width: 98vw;
     padding: 1.2rem 0.5rem;

@@ -54,7 +54,7 @@
   transition: box-shadow 0.2s;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   .product-image {
     max-height: 200px;
   }

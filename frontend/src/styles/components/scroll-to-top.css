@@ -30,7 +30,7 @@
 	pointer-events: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
 	.scroll-to-top-btn {
 		right: var(--spacing-xs);
 		bottom: var(--spacing-xs);

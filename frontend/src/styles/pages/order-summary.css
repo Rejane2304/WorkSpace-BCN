@@ -115,7 +115,7 @@
   align-items: flex-start;
   padding: 1.2rem;
 }
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .order-summary-grid {
     grid-template-columns: 1fr;
     gap: 1.2rem;
@@ -167,12 +167,12 @@
   margin-right: 10px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   .order-actions {
     flex-direction: column-reverse;
     gap: 12px;
   }
-  
+
   .order-actions .btn {
     width: 100%;
     justify-content: center;

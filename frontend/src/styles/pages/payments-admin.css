@@ -79,14 +79,14 @@
   padding: 2.5rem 0;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .payments-admin-grid-3col {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   .payments-admin-grid-3col {
     grid-template-columns: 1fr;
     gap: 1rem;

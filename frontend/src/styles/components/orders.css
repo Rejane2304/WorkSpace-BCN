@@ -204,7 +204,7 @@
   font-weight: 500;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .order-card {
     padding: 12px;
     gap: 12px;
