@@ -119,6 +119,7 @@ function Register() {
               className="base-form-input"
               required
               aria-label="Nombre completo"
+              autoComplete="name"
             />
           </div>
 
@@ -133,6 +134,7 @@ function Register() {
               required
               placeholder="nombre@ejemplo.com"
               aria-label="Email"
+              autoComplete="email"
             />
           </div>
 
@@ -147,6 +149,7 @@ function Register() {
                 className="base-form-input"
                 required
                 aria-label="Contraseña"
+                autoComplete="new-password"
               />
               <button
                 type="button"

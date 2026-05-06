@@ -42,3 +42,15 @@
   border: 1.5px solid var(--color-warning-border, #ffe082);
 }
 
+@media (max-width: 768px) {
+  .toast {
+    left: var(--spacing-sm);
+    right: var(--spacing-sm);
+    max-width: none;
+    width: auto;
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    min-width: auto;
+  }
+}
+

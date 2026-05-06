@@ -69,6 +69,7 @@ function Login() {
               required
               placeholder="nombre@ejemplo.com"
               data-testid="email-input"
+              autoComplete="email"
             />
           </div>
 
@@ -85,6 +86,7 @@ function Login() {
                 className="base-form-input"
                 required
                 data-testid="password-input"
+                autoComplete="current-password"
               />
               <button
                 type="button"

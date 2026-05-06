@@ -93,7 +93,7 @@
   height: 100%;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1024px) {
   .contact-inner {
     grid-template-columns: 1fr;
   }

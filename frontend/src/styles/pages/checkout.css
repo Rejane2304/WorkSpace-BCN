@@ -9,3 +9,31 @@
 .checkout-flex-1 {
   flex: 1;
 }
+
+@media (max-width: 768px) {
+  .checkout-layout {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .checkout-form {
+    padding: var(--spacing-sm) 0;
+  }
+
+  .checkout-form input,
+  .checkout-form select {
+    min-height: 44px;
+    font-size: var(--font-size-base);
+  }
+
+  .checkout-summary {
+    padding: var(--spacing-md);
+  }
+
+  .checkout-summary-thumb {
+    width: 32px;
+    height: 32px;
+  }
+}

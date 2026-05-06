@@ -29,3 +29,26 @@
 .admin-flex-1 {
   flex: 1;
 }
+
+@media (max-width: 768px) {
+  .admin-product-edit-form .flex.gap-2 {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .admin-product-edit-form .grid-cols-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-img-preview {
+    max-width: 150px;
+    max-height: 165px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-img-preview {
+    max-width: 120px;
+    max-height: 132px;
+  }
+}

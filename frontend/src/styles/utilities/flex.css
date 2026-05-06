@@ -26,6 +26,8 @@
   flex-wrap: wrap;
 }
 
-.flex-mobile-column {
+@media (max-width: 768px) {
+  .flex-mobile-column {
     flex-direction: column;
   }
+}

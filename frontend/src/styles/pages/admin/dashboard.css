@@ -41,13 +41,13 @@
   gap: var(--spacing-lg);
 }
 
-@media (min-width: 768px) and (max-width: 1399px) {
+@media (min-width: 769px) and (max-width: 1280px) {
   .admin-dashboard-cards-inner {
     grid-template-columns: repeat(2, 320px);
   }
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 1281px) {
   .admin-dashboard-cards-inner {
     grid-template-columns: repeat(4, 320px);
   }

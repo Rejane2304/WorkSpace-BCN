@@ -7,10 +7,10 @@
   box-sizing: border-box;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .header-container {
-    padding-left: 3vw;
-    padding-right: 3vw;
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
   }
 }
 
@@ -229,7 +229,7 @@
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 480px) {
   .hide-on-mobile {
     display: none;
   }

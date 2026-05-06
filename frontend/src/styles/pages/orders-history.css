@@ -2,3 +2,21 @@
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
+
+.orders-history-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+  .orders-history-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .orders-history-grid {
+    grid-template-columns: 1fr;
+  }
+}

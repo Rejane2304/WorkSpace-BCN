@@ -8,3 +8,16 @@
 .profile-form-actions .btn {
   min-width: 140px;
 }
+
+@media (max-width: 768px) {
+  .profile-form-actions {
+    flex-direction: column;
+    justify-content: stretch;
+    gap: var(--spacing-sm);
+  }
+
+  .profile-form-actions .btn {
+    width: 100%;
+    min-width: auto;
+  }
+}

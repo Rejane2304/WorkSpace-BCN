@@ -78,3 +78,45 @@
   cursor: pointer;
   color: var(--color-text-light);
 }
+
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    max-width: none;
+    margin: var(--spacing-sm);
+    padding: var(--spacing-md);
+    max-height: 85vh;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .modal-actions .btn {
+    width: 100%;
+  }
+
+  .modal-title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    width: 100%;
+    margin: 0;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    max-height: 90vh;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: auto;
+    min-height: auto;
+  }
+
+  .modal-backdrop {
+    align-items: flex-end;
+  }
+}
